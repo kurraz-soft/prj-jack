@@ -1,0 +1,117 @@
+[
+  {
+    "id": "milord",
+    "name": "Милорд",
+    "difficulty": "Несложная игра",
+    "description": "Аристократ с блестящим воспитанием, имеющий опыт придворной и военной службы. Обладая всеми основными навыками необходимыми тренеру, он с лёгкостью влился в ряды работорговцев и все согласны с тем, что впереди его ждёт замечательная карьера...",
+    "avatar": "noble",
+    "fraction": "bull",
+    "money": 2500,
+    "attributes": {
+      "strength": 4,
+      "beauty": 4,
+      "personality": 0,
+      "libido": 2
+    },
+    "skills": {
+      "teacher": 2,
+      "fighter": 4,
+      "maid": 2,
+      "artdirector": 3,
+      "medic": 2,
+      "mage": 0,
+      "torture": 3,
+      "domination": 4,
+      "bondage": 0,
+      "flagelation": 4
+    },
+    "skills_sex": {
+      "petting": 3,
+      "oral": 2,
+      "penetration": 4,
+      "fetish": 3
+    },
+    "equipment": {
+      "armor": "эльчуга",
+      "cloth": "regal_suit",
+      "weapon_right": "шпага"
+    }
+  },
+  {
+    "id": "rob",
+    "name": "Робеспьер",
+    "difficulty": "нормальная сложность",
+    "description": "Когда-то он был солдатом и воевал за короля в его колониальных войнах. Затем короля свергли и революции понадобились палачи. Больше всего на свете он гордится тем, что собственноручно обезглавил красивую, но надменную королеву. В Вечном Риме навыки палача тоже пригодятся.",
+    "avatar": "torturer",
+    "fraction": "bull",
+    "money": 1500,
+    "attributes": {
+      "strength": 5,
+      "beauty": 1,
+      "personality": 0,
+      "libido": 3
+    },
+    "skills": {
+      "teacher": 1,
+      "fighter": 3,
+      "maid": 1,
+      "artdirector": 0,
+      "medic": 2,
+      "mage": 0,
+      "torture": 5,
+      "domination": 3,
+      "bondage": 5,
+      "flagelation": 5
+    },
+    "skills_sex": {
+      "petting": 2,
+      "oral": 2,
+      "penetration": 4,
+      "fetish": 4
+    },
+    "equipment": {
+      "armor": "",
+      "cloth": "man_rugs",
+      "weapon_right": "кнут"
+    }
+  },
+  {
+    "id": "nerd",
+    "name": "Алёшка",
+    "difficulty": "максимальная сложность",
+    "description": "Этот прыщавый ботан и маменькин сынок, да как он вообще попал в Гильдию? Говорят, что Госпожа Ангелика сжалилась, когда он стоял на рыночной площади с воткнутым в задницу флажком с загадочной надписью «sup /b». Но кто поверит в милосердие Ангелики? Так или иначе, возможность воспитывать сексуальных рабынь для озабоченного школьника-девственника — это просто Клондайк. Только из всех навыков у него для этого есть лишь бездонная пропасть извращённых фантазий и подогреваемая гормонами гиперсексуальность.",
+    "avatar": "nerd",
+    "fraction": "",
+    "money": 200,
+    "attributes": {
+      "strength": 2,
+      "beauty": 1,
+      "personality": 0,
+      "libido": 5,
+      "libido_rate": 200
+    },
+    "skills": {
+      "teacher": 0,
+      "fighter": 0,
+      "maid": 0,
+      "artdirector": 0,
+      "medic": 0,
+      "mage": 0,
+      "torture": 0,
+      "domination": 0,
+      "bondage": 0,
+      "flagelation": 0
+    },
+    "skills_sex": {
+      "petting": 0,
+      "oral": 0,
+      "penetration": 0,
+      "fetish": 5
+    },
+    "equipment": {
+      "armor": "",
+      "cloth": "man_rugs",
+      "weapon_right": ""
+    }
+  }
+]
