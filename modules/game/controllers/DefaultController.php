@@ -9,6 +9,7 @@ namespace app\modules\game\controllers;
 
 use app\components\Controller;
 use app\modules\game\models\GameMechanics;
+use app\modules\game\models\libraries\MastersLibrary;
 
 class DefaultController extends Controller
 {
@@ -39,7 +40,7 @@ class DefaultController extends Controller
             return $this->redirect(['home/index']);
         }
 
-        $characters = json_decode(file_get_contents(\Yii::getAlias('@game/data/masters.json')),true); //TODO maybe move to class
+        $characters = MastersLibrary::loadData();
 
         return $this->render('character-select',[
             'characters' => $characters,

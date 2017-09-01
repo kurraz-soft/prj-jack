@@ -18,11 +18,6 @@ class GameDataRegister
     public $date;
 
     /**
-     * @var Wallet
-     */
-    public $wallet;
-
-    /**
      * @var Debt
      */
     public $debt;
@@ -41,7 +36,6 @@ class GameDataRegister
     {
         $this->_objects = [
             $this->date = new Date(),
-            $this->wallet = new Wallet(),
             $this->debt = new Debt(),
             $this->character = new Character(),
         ];

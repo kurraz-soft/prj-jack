@@ -7,41 +7,8 @@
 namespace app\modules\game\models\game_data;
 
 
-use app\modules\game\models\game_data\attributes\ArenaFameFemale;
-use app\modules\game\models\game_data\attributes\BeautyFemale;
-use app\modules\game\models\game_data\attributes\ConstitutionFemale;
-use app\modules\game\models\game_data\attributes\ExoticismFemale;
-use app\modules\game\models\game_data\attributes\HealthFemale;
-use app\modules\game\models\game_data\attributes\IntellectFemale;
 use app\modules\game\models\game_data\attributes\MoodFemale;
-use app\modules\game\models\game_data\attributes\PrideFemale;
-use app\modules\game\models\game_data\attributes\SensualityFemale;
-use app\modules\game\models\game_data\attributes\StyleFemale;
-use app\modules\game\models\game_data\attributes\TemperamentFemale;
-use app\modules\game\models\game_data\attributes\TemperFemale;
-use app\modules\game\models\game_data\base\BaseAttribute;
 use app\modules\game\models\game_data\base\BaseGameData;
-use app\modules\game\models\game_data\base\BaseSkill;
-use app\modules\game\models\game_data\skills\CookFemale;
-use app\modules\game\models\game_data\skills\DancerFemale;
-use app\modules\game\models\game_data\skills\EnchanterFemale;
-use app\modules\game\models\game_data\skills\ExpressionFemale;
-use app\modules\game\models\game_data\skills\GladiatorFemale;
-use app\modules\game\models\game_data\skills\HorseFemale;
-use app\modules\game\models\game_data\skills\MaidFemale;
-use app\modules\game\models\game_data\skills\MedicMale;
-use app\modules\game\models\game_data\skills\MusicFemale;
-use app\modules\game\models\game_data\skills\Nurse;
-use app\modules\game\models\game_data\skills\PetFemale;
-use app\modules\game\models\game_data\skills\SecretaryFemale;
-use app\modules\game\models\game_data\skills\VocalFemale;
-use app\modules\game\models\game_data\skills_sex\DemonstrationFemale;
-use app\modules\game\models\game_data\skills_sex\FetishFemale;
-use app\modules\game\models\game_data\skills_sex\OralFemale;
-use app\modules\game\models\game_data\skills_sex\OrgyFemale;
-use app\modules\game\models\game_data\skills_sex\PenetrationFemale;
-use app\modules\game\models\game_data\skills_sex\PettingFemale;
-use app\modules\game\models\game_data\skills_sex\XenophilyFemale;
 
 class Apprentice extends BaseGameData
 {
@@ -60,22 +27,21 @@ class Apprentice extends BaseGameData
      */
     public $energy;
     /**
-     * @var BaseAttribute[]
+     * @var AttributesListApprentice
      */
     public $attributes;
     /**
-     * @var BaseSkill[]
+     * @var SkillListApprentice
      */
     public $skills;
     /**
-     * @var BaseSkill[]
+     * @var SkillSexListApprentice
      */
     public $skillsSex;
     /**
      * @var RulesApprentice
      */
     public $rules;
-
     /**
      * @var MoodFemale
      */
@@ -86,50 +52,10 @@ class Apprentice extends BaseGameData
         'energy' => Energy::class,
         'rank' => RankApprentice::class,
         'mood' => MoodFemale::class,
+        'attributes' => AttributesListApprentice::class,
+        'skills' => SkillListApprentice::class,
+        'skillsSex' => SkillSexListApprentice::class,
     ];
-
-    public function __construct()
-    {
-        $this->attributes = [
-            ArenaFameFemale::class => new ArenaFameFemale(),
-            BeautyFemale::class => new BeautyFemale(),
-            ConstitutionFemale::class => new ConstitutionFemale(),
-            ExoticismFemale::class => new ExoticismFemale(),
-            HealthFemale::class => new HealthFemale(),
-            IntellectFemale::class => new IntellectFemale(),
-            PrideFemale::class => new PrideFemale(),
-            SensualityFemale::class => new SensualityFemale(),
-            StyleFemale::class => new StyleFemale(),
-            TemperamentFemale::class => new TemperamentFemale(),
-            TemperFemale::class => new TemperFemale(),
-        ];
-
-        $this->skills = [
-            CookFemale::class => new CookFemale(),
-            DancerFemale::class => new DancerFemale(),
-            EnchanterFemale::class => new EnchanterFemale(),
-            ExpressionFemale::class => new ExpressionFemale(),
-            GladiatorFemale::class => new GladiatorFemale(),
-            HorseFemale::class => new HorseFemale(),
-            MaidFemale::class => new MaidFemale(),
-            MedicMale::class => new MedicMale(),
-            MusicFemale::class => new MusicFemale(),
-            Nurse::class => new Nurse(),
-            PetFemale::class => new PetFemale(),
-            SecretaryFemale::class => new SecretaryFemale(),
-            VocalFemale::class => new VocalFemale(),
-        ];
-
-        $this->skillsSex = [
-            DemonstrationFemale::class => new DemonstrationFemale(),
-            FetishFemale::class => new FetishFemale(),
-            OralFemale::class => new OralFemale(),
-            OrgyFemale::class => new OrgyFemale(),
-            PenetrationFemale::class => new PenetrationFemale(),
-            PettingFemale::class => new PettingFemale(),
-            XenophilyFemale::class => new XenophilyFemale(),
-        ];
-    }
 
     public function serialize()
     {
@@ -150,7 +76,11 @@ class Apprentice extends BaseGameData
     {
         foreach ($this->_child_game_data as $name => $class)
         {
-            $this->$name = $serialized_data[$name] ?? new $class();
+            $this->$name = new $class();
+            if(isset($serialized_data[$name]))
+            {
+                $this->$name->unserialize($serialized_data[$name]);
+            }
         }
 
         $this->name = $serialized_data['name'] ?? "";

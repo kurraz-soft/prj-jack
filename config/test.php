@@ -12,6 +12,7 @@ return [
     'id' => 'basic-console',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log', 'gii'],
+    'aliases' => require(__DIR__.'/aliases.php'),
     'controllerNamespace' => 'app\commands',
     'modules' => [
         'gii' => 'yii\gii\Module',

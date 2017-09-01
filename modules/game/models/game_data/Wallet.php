@@ -15,12 +15,12 @@ class Wallet extends BaseGameData
 
     public function spend($sum)
     {
-
+        $this->money -= $sum;
     }
 
     public function add($sum)
     {
-
+        $this->money += $sum;
     }
 
     public function serialize()
@@ -32,10 +32,6 @@ class Wallet extends BaseGameData
 
     public function unserialize($serialized_data)
     {
-        if(empty($serialized_data['money']))
-        {
-            $this->money = 200;
-        }else
-            $this->money = $serialized_data['money'];
+        $this->money = $serialized_data['money'];
     }
 }

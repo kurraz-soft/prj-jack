@@ -17,9 +17,9 @@ use app\modules\game\models\game_data\attributes\Mark;
 use app\modules\game\models\game_data\attributes\MoodMale;
 use app\modules\game\models\game_data\attributes\PersonalityMale;
 use app\modules\game\models\game_data\attributes\StrengthMale;
-use app\modules\game\models\game_data\base\BaseAttribute;
 use app\modules\game\models\game_data\base\BaseGameData;
 use app\modules\game\models\game_data\base\BaseSkill;
+use app\modules\game\models\libraries\MastersLibrary;
 
 class Character extends BaseGameData
 {
@@ -47,6 +47,10 @@ class Character extends BaseGameData
      */
     public $mood;
     /**
+     * @var Wallet
+     */
+    public $wallet;
+    /**
      * @var string
      */
     public $name = '';
@@ -55,58 +59,33 @@ class Character extends BaseGameData
      */
     public $avatar;
     /**
-     * @var HealthMale
-     */
-    public $health;
-    /**
-     * @var StrengthMale
-     */
-    public $strength;
-    /**
-     * @var PersonalityMale
-     */
-    public $personality;
-    /**
-     * @var BeautyMale
-     */
-    public $beauty;
-    /**
-     * @var Libido
-     */
-    public $libido;
-    /**
-     * @var Mark
-     */
-    public $mark;
-    /**
-     * @var GuildRepo
-     */
-    public $guildRep;
-    /**
-     * @var Lifestyle
-     */
-    public $lifestyle;
-    /**
-     * @var HygieneMale
-     */
-    public $hygiene;
-
-    /**
-     * @var BaseAttribute[]
+     * @var AttributesListCharacter
      */
     public $attributes;
     /**
-     * @var BaseSkill[]
+     * @var SkillListCharacter
      */
     public $skills;
     /**
-     * @var BaseSkill[]
+     * @var SkillSexListCharacter
      */
     public $skillsSex;
 
+    private $_child_game_data = [
+        'energy' => Energy::class,
+        'mood' => MoodMale::class,
+        'wallet' => Wallet::class,
+        'attributes' => AttributesListCharacter::class,
+        'skills' => SkillListCharacter::class,
+        'skillsSex' => SkillSexListCharacter::class,
+    ];
+
     public function __construct()
     {
-
+        foreach ($this->_child_game_data as $name => $class)
+        {
+            $this->$name = new $class();
+        }
     }
 
     public function serialize()
@@ -115,39 +94,18 @@ class Character extends BaseGameData
             'name' => $this->name,
             'energy' => $this->energy->serialize(),
             'mood' => $this->mood->serialize(),
-            'health' => $this->health->serialize(),
-            'strength' => $this->strength->serialize(),
-            'personality' => $this->personality->serialize(),
-            'beauty' => $this->beauty->serialize(),
-            'libido' => $this->libido->serialize(),
-            'mark' => $this->mark->serialize(),
-            'guildRep' => $this->guildRep->serialize(),
-            'lifestyle' => $this->lifestyle->serialize(),
-            'hygiene' => $this->hygiene->serialize(),
+            'wallet' => $this->wallet->serialize(),
+            'attributes' => $this->attributes->serialize(),
+            'skills' => $this->skills->serialize(),
+            'skillsSex' => $this->skillsSex->serialize(),
             'avatar' => $this->avatar,
         ];
     }
 
     public function unserialize($serialized_data)
     {
-        $child_game_data = [
-            'energy' => Energy::class,
-            'mood' => MoodMale::class,
-            'health' => HealthMale::class,
-            'strength' => StrengthMale::class,
-            'personality' => PersonalityMale::class,
-            'beauty' => BeautyMale::class,
-            'libido' => Libido::class,
-            'mark' => Mark::class,
-            'guildRep' => GuildRepo::class,
-            'lifestyle' => Lifestyle::class,
-            'hygiene' => HygieneMale::class,
-        ];
-
-        foreach ($child_game_data as $name => $class)
+        foreach ($this->_child_game_data as $name => $class)
         {
-            $this->$name = new $class();
-
             if(isset($serialized_data[$name]))
             {
                 $this->$name->unserialize($serialized_data[$name]);
@@ -168,18 +126,37 @@ class Character extends BaseGameData
     {
         $selected_char = null;
 
-        $characters = json_decode(file_get_contents(\Yii::getAlias('@game/data/masters.json')), true);
-        foreach ($characters as $character)
-        {
-            if($character['id'] == $character_id)
-            {
-                $selected_char = $character;
-                break;
-            }
-        }
+        $selected_char = MastersLibrary::loadCharacter($character_id);
 
         $this->name = $selected_char['name'];
         $this->avatar = $selected_char['avatar'];
-        //TODO init other
+        $this->energy->value = 5;
+        $this->mood->value = 5;
+        $this->wallet->add($selected_char['money']);
+
+        $this->attributes->strength->value = $selected_char['attributes']['strength'];
+        $this->attributes->health->value = 5;
+        $this->attributes->lifestyle->value = 1;
+        $this->attributes->guildRep->value = 1;
+        $this->attributes->mark->value = 1;
+        $this->attributes->libido->value = $selected_char['attributes']['libido'];
+        $this->attributes->beauty->value = $selected_char['attributes']['beauty'];
+        $this->attributes->personality->value = $selected_char['attributes']['personality'];
+        $this->attributes->hygiene->value = 5;
+
+        $this->skills->artdirector->value = $selected_char['skills']['artdirector'];
+        $this->skills->bondage->value = $selected_char['skills']['bondage'];
+        $this->skills->domination->value = $selected_char['skills']['domination'];
+        $this->skills->fighter->value = $selected_char['skills']['fighter'];
+        $this->skills->flagelation->value = $selected_char['skills']['flagelation'];
+        $this->skills->mage->value = $selected_char['skills']['mage'];
+        $this->skills->maid->value = $selected_char['skills']['maid'];
+        $this->skills->teacher->value = $selected_char['skills']['teacher'];
+        $this->skills->torture->value = $selected_char['skills']['torture'];
+
+        $this->skillsSex->fetish->value = $selected_char['skills_sex']['fetish'];
+        $this->skillsSex->oral->value = $selected_char['skills_sex']['oral'];
+        $this->skillsSex->penetration->value = $selected_char['skills_sex']['penetration'];
+        $this->skillsSex->petting->value = $selected_char['skills_sex']['petting'];
     }
 }
