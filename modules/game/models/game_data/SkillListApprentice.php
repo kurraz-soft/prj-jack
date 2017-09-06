@@ -38,20 +38,20 @@ use app\modules\game\models\game_data\skills\VocalFemale;
  */
 class SkillListApprentice extends BaseGameDataList
 {
-     /**
-     * @var array
-     */
-    protected $_child_game_data = [
-        'cook' => CookFemale::class,
-        'dancer' => DancerFemale::class,
-        'enchanter' => EnchanterFemale::class,
-        'expression' => ExpressionFemale::class,
-        'gladiator' => GladiatorFemale::class,
-        'horse' => HorseFemale::class,
-        'maid' => MaidFemale::class,
-        'nurse' => Nurse::class,
-        'pet' => PetFemale::class,
-        'secretary' => SecretaryFemale::class,
-        'vocal' => VocalFemale::class,
-    ];
+    public function serializableParams()
+    {
+        return [
+            'cook' => CookFemale::class,
+            'dancer' => DancerFemale::class,
+            'enchanter' => EnchanterFemale::class,
+            'expression' => ExpressionFemale::class,
+            'gladiator' => GladiatorFemale::class,
+            'horse' => HorseFemale::class,
+            'maid' => MaidFemale::class,
+            'nurse' => Nurse::class,
+            'pet' => PetFemale::class,
+            'secretary' => SecretaryFemale::class,
+            'vocal' => VocalFemale::class,
+        ];
+    }
 }

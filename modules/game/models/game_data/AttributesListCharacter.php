@@ -34,18 +34,18 @@ use app\modules\game\models\game_data\base\BaseGameDataList;
  */
 class AttributesListCharacter extends BaseGameDataList
 {
-    /**
-     * @var array
-     */
-    protected $_child_game_data = [
-        'health' => HealthMale::class,
-        'strength' => StrengthMale::class,
-        'personality' => PersonalityMale::class,
-        'beauty' => BeautyMale::class,
-        'libido' => Libido::class,
-        'mark' => Mark::class,
-        'guildRep' => GuildRepo::class,
-        'lifestyle' => Lifestyle::class,
-        'hygiene' => HygieneMale::class,
-    ];
+    public function serializableParams()
+    {
+        return [
+            'health' => HealthMale::class,
+            'strength' => StrengthMale::class,
+            'personality' => PersonalityMale::class,
+            'beauty' => BeautyMale::class,
+            'libido' => Libido::class,
+            'mark' => Mark::class,
+            'guildRep' => GuildRepo::class,
+            'lifestyle' => Lifestyle::class,
+            'hygiene' => HygieneMale::class,
+        ];
+    }
 }

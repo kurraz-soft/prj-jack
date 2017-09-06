@@ -34,15 +34,18 @@ use app\modules\game\models\game_data\skills\TortureMale;
  */
 class SkillListCharacter extends BaseGameDataList
 {
-    protected $_child_game_data = [
-        'artdirector' => ArtdirectorMale::class,
-        'bondage' => BondageMale::class,
-        'domination' => DominationMale::class,
-        'fighter' => FighterMale::class,
-        'flagelation' => FighterMale::class,
-        'mage' => MageMale::class,
-        'maid' => MaidMale::class,
-        'teacher' => TeacherMale::class,
-        'torture' => TortureMale::class,
-    ];
+    public function serializableParams()
+    {
+        return [
+            'artdirector' => ArtdirectorMale::class,
+            'bondage' => BondageMale::class,
+            'domination' => DominationMale::class,
+            'fighter' => FighterMale::class,
+            'flagelation' => FighterMale::class,
+            'mage' => MageMale::class,
+            'maid' => MaidMale::class,
+            'teacher' => TeacherMale::class,
+            'torture' => TortureMale::class,
+        ];
+    }
 }

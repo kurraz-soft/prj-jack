@@ -7,9 +7,9 @@
 namespace app\modules\game\models\game_data\skills;
 
 
-use app\modules\game\models\game_data\base\BaseSkill;
+use app\modules\game\models\game_data\base\CommonSkill;
 
-class MedicMale extends BaseSkill
+class MedicMale extends CommonSkill
 {
     public function valueNames()
     {

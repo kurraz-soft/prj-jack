@@ -7,7 +7,7 @@
 namespace app\modules\game\models\game_data\base;
 
 
-use app\models\GameData;
+use app\modules\game\models\GameData;
 
 interface IImportable
 {

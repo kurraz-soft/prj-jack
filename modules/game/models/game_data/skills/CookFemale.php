@@ -7,9 +7,9 @@
 namespace app\modules\game\models\game_data\skills;
 
 
-use app\modules\game\models\game_data\base\BaseSkill;
+use app\modules\game\models\game_data\base\CommonSkill;
 
-class CookFemale extends BaseSkill
+class CookFemale extends CommonSkill
 {
     public function valueNames()
     {

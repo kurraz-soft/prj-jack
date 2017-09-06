@@ -24,10 +24,13 @@ use app\modules\game\models\game_data\skills_sex\PettingMale;
  */
 class SkillSexListCharacter extends BaseGameDataList
 {
-    protected $_child_game_data = [
-        'fetish' => FetishMale::class,
-        'oral' => OralMale::class,
-        'penetration' => PenetrationMale::class,
-        'petting' => PettingMale::class,
-    ];
+    public function serializableParams()
+    {
+        return [
+            'fetish' => FetishMale::class,
+            'oral' => OralMale::class,
+            'penetration' => PenetrationMale::class,
+            'petting' => PettingMale::class,
+        ];
+    }
 }

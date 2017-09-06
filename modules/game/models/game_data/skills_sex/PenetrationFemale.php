@@ -7,19 +7,47 @@
 namespace app\modules\game\models\game_data\skills_sex;
 
 
+use app\modules\game\helpers\SkillNameHelper;
 use app\modules\game\models\game_data\base\BaseSkill;
+use app\modules\game\models\game_data\base\IAutoSerializable;
+use app\modules\game\models\game_data\serializators\AutoSerializator;
 
-class PenetrationFemale extends BaseSkill
+class PenetrationFemale extends BaseSkill implements IAutoSerializable
 {
+    /**
+     * @var PenetrationFemaleSkillList
+     */
+    public $subSkills;
+
+    public function __construct()
+    {
+        $this->subSkills = new PenetrationFemaleSkillList();
+    }
+
     public function valueNames()
     {
+        return SkillNameHelper::generateBasic('Пенетрация');
+    }
+
+    protected function getSerializator()
+    {
+        return new AutoSerializator($this);
+    }
+
+    public function serializableParams()
+    {
         return [
-            0 => 'Пенетрация F-',
-            1 => 'Пенетрация D-',
-            2 => 'Пенетрация C-',
-            3 => 'Пенетрация B+',
-            4 => 'Пенетрация A+',
-            5 => 'Пенетрация S+',
+            'subSkills' => PenetrationFemaleSkillList::class,
         ];
+    }
+
+    public function getValue()
+    {
+        // TODO: Implement getValue() method.
+    }
+
+    public function setValue($new_value)
+    {
+        // TODO: Implement setValue() method.
     }
 }

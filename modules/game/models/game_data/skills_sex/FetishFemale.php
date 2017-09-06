@@ -7,19 +7,49 @@
 namespace app\modules\game\models\game_data\skills_sex;
 
 
+use app\modules\game\helpers\SkillNameHelper;
 use app\modules\game\models\game_data\base\BaseSkill;
+use app\modules\game\models\game_data\base\IAutoSerializable;
+use app\modules\game\models\game_data\serializators\AutoSerializator;
 
-class FetishFemale extends BaseSkill
+class FetishFemale extends BaseSkill implements IAutoSerializable
 {
+    /**
+     * @var FetishFemaleSubSkillList
+     */
+    public $subSkills;
+
+    public function __construct()
+    {
+        $this->subSkills = new FetishFemaleSubSkillList();
+    }
+
     public function valueNames()
     {
+        return SkillNameHelper::generateBasic('Фетишизм');
+    }
+
+    protected function getSerializator()
+    {
+        return new AutoSerializator($this);
+    }
+
+    public function serializableParams()
+    {
         return [
-            0 => 'Фетишизм F-',
-            1 => 'Фетишизм D-',
-            2 => 'Фетишизм C-',
-            3 => 'Фетишизм B+',
-            4 => 'Фетишизм A+',
-            5 => 'Фетишизм S+',
+            'subSkills' => FetishFemaleSubSkillList::class,
         ];
     }
+
+    public function getValue()
+    {
+        // TODO: Implement getValue() method.
+        return 0;
+    }
+
+    public function setValue($new_value)
+    {
+        // TODO: Implement setValue() method.
+    }
+
 }

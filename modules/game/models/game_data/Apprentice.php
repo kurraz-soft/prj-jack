@@ -9,8 +9,10 @@ namespace app\modules\game\models\game_data;
 
 use app\modules\game\models\game_data\attributes\MoodFemale;
 use app\modules\game\models\game_data\base\BaseGameData;
+use app\modules\game\models\game_data\base\IAutoSerializable;
+use app\modules\game\models\game_data\serializators\AutoSerializator;
 
-class Apprentice extends BaseGameData
+class Apprentice extends BaseGameData implements IAutoSerializable
 {
     /**
      * @var string
@@ -47,43 +49,43 @@ class Apprentice extends BaseGameData
      */
     public $mood;
 
-    private $_child_game_data = [
-        'rules' => RulesApprentice::class,
-        'energy' => Energy::class,
-        'rank' => RankApprentice::class,
-        'mood' => MoodFemale::class,
-        'attributes' => AttributesListApprentice::class,
-        'skills' => SkillListApprentice::class,
-        'skillsSex' => SkillSexListApprentice::class,
-    ];
+    private $_serializator;
+
+    public function __construct()
+    {
+        $this->_serializator = new AutoSerializator($this);
+
+        foreach ($this->serializableParams() as $name => $class)
+        {
+            if(class_exists($class))
+            {
+                $this->$name = new $class();
+            }
+        }
+    }
+
+    public function serializableParams()
+    {
+        return [
+            'name' => '',
+            'age' => '',
+            'rules' => RulesApprentice::class,
+            'energy' => Energy::class,
+            'rank' => RankApprentice::class,
+            'mood' => MoodFemale::class,
+            'attributes' => AttributesListApprentice::class,
+            'skills' => SkillListApprentice::class,
+            'skillsSex' => SkillSexListApprentice::class,
+        ];
+    }
 
     public function serialize()
     {
-        $ret = [];
-
-        foreach ($this->_child_game_data as $name => $class)
-        {
-            $ret[$name] = $this->$name->serialize();
-        }
-
-        return array_merge([
-            'name' => $this->name,
-            'age' => $this->age, //TODO to int
-        ],$ret);
+        return $this->_serializator->serialize();
     }
 
     public function unserialize($serialized_data)
     {
-        foreach ($this->_child_game_data as $name => $class)
-        {
-            $this->$name = new $class();
-            if(isset($serialized_data[$name]))
-            {
-                $this->$name->unserialize($serialized_data[$name]);
-            }
-        }
-
-        $this->name = $serialized_data['name'] ?? "";
-        $this->age = $serialized_data['age'] ?? "";
+        $this->_serializator->unserialize($serialized_data);
     }
 }

@@ -38,17 +38,20 @@ use app\modules\game\models\game_data\base\BaseGameDataList;
  */
 class AttributesListApprentice extends BaseGameDataList
 {
-    protected $_child_game_data = [
-        'arenaFame' => ArenaFameFemale::class,
-        'beauty' => BeautyFemale::class,
-        'constitution' => ConstitutionFemale::class,
-        'exoticism' => ExoticismFemale::class,
-        'health' => HealthFemale::class,
-        'intellect' => IntellectFemale::class,
-        'pride' => PrideFemale::class,
-        'sensuality' => SensualityFemale::class,
-        'style' => StyleFemale::class,
-        'temperament' => TemperamentFemale::class,
-        'temper' => TemperFemale::class,
-    ];
+    public function serializableParams()
+    {
+        return [
+            'arenaFame' => ArenaFameFemale::class,
+            'beauty' => BeautyFemale::class,
+            'constitution' => ConstitutionFemale::class,
+            'exoticism' => ExoticismFemale::class,
+            'health' => HealthFemale::class,
+            'intellect' => IntellectFemale::class,
+            'pride' => PrideFemale::class,
+            'sensuality' => SensualityFemale::class,
+            'style' => StyleFemale::class,
+            'temperament' => TemperamentFemale::class,
+            'temper' => TemperFemale::class,
+        ];
+    }
 }

@@ -7,7 +7,7 @@
 namespace app\modules\game\models\game_data\skills;
 
 
-use app\modules\game\models\game_data\base\BaseSkill;
+use app\modules\game\models\game_data\base\CommonSkill;
 
 /**
  * Class FlagelationMale
@@ -15,7 +15,7 @@ use app\modules\game\models\game_data\base\BaseSkill;
  *
  * Порка
  */
-class FlagelationMale extends BaseSkill
+class FlagelationMale extends CommonSkill
 {
     public function valueNames()
     {

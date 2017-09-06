@@ -7,18 +7,20 @@
 namespace app\modules\game\models\game_data\base;
 
 
-class BaseGameDataList extends BaseGameData
+use app\modules\game\models\game_data\serializators\AutoSerializator;
+
+abstract class BaseGameDataList extends BaseGameData implements IAutoSerializable
 {
-     /**
-     * @var array
-     */
-    protected $_child_game_data = [];
     protected $_properties = [];
+
+    protected $_serializator;
 
     public function __construct()
     {
-        foreach ($this->_child_game_data as $name => $class)
+        foreach ($this->serializableParams() as $name => $class)
             $this->$name = new $class();
+
+        $this->_serializator = new AutoSerializator($this);
     }
 
     public function __get($name)
@@ -33,23 +35,11 @@ class BaseGameDataList extends BaseGameData
 
     public function serialize()
     {
-        $ret = [];
-        foreach ($this->_child_game_data as $name => $class)
-        {
-            $ret[$name] = $this->$name->serialize();
-        }
-
-        return $ret;
+        return $this->_serializator->serialize();
     }
 
     public function unserialize($serialized_data)
     {
-        foreach ($this->_child_game_data as $name => $class)
-        {
-            if(isset($serialized_data[$name]))
-            {
-                $this->$name->unserialize($serialized_data[$name]);
-            }
-        }
+        $this->_serializator->unserialize($serialized_data);
     }
 }

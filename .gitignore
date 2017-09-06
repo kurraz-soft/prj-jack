@@ -32,6 +32,6 @@ phpunit.phar
 .vagrant
 Vagrantfile
 /web/assets/*
-/web/assets_game/*
+/web/assets_game/img/*
 .log
 /rbac/*

@@ -30,13 +30,16 @@ use app\modules\game\models\game_data\skills_sex\XenophilyFemale;
  */
 class SkillSexListApprentice extends BaseGameDataList
 {
-    protected $_child_game_data = [
-        'demonstration' => DemonstrationFemale::class,
-        'fetish' => FetishFemale::class,
-        'oral' => OralFemale::class,
-        'orgy' => OrgyFemale::class,
-        'penetration' => PenetrationFemale::class,
-        'petting' => PettingFemale::class,
-        'xenophily' => XenophilyFemale::class,
-    ];
+    public function serializableParams()
+    {
+        return [
+            'demonstration' => DemonstrationFemale::class,
+            'fetish' => FetishFemale::class,
+            'oral' => OralFemale::class,
+            'orgy' => OrgyFemale::class,
+            'penetration' => PenetrationFemale::class,
+            'petting' => PettingFemale::class,
+            'xenophily' => XenophilyFemale::class,
+        ];
+    }
 }

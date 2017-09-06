@@ -1,0 +1,167 @@
+@font-face {
+    font-family: "Victoriana";
+    src: url(../fonts/Victoriana.ttf);
+}
+
+.game-wrap {
+    font-family: "Comic Sans MS";
+}
+
+.layout-border-v {
+    background: url(../img/layout_border_h.png);
+    height: 18px;
+}
+.layout-border-h {
+    background: url(../img/layout_border_v.png);
+    width: 18px;
+}
+.character-block-item {
+    padding: 10px;
+}
+.game-move-quick-panel {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 80px;
+    text-align: center;
+    border: 2px solid #000000;
+    font-size: 18px;
+    padding: 5px;
+    background-color: #e08e0b;
+    display: flex;
+    flex-direction: column;
+}
+.game-menu-btn {
+    background: url(../img/menu_button.png) no-repeat;
+    background-size: cover;
+    padding: 5px 10px;
+    padding-left: 30px;
+    text-align: left;
+    font-size: 25px;
+    line-height: 35px;
+    width: 100%
+}
+a .game-menu-btn, a:hover .game-menu-btn, a:visited .game-menu-btn {
+    color: #e08e0b;
+    text-decoration: none;
+}
+.game-menu {
+    margin-top: 50px;
+    margin-left: 30px;
+}
+.game-menu > li {
+    display: block;
+    margin-bottom: 15px;
+}
+.game-menu-item {
+    display: flex;
+    align-items: center;
+}
+.game-teach-btn {
+    background-image: url(../img/ui/grimdark/buttons/teach.png);
+    width: 100px;
+    height: 100px;
+    display: block;
+}
+.game-teach-teacher-btn {
+    background-image: url(../img/ui/grimdark/buttons/teach_r.png);
+    width: 26px;
+    height: 30px;
+    display: block;
+}
+.game-teach-school-btn {
+    background-image: url(../img/ui/grimdark/buttons/teach_s.png);
+    width: 26px;
+    height: 30px;
+    display: block;
+}
+.game-teach-assistant-btn {
+    background-image: url(../img/ui/grimdark/buttons/teach_a.png);
+    width: 26px;
+    height: 30px;
+    display: block;
+}
+.game-lab-btn {
+    background-image: url(../img/ui/grimdark/buttons/lab.png);
+    width: 100px;
+    height: 100px;
+    display: block;
+}
+.game-dungeon-btn {
+    background-image: url(../img/no_ava.jpg);
+    background-size: cover;
+    width: 150px;
+    height: 150px;
+    display: block;
+}
+.game-status-spell {
+    font-family: 'Victoriana';
+    font-size: 24px;
+    color: darkblue;
+    font-weight: bold;
+}
+.game-slave-question-btn {
+    background-image: url("../img/ui/grimdark/buttons/question.png");
+    width: 48px;
+    height: 48px;
+    display: block;
+}
+.game-slave-influence-btn {
+    background-image: url("../img/ui/grimdark/buttons/influence.png");
+    width: 48px;
+    height: 48px;
+    display: block;
+}
+.game-slave-info-blank {
+    background-image: url("../img/ui/jon-UIadds/aaa_vide.png");
+    width: 24px;
+    height: 26px;
+    display: block;
+    color: #7a43b6;
+    font-weight: bold;
+    font-size: 20px;
+}
+.game-green-btn {
+    background-image: url("../img/buttons/fast_button.png");
+    width: 21px;
+    height: 21px;
+    display: block;
+    margin: 0 5px;
+}
+.game-red-btn {
+    background-image: url("../img/buttons/red_button.png");
+    width: 21px;
+    height: 21px;
+    display: block;
+    margin: 0 5px;
+}
+.game-slave-param-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 0 10px;
+}
+.game-home-btn {
+    background-image: url("../img/buttons/home_button.png");
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+.game-status-bar {
+    padding: 10px;
+    font-size: 18px;
+}
+.game-menu-btn-back {
+    background-image: url("../img/ui_overhaul/back.png");
+    width: 25px;
+    height: 66px;
+    display: block;
+}
+.game-menu-btn-cancel {
+    background-image: url("../img/ui_overhaul/cancel.png");
+    width: 25px;
+    height: 66px;
+    display: block;
+}
