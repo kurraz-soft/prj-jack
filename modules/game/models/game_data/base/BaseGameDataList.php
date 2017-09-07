@@ -18,7 +18,10 @@ abstract class BaseGameDataList extends BaseGameData implements IAutoSerializabl
     public function __construct()
     {
         foreach ($this->serializableParams() as $name => $class)
-            $this->$name = new $class();
+        {
+            if(class_exists($class))
+                $this->$name = new $class();
+        }
 
         $this->_serializator = new AutoSerializator($this);
     }
