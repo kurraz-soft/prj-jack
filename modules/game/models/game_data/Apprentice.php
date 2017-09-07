@@ -7,6 +7,7 @@
 namespace app\modules\game\models\game_data;
 
 
+use app\modules\game\models\game_data\attributes\AgeFemale;
 use app\modules\game\models\game_data\attributes\MoodFemale;
 use app\modules\game\models\game_data\aura\Aura;
 use app\modules\game\models\game_data\base\BaseGameData;
@@ -20,8 +21,10 @@ class Apprentice extends BaseGameData implements IAutoSerializable
      * @var string
      */
     public $name;
+    /**
+     * @var AgeFemale
+     */
     public $age;
-
     /**
      * @var RankApprentice
      */
@@ -78,7 +81,7 @@ class Apprentice extends BaseGameData implements IAutoSerializable
     {
         return [
             'name' => '',
-            'age' => '',
+            'age' => AgeFemale::class,
             'rules' => RulesApprentice::class,
             'energy' => Energy::class,
             'rank' => RankApprentice::class,
