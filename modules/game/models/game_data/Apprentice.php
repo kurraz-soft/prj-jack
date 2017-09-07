@@ -8,8 +8,10 @@ namespace app\modules\game\models\game_data;
 
 
 use app\modules\game\models\game_data\attributes\MoodFemale;
+use app\modules\game\models\game_data\aura\Aura;
 use app\modules\game\models\game_data\base\BaseGameData;
 use app\modules\game\models\game_data\base\IAutoSerializable;
+use app\modules\game\models\game_data\body\ApprenticeBody;
 use app\modules\game\models\game_data\serializators\AutoSerializator;
 
 class Apprentice extends BaseGameData implements IAutoSerializable
@@ -48,6 +50,14 @@ class Apprentice extends BaseGameData implements IAutoSerializable
      * @var MoodFemale
      */
     public $mood;
+    /**
+     * @var Aura
+     */
+    public $aura;
+    /**
+     * @var ApprenticeBody
+     */
+    public $body;
 
     private $_serializator;
 
@@ -76,6 +86,8 @@ class Apprentice extends BaseGameData implements IAutoSerializable
             'attributes' => AttributesListApprentice::class,
             'skills' => SkillListApprentice::class,
             'skillsSex' => SkillSexListApprentice::class,
+            'aura' => Aura::class,
+            'body' => ApprenticeBody::class,
         ];
     }
 
