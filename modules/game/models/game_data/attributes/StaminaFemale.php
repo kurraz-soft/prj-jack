@@ -9,9 +9,8 @@ namespace app\modules\game\models\game_data\attributes;
 
 use app\modules\game\models\game_data\base\BaseAttribute;
 
-class HealthFemale extends BaseAttribute
+class StaminaFemale extends BaseAttribute
 {
-    //TODO current moved to StaminaFemale
     public function valueNames()
     {
         return [
