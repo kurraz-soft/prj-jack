@@ -15,6 +15,7 @@ use app\modules\game\models\game_data\attributes\HealthFemale;
 use app\modules\game\models\game_data\attributes\IntellectFemale;
 use app\modules\game\models\game_data\attributes\PrideFemale;
 use app\modules\game\models\game_data\attributes\SensualityFemale;
+use app\modules\game\models\game_data\attributes\StaminaFemale;
 use app\modules\game\models\game_data\attributes\StyleFemale;
 use app\modules\game\models\game_data\attributes\TemperamentFemale;
 use app\modules\game\models\game_data\attributes\TemperFemale;
@@ -28,6 +29,7 @@ use app\modules\game\models\game_data\base\BaseGameDataList;
  * @property BeautyFemale $beauty
  * @property ConstitutionFemale $constitution
  * @property ExoticismFemale $exoticism
+ * @property StaminaFemale $stamina
  * @property HealthFemale $health
  * @property IntellectFemale $intellect
  * @property PrideFemale $pride
@@ -52,6 +54,7 @@ class AttributesListApprentice extends BaseGameDataList
             'style' => StyleFemale::class,
             'temperament' => TemperamentFemale::class,
             'temper' => TemperFemale::class,
+            'stamina' => StaminaFemale::class,
         ];
     }
 }
