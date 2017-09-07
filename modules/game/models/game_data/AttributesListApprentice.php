@@ -11,6 +11,7 @@ use app\modules\game\models\game_data\attributes\ArenaFameFemale;
 use app\modules\game\models\game_data\attributes\BeautyFemale;
 use app\modules\game\models\game_data\attributes\ConstitutionFemale;
 use app\modules\game\models\game_data\attributes\ExoticismFemale;
+use app\modules\game\models\game_data\attributes\FertilityFemale;
 use app\modules\game\models\game_data\attributes\HealthFemale;
 use app\modules\game\models\game_data\attributes\IntellectFemale;
 use app\modules\game\models\game_data\attributes\PrideFemale;
@@ -18,7 +19,7 @@ use app\modules\game\models\game_data\attributes\SensualityFemale;
 use app\modules\game\models\game_data\attributes\StaminaFemale;
 use app\modules\game\models\game_data\attributes\StyleFemale;
 use app\modules\game\models\game_data\attributes\TemperamentFemale;
-use app\modules\game\models\game_data\attributes\TemperFemale;
+use app\modules\game\models\game_data\attributes\EgoFemale;
 use app\modules\game\models\game_data\base\BaseGameDataList;
 
 /**
@@ -36,7 +37,9 @@ use app\modules\game\models\game_data\base\BaseGameDataList;
  * @property SensualityFemale $sensuality
  * @property StyleFemale $style
  * @property TemperamentFemale $temperament
- * @property TemperFemale $temper
+ * @property EgoFemale $ego
+ * @property StaminaFemale $stamina
+ * @property FertilityFemale $fertility
  */
 class AttributesListApprentice extends BaseGameDataList
 {
@@ -53,8 +56,9 @@ class AttributesListApprentice extends BaseGameDataList
             'sensuality' => SensualityFemale::class,
             'style' => StyleFemale::class,
             'temperament' => TemperamentFemale::class,
-            'temper' => TemperFemale::class,
+            'ego' => EgoFemale::class,
             'stamina' => StaminaFemale::class,
+            'fertility' => FertilityFemale::class,
         ];
     }
 }

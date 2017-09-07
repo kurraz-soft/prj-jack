@@ -10,12 +10,12 @@ namespace app\modules\game\models\game_data\attributes;
 use app\modules\game\models\game_data\base\BaseAttribute;
 
 /**
- * Class TemperFemale
+ * Class EgoFemale
  * @package app\modules\game\models\game_data\attributes
  *
  * Характер
  */
-class TemperFemale extends BaseAttribute
+class EgoFemale extends BaseAttribute
 {
     public function valueNames()
     {
