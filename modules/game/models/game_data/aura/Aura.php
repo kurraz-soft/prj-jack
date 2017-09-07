@@ -12,17 +12,45 @@ use app\modules\game\models\game_data\base\BaseGameDataList;
 /**
  * Class Aura
  * @package app\modules\game\models\game_data\aura
+ *
  */
 class Aura extends BaseGameDataList
 {
+    /**
+     * @var Obedience
+     */
     public $obedience;
+    /**
+     * @var Lust
+     */
     public $lust;
+    /**
+     * @var Fear
+     */
     public $fear;
+    /**
+     * @var Desperation
+     */
     public $desperation; //angst
+    /**
+     * @var Awareness
+     */
     public $awareness; //rational
+    /**
+     * @var Taming
+     */
     public $taming; //instinct
+    /**
+     * @var Habit
+     */
     public $habit; //custom
+    /**
+     * @var Corruption
+     */
     public $corruption; //spoil
+    /**
+     * @var Loyalty
+     */
     public $loyalty; //moral
 
     public function serializableParams()
