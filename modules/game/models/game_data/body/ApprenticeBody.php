@@ -11,8 +11,17 @@ use app\modules\game\models\game_data\base\BaseGameDataList;
 
 class ApprenticeBody extends BaseGameDataList
 {
+    /**
+     * @var Breast
+     */
     public $breast;
+    /**
+     * @var Vagina
+     */
     public $vagina;
+    /**
+     * @var Anus
+     */
     public $anus;
     public $tattoo; //TODO tattoo classes
 

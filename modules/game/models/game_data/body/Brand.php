@@ -10,7 +10,7 @@ namespace app\modules\game\models\game_data\body;
 use app\modules\game\models\game_data\base\BaseBodyPart;
 use app\modules\game\models\game_data\base\INamedValues;
 
-class Anus extends BaseBodyPart implements INamedValues
+class Brand extends BaseBodyPart implements INamedValues
 {
     public $value = 0;
 
@@ -24,12 +24,11 @@ class Anus extends BaseBodyPart implements INamedValues
     public function valueNames()
     {
         return [
-            0 => 'Зажатый анус',
-            1 => 'Тугой анус',
-            2 => 'Плотный анус',
-            3 => 'Разработанный анус',
-            4 => 'Эластичный анус',
-            5 => 'Пластичный анус',
+            0 => 'Нет клейма',
+            1 => 'Заклеймена',
+            2 => 'Рабская татуировка',
+            3 => 'Волшебное клеймо',
+            4 => 'Чужое клеймо',
         ];
     }
 

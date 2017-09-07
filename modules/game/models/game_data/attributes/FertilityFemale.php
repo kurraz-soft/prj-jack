@@ -12,13 +12,13 @@ use app\modules\game\models\game_data\base\BaseGameDataList;
 class FertilityFemale extends BaseGameDataList
 {
     /**
-     * @var bool
+     * @var int
      */
     public $value = 1;
     /**
      * @var bool
      */
-    public $revealed = 0;
+    public $revealed = false;
 
     public function serializableParams()
     {
