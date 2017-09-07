@@ -11,7 +11,7 @@ use app\modules\game\models\game_data\base\BaseGameData;
 
 class Energy extends BaseGameData
 {
-    public $value;
+    public $value = 5;
 
     public function serialize()
     {
@@ -22,11 +22,10 @@ class Energy extends BaseGameData
 
     public function unserialize($serialized_data)
     {
-        if(empty($serialized_data['value']))
+        if(!empty($serialized_data['value']))
         {
-            $this->value = 0;
-        }else
             $this->value = $serialized_data['value'];
+        }
     }
 
     public function out()
