@@ -26,6 +26,11 @@ class Apprentice extends BaseGameData implements IAutoSerializable
      */
     public $age;
     /**
+     * @var int
+     * days owned counter
+     */
+    public $days_owned = 0;
+    /**
      * @var RankApprentice
      */
     public $rank;
@@ -81,6 +86,7 @@ class Apprentice extends BaseGameData implements IAutoSerializable
     {
         return [
             'name' => '',
+            'days_owned' => '',
             'age' => AgeFemale::class,
             'rules' => RulesApprentice::class,
             'energy' => Energy::class,
