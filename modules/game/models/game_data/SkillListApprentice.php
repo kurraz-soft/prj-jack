@@ -15,6 +15,7 @@ use app\modules\game\models\game_data\skills\ExpressionFemale;
 use app\modules\game\models\game_data\skills\GladiatorFemale;
 use app\modules\game\models\game_data\skills\HorseFemale;
 use app\modules\game\models\game_data\skills\MaidFemale;
+use app\modules\game\models\game_data\skills\MusicFemale;
 use app\modules\game\models\game_data\skills\Nurse;
 use app\modules\game\models\game_data\skills\PetFemale;
 use app\modules\game\models\game_data\skills\SecretaryFemale;
@@ -35,6 +36,7 @@ use app\modules\game\models\game_data\skills\VocalFemale;
  * @property PetFemale $pet
  * @property SecretaryFemale $secretary
  * @property VocalFemale $vocal
+ * @property MusicFemale $music
  */
 class SkillListApprentice extends BaseGameDataList
 {
@@ -52,6 +54,7 @@ class SkillListApprentice extends BaseGameDataList
             'pet' => PetFemale::class,
             'secretary' => SecretaryFemale::class,
             'vocal' => VocalFemale::class,
+            'music' => MusicFemale::class,
         ];
     }
 }
