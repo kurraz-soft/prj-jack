@@ -23,7 +23,18 @@ class ApprenticeBody extends BaseGameDataList
      * @var Anus
      */
     public $anus;
-    public $tattoo; //TODO tattoo classes
+    /**
+     * @var Tattoo
+     */
+    public $tattoo;
+    /**
+     * @var Hair
+     */
+    public $hair;
+    /**
+     * @var Makeup
+     */
+    public $makeup;
 
     public function serializableParams()
     {
@@ -31,6 +42,8 @@ class ApprenticeBody extends BaseGameDataList
             'breast' => Breast::class,
             'vagina' => Vagina::class,
             'anus' => Anus::class,
+            'tattoo' => Tattoo::class,
+            'makeup' => Makeup::class,
         ];
     }
 }
