@@ -10,11 +10,13 @@ namespace app\modules\game\models\game_data;
 use app\modules\game\models\game_data\attributes\AgeFemale;
 use app\modules\game\models\game_data\attributes\DescriptionsFemale;
 use app\modules\game\models\game_data\attributes\MoodFemale;
+use app\modules\game\models\game_data\attributes\VisualsFemale;
 use app\modules\game\models\game_data\aura\Aura;
 use app\modules\game\models\game_data\base\BaseGameData;
 use app\modules\game\models\game_data\base\IAutoSerializable;
 use app\modules\game\models\game_data\body\ApprenticeBody;
 use app\modules\game\models\game_data\serializators\AutoSerializator;
+use app\modules\game\models\game_data\traits\TraitManager;
 
 class Apprentice extends BaseGameData implements IAutoSerializable
 {
@@ -71,6 +73,14 @@ class Apprentice extends BaseGameData implements IAutoSerializable
      * @var DescriptionsFemale
      */
     public $descriptions;
+    /**
+     * @var VisualsFemale
+     */
+    public $visuals;
+    /**
+     * @var TraitManager
+     */
+    public $traits;
 
     private $_serializator;
 
@@ -103,6 +113,8 @@ class Apprentice extends BaseGameData implements IAutoSerializable
             'aura' => Aura::class,
             'body' => ApprenticeBody::class,
             'descriptions' => DescriptionsFemale::class,
+            'visuals' => VisualsFemale::class,
+            'traits' => TraitManager::class,
         ];
     }
 
