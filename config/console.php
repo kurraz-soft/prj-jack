@@ -13,6 +13,7 @@ return [
     'modules' => [
         'gii' => 'yii\gii\Module',
     ],
+    'aliases' => require(__DIR__.'/aliases.php'),
     'components' => [
         'cache' => [
             'class' => 'yii\caching\FileCache',
