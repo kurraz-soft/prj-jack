@@ -64,8 +64,10 @@ class ApprenticeTest extends Unit
                 ],
             ],
             'traits' => [
-                'traitClasses' => [
-                    Scars::class,
+                'traitClassesData' => [
+                    Scars::class => [
+                        'revealed' => false,
+                    ],
                 ]
             ],
         ]);

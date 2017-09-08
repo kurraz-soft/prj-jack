@@ -9,6 +9,7 @@ namespace app\modules\game\models\game_data\traits;
 
 use app\modules\game\models\game_data\base\BaseGameDataList;
 use app\modules\game\models\game_data\base\ITrait;
+use yii\base\Exception;
 
 class TraitManager extends BaseGameDataList
 {
@@ -22,12 +23,12 @@ class TraitManager extends BaseGameDataList
      *
      * For serialize
      */
-    public $traitClasses = [];
+    public $traitClassesData = [];
 
     public function serializableParams()
     {
         return [
-            'traitClasses' => '',
+            'traitClassesData' => '',
         ];
     }
 
@@ -40,14 +41,14 @@ class TraitManager extends BaseGameDataList
 
     public function init()
     {
-        foreach ($this->traitClasses as $class)
+        foreach ($this->traitClassesData as $class => $data)
         {
             /**
              * @var ITrait $trait
              */
             $trait = new $class();
             $trait->initContext($this->getParent());
-            $this->traits[] = $trait;
+            $this->traits[get_class($trait)] = $trait;
         }
     }
 
@@ -55,8 +56,12 @@ class TraitManager extends BaseGameDataList
     {
         $trait->attachTo($this->getParent());
 
-        $this->traits[] = $trait;
-        $this->traitClasses[] = get_class($trait);
+        $class = get_class($trait);
+
+        $this->traits[$class] = $trait;
+        $this->traitClassesData[$class] = [
+            'revealed' => false,
+        ];
     }
 
     public function detach($class)
@@ -66,8 +71,38 @@ class TraitManager extends BaseGameDataList
             if($trait instanceof $class)
             {
                 $trait->detach();
+                unset($this->traitClassesData[$class]);
+                unset($this->traits[$class]);
                 break;
             }
         }
+    }
+
+    public function getRevealedTraits()
+    {
+        $traits = [];
+        foreach ($this->traitClassesData as $class => $data)
+        {
+            if($data['revealed'])
+            {
+                $traits[] = $this->traits[$class];
+            }
+        }
+
+        return $traits;
+    }
+
+    public function isTraitRevealed($class)
+    {
+        if(!isset($this->traitClassesData[$class])) throw new Exception();
+
+        return $this->traitClassesData[$class]['revealed'];
+    }
+
+    public function revealTrait($class)
+    {
+        if(!isset($this->traitClassesData[$class])) throw new Exception();
+
+        $this->traitClassesData[$class]['revealed'] = true;
     }
 }
