@@ -56,6 +56,11 @@ class TraitManager extends BaseGameDataList
     {
         $trait->attachTo($this->getParent());
 
+        $this->attachQuiet($trait);
+    }
+
+    public function attachQuiet(ITrait $trait)
+    {
         $class = get_class($trait);
 
         $this->traits[$class] = $trait;
