@@ -1,0 +1,102 @@
+[
+  {
+    "id": "fist",
+    "name": "Кулак",
+    "description": "Ваше единственное оружие - собственные кулаки.",
+    "damageAttribute": "strength",
+    "damageBonus": 0,
+    "damageType": "crush",
+    "type": "unarmed",
+    "attacks": [
+      {
+        "type": "accurate",
+        "name": "Джеб",
+        "penalty": "ошеломление",
+        "bonus": "разгон",
+        "duration": 2,
+        "durationAttribute": "perception",
+        "text": "Вы проводите <font color='purple'>точный</font> прямой удар кулаком."
+      },
+      {
+        "type": "quick",
+        "name": "Апперкот",
+        "penalty": "рассеянность",
+        "bonus": "меткость",
+        "duration": 2,
+        "durationAttribute": "agility",
+        "text": "Ваш <font color='green'>быстрый</font> апперкот заставляет противника пошатнуться."
+      }
+    ],
+    "keywords": [
+      "легкое_оружие",
+      "безоружный",
+      "дробящий"
+    ]
+  },
+  {
+    "id": "knuckle",
+    "name": "Кастет",
+    "description": "Эргономичный кастет из тяжёлого вольфрамового сплава, отличается высокой удельной массой, твёрдостью, прочностью к истиранию и ударным нагрузкам.",
+    "damageAttribute": "strength",
+    "damageBonus": 1,
+    "damageType": "crush",
+    "type": "light",
+    "attacks": [
+      {
+        "type": "strong",
+        "name": "Мощный удар",
+        "penalty": "ошеломление",
+        "bonus": "разгон",
+        "duration": 2,
+        "durationAttribute": "strength",
+        "text": "Вы сильно замахиваетесь и наносите <font color='red'>мощнейший</font> удар кастетом."
+      },
+      {
+        "type": "quick",
+        "name": "Стремительный удар",
+        "penalty": "шаткость",
+        "bonus": "адреналин",
+        "duration": 2,
+        "durationAttribute": "agility",
+        "text": "Порхая как бабочка и жаля как пчела, вы наносите серию <font color='green'>быстрых</font> ударов кастетом."
+      }
+    ],
+    "keywords": [
+      "легкое_оружие",
+      "дробящий"
+    ]
+  },
+  {
+    "id": "dagger",
+    "name": "Кинжал",
+    "description": "Высококлассный кинжал из марочной хирургической стали. Пригодится и как оружие самообороны, и чтобы мяса нарезать.",
+    "damageAttribute": "strength",
+    "damageBonus": 2,
+    "damageType": "piercing",
+    "type": "light",
+    "attacks": [
+      {
+        "type": "accurate",
+        "name": "Точный выпад",
+        "penalty": "боль",
+        "bonus": "разгон",
+        "duration": 2,
+        "durationAttribute": "perception",
+        "text": "Вы делаете короткий и <font color='purple'>точный</font> выпад кинжалом."
+      },
+      {
+        "type": "quick",
+        "name": "Полосовать",
+        "penalty": "скованность",
+        "bonus": "меткость",
+        "duration": 2,
+        "durationAttribute": "agility",
+        "text": "<font color='green'>Стремительным</font> движением, вы ударяете кинжалом сверху вниз под сорок пять градусов."
+      }
+    ],
+    "keywords": [
+      "легкое_оружие",
+      "колющий"
+    ]
+  }
+]
