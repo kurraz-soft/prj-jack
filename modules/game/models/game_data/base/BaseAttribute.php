@@ -35,7 +35,7 @@ abstract class BaseAttribute extends BaseGameData implements INamedValues
 
     public function getMaxValue()
     {
-        return count($this->valueNames()) - 1;
+        return max(array_keys($this->valueNames()));
     }
 
     public function out()
