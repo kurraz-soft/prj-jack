@@ -9,6 +9,7 @@ namespace app\modules\game\models\game_data\serializators;
 
 use app\modules\game\models\game_data\base\IAutoSerializable;
 use app\modules\game\models\game_data\base\IChild;
+use app\modules\game\models\game_data\base\IInitable;
 use app\modules\game\models\game_data\base\ISerializable;
 use app\modules\game\models\game_data\base\ISerializator;
 use yii\base\Exception;
@@ -68,12 +69,19 @@ class AutoSerializator implements ISerializator
                 if(isset($serialized_data[$name]))
                 {
                     $this->obj->$name->unserialize($serialized_data[$name]);
+                }else
+                {
+                    $this->obj->$name->unserialize([]);
                 }
             }else
             {
                 if(isset($serialized_data[$name]))
                     $this->obj->$name = $serialized_data[$name];
             }
+        }
+        if($this->obj instanceof IInitable)
+        {
+            $this->obj->init();
         }
     }
 }
