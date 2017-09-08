@@ -10,7 +10,7 @@ namespace app\modules\game\models\game_data\base;
 use app\modules\game\models\GameData;
 use yii\base\Exception;
 
-abstract class BaseGameData implements ISerializable, IChild
+abstract class BaseGameData implements ISerializable, IChild, IInitable
 {
     protected $_parent = null;
 
@@ -80,5 +80,13 @@ abstract class BaseGameData implements ISerializable, IChild
         }
 
         throw new Exception('Can\'t find dependency');
+    }
+
+    /**
+     * Starts after unserialize step
+     */
+    public function init()
+    {
+
     }
 }
