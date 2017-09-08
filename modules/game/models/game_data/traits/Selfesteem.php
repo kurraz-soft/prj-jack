@@ -9,11 +9,17 @@ namespace app\modules\game\models\game_data\traits;
 
 use app\modules\game\models\game_data\base\ApprenticeTrait;
 
-class Nymphomania extends ApprenticeTrait
+/**
+ * Class Selfesteem
+ * @package app\modules\game\models\game_data\traits
+ *
+ * Самооценка
+ */
+class Selfesteem extends ApprenticeTrait
 {
     public function getName()
     {
-        return 'Нимфоманка';
+        // TODO: Implement getName() method.
     }
 
     public function onAttach()

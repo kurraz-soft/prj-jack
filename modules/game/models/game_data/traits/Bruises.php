@@ -10,9 +10,15 @@ namespace app\modules\game\models\game_data\traits;
 use app\modules\game\models\game_data\attributes\BeautyFemale;
 use app\modules\game\models\game_data\base\ApprenticeTrait;
 
-class Scars extends ApprenticeTrait
+/**
+ * Class Bruises
+ * @package app\modules\game\models\game_data\traits
+ *
+ * Синяки
+ */
+class Bruises extends ApprenticeTrait
 {
-    public $beauty_penalty = 2;
+    public $beauty_penalty = 1;
 
     public function getName()
     {

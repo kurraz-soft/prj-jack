@@ -9,11 +9,11 @@ namespace app\modules\game\models\game_data\traits;
 
 use app\modules\game\models\game_data\base\ApprenticeTrait;
 
-class Nymphomania extends ApprenticeTrait
+class SportAffinity extends ApprenticeTrait
 {
     public function getName()
     {
-        return 'Нимфоманка';
+        return 'Любит спорт';
     }
 
     public function onAttach()
