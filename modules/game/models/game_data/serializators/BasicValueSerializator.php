@@ -20,7 +20,8 @@ class BasicValueSerializator implements ISerializator
 
     public function __construct($obj)
     {
-        if(!($this->obj instanceof IValuable)) throw new Exception("Serializator exception");
+        if(!($obj instanceof IValuable))
+            throw new Exception("Serializator exception");
 
         $this->obj = $obj;
     }
