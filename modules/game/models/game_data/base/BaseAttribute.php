@@ -9,7 +9,7 @@ namespace app\modules\game\models\game_data\base;
 
 use app\modules\game\helpers\FormatterHelper;
 
-abstract class BaseAttribute extends BaseGameData
+abstract class BaseAttribute extends BaseGameData implements INamedValues
 {
     /**
      * @var int
@@ -31,10 +31,10 @@ abstract class BaseAttribute extends BaseGameData
         }
     }
 
-    /**
-     * @return array
-     */
-    abstract public function valueNames();
+    public function getMaxValue()
+    {
+        return count($this->valueNames()) - 1;
+    }
 
     public function out()
     {
