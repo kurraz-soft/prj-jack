@@ -81,6 +81,10 @@ class Apprentice extends BaseGameData implements IAutoSerializable
      * @var TraitManager
      */
     public $traits;
+    /**
+     * @var ApprenticeEquipment
+     */
+    public $equipment;
 
     private $_serializator;
 
@@ -115,6 +119,7 @@ class Apprentice extends BaseGameData implements IAutoSerializable
             'descriptions' => DescriptionsFemale::class,
             'visuals' => VisualsFemale::class,
             'traits' => TraitManager::class,
+            'equipment' => ApprenticeEquipment::class,
         ];
     }
 
