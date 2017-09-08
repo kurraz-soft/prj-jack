@@ -67,7 +67,7 @@ class AutoSerializator implements ISerializator
                 }
                 if(isset($serialized_data[$name]))
                 {
-                    $this->obj->$name->unserialize();
+                    $this->obj->$name->unserialize($serialized_data[$name]);
                 }
             }else
             {
