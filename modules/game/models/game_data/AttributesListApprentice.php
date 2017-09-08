@@ -14,6 +14,7 @@ use app\modules\game\models\game_data\attributes\ExoticismFemale;
 use app\modules\game\models\game_data\attributes\FertilityFemale;
 use app\modules\game\models\game_data\attributes\HealthFemale;
 use app\modules\game\models\game_data\attributes\IntellectFemale;
+use app\modules\game\models\game_data\attributes\Metabolism;
 use app\modules\game\models\game_data\attributes\PrideFemale;
 use app\modules\game\models\game_data\attributes\SensualityFemale;
 use app\modules\game\models\game_data\attributes\StaminaFemale;
@@ -38,8 +39,8 @@ use app\modules\game\models\game_data\base\BaseGameDataList;
  * @property StyleFemale $style
  * @property TemperamentFemale $temperament
  * @property EgoFemale $ego
- * @property StaminaFemale $stamina
  * @property FertilityFemale $fertility
+ * @property Metabolism $metabolism
  */
 class AttributesListApprentice extends BaseGameDataList
 {
@@ -59,6 +60,7 @@ class AttributesListApprentice extends BaseGameDataList
             'ego' => EgoFemale::class,
             'stamina' => StaminaFemale::class,
             'fertility' => FertilityFemale::class,
+            'metabolism' => Metabolism::class,
         ];
     }
 }
