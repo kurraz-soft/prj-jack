@@ -9,6 +9,12 @@ namespace app\modules\game\models\game_data\skills;
 
 use app\modules\game\models\game_data\base\CommonSkill;
 
+/**
+ * Class DancerFemale
+ * @package app\modules\game\models\game_data\skills
+ *
+ * Хореография/Танцы (old callisthenics)
+ */
 class DancerFemale extends CommonSkill
 {
     public function valueNames()
