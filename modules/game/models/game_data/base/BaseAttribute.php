@@ -15,11 +15,13 @@ abstract class BaseAttribute extends BaseGameData implements INamedValues
      * @var int
      */
     public $value = 0;
+    public $learnRate = 1;
 
     public function serialize()
     {
         return [
             'value' => $this->value,
+            'learnRate' => $this->learnRate,
         ];
     }
 
