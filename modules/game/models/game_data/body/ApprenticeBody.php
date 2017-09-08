@@ -35,6 +35,10 @@ class ApprenticeBody extends BaseGameDataList
      * @var Makeup
      */
     public $makeup;
+    /**
+     * @var Mind
+     */
+    public $mind;
 
     public function serializableParams()
     {
@@ -44,6 +48,7 @@ class ApprenticeBody extends BaseGameDataList
             'anus' => Anus::class,
             'tattoo' => Tattoo::class,
             'makeup' => Makeup::class,
+            'mind' => Mind::class,
         ];
     }
 }
