@@ -37,11 +37,30 @@ class Mind extends BaseBodyPart
         self::STATE_SERVILE => 'Рабыня',
         self::STATE_FRIGHTENED => 'Напугана',
         self::STATE_OBEDIENT => 'Покорна',
+        self::STATE_BROKEN => 'Сломлена',
         self::STATE_DEPRESIVE => 'В депрессии',
         self::STATE_HORNY => 'Возбуждена',
         self::STATE_HYSTERIC => 'В истерике',
         self::STATE_OPTIMISTIC => 'Оптимистична',
         self::STATE_DOCILE => 'Слушается',
+    ];
+
+    const STATE_TO_REBEL = [
+        self::STATE_RELUCTANT => 1,
+        self::STATE_ARROGANT => 2,
+        self::STATE_HATEFUL => 4,
+        self::STATE_RESISTANT => 3,
+        self::STATE_LACHRYMOSE => -1,
+        self::STATE_SOFT => 0,
+        self::STATE_SERVILE => -1,
+        self::STATE_FRIGHTENED => -1,
+        self::STATE_OBEDIENT => 0,
+        self::STATE_BROKEN => -100,
+        self::STATE_DEPRESIVE => -2,
+        self::STATE_HORNY => 0,
+        self::STATE_HYSTERIC => 3,
+        self::STATE_OPTIMISTIC => 0,
+        self::STATE_DOCILE => -1,
     ];
 
     public $value;
