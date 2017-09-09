@@ -21,7 +21,7 @@ class Vagina extends BaseBodyPart implements INamedValues
     const MOD_EGG_BIRTH = 4;
 
     const AGE_TO_STR = [
-        AgeFemale::IMMATURE => 'l',
+        AgeFemale::LOLI => 'l',
         AgeFemale::YOUNG => 'g',
         AgeFemale::MATURE => 'm',
     ];

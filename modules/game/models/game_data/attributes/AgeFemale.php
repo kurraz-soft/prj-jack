@@ -12,7 +12,7 @@ use app\modules\game\models\game_data\base\INamedValues;
 
 class AgeFemale extends BaseGameDataList implements INamedValues
 {
-    const IMMATURE = 1;
+    const LOLI = 1;
     const YOUNG = 2;
     const MATURE = 3;
 
@@ -31,7 +31,7 @@ class AgeFemale extends BaseGameDataList implements INamedValues
     public function valueNames()
     {
         return [
-            self::IMMATURE => 'Юная',
+            self::LOLI => 'Юная',
             self::YOUNG => 'Молодая',
             self::MATURE => 'Зрелая',
         ];
