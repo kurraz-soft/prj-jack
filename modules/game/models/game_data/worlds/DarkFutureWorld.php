@@ -66,4 +66,14 @@ class DarkFutureWorld implements IWorld
             Чувства находятся под строгим медикаментозным контролем воизбежание страданий.',
         ];
     }
+
+    public function getAvailableFamilyOriginIds()
+    {
+        return [
+            'jailer',
+            'bioreactor',
+            'minitruth',
+            'anter',
+        ];
+    }
 }

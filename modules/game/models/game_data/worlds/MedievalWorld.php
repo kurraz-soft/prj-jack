@@ -51,4 +51,19 @@ class MedievalWorld implements IWorld
             'Мой мир очень большой, так что я не все о нем знаю. Люди в городах живут богато, но там грязно, тесно и плохо пахнет. Бароны и рыцари сидят в своих каменных замках или ходят в военные походы. А крестьяне в селах пашут круглый год, чтобы прокормить и тех, и других.',
         ];
     }
+
+    public function getAvailableFamilyOriginIds()
+    {
+        return [
+            'orphan',
+            'bondman',
+            'gypsy',
+            'church',
+            'craftsman',
+            'merchant',
+            'valetry',
+            'knight',
+            'mprincess',
+        ];
+    }
 }

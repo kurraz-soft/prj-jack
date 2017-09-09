@@ -51,4 +51,20 @@ class ModernWorld implements IWorld
             'Когда-то в моем мире было две великие Империи которые боролись между собой за доминирование в мире. Но потом одна из них распалась на части, и теперь почти весь мир принял одну систему ценностей. Скорее всего, со временем границы между государствами исчезнут и мир станет единым.',
         ];
     }
+
+    public function getAvailableFamilyOriginIds()
+    {
+        return [
+            'orpnange',
+            'worker',
+            'policeman',
+            'manager',
+            'biologist',
+            'programmer',
+            'surgeon',
+            'buissinesman',
+            'finance',
+            'general',
+        ];
+    }
 }

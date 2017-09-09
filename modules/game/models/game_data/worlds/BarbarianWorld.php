@@ -61,4 +61,17 @@ class BarbarianWorld implements IWorld
             Кто-то ходит под парусом, кто-то пасет кочевые стада, а остальные селятся в укрепленных городах.',
         ];
     }
+
+    public function getAvailableFamilyOriginIds()
+    {
+        return [
+            'amazon',
+            'nomad',
+            'pesant',
+            'hunter',
+            'fisher',
+            'viking',
+            'barbarian_king',
+        ];
+    }
 }

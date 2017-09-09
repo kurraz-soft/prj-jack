@@ -61,4 +61,21 @@ class CyberpunkWorld implements IWorld
             Тот, у кого есть деньги, может себе позволить все. Тот у кого их нет... всегда найдется место в тени общества среди отбросов и синтетических наркотиков.',
         ];
     }
+
+    public function getAvailableFamilyOriginIds()
+    {
+        return [
+            'orpnange',
+            'worker',
+            'policeman',
+            'manager',
+            'biologist',
+            'programmer',
+            'surgeon',
+            'buissinesman',
+            'finance',
+            'general',
+            'gendesigner',
+        ];
+    }
 }

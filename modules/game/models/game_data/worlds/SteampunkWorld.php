@@ -48,4 +48,22 @@ class SteampunkWorld implements IWorld
             'В моем мире есть несколько передовых стран, где свершилась промышленная революция. Военная и техническая мощь, зиждется на угле и стали. В деревнях остается все меньше людей, так как молодежь идет на заработки в города. От заводской копоти порой невозможно дышать, а рыба в реках передохла из-за ядовитых стоков.',
         ];
     }
+
+    public function getAvailableFamilyOriginIds()
+    {
+        return [
+            'farmers',
+            'workhouse',
+            'proletarian',
+            'clerk',
+            'naturalist',
+            'ingeneer',
+            'doctor',
+            'servant',
+            'magnat',
+            'bankeer',
+            'mayor',
+            'mafiosi',
+        ];
+    }
 }

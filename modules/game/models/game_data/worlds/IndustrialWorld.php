@@ -48,4 +48,22 @@ class IndustrialWorld implements IWorld
             'В моем мире недавно закончилась Великая Война. Она была такой страшной, что после подписания мира все страны объединились в Мировую Лигу, чтобы не допустить её повторения. Промышленность постепенно восстанавливается, но разрухи еще много. Кое-где даже происходят революции, меняются режимы.',
         ];
     }
+
+    public function getAvailableFamilyOriginIds()
+    {
+        return [
+            'farmers',
+            'workhouse',
+            'proletarian',
+            'clerk',
+            'naturalist',
+            'ingeneer',
+            'doctor',
+            'servant',
+            'magnat',
+            'bankeer',
+            'mayor',
+            'mafiosi',
+        ];
+    }
 }

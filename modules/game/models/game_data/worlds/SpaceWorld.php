@@ -53,4 +53,17 @@ class SpaceWorld implements IWorld
             'Под сенью Золотого Трона Вечного Императора империя людей процветает в тысячах миров. Но опасности неисчислимы: ксеносы, еретики, кошмарные твари Варпа. Лишь благодаря самоотверженности имперской гвардии, космического десанта, Инквизиции и Экклезиархии мы все еще живы.',
         ];
     }
+
+    public function getAvailableFamilyOriginIds()
+    {
+        return [
+            'freetrader',
+            'astrofarm',
+            'asteroid',
+            'astrogator',
+            'admiral',
+            'nanofarmacist',
+            'gendesigner',
+        ];
+    }
 }

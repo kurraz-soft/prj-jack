@@ -36,4 +36,9 @@ interface IWorld extends IJsonDataAffectable
      * @return array
      */
     public function getDescriptions();
+
+    /**
+     * @return array
+     */
+    public function getAvailableFamilyOriginIds();
 }

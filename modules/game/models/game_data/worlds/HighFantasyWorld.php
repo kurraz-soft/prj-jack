@@ -51,4 +51,19 @@ class HighFantasyWorld implements IWorld
             'Наш мир очень велик. О землях за морями я ничего не знаю, но на моей родине когда-то было семь королевств. Теперь они объединены в одну великую Империю. Говорят, что на севере, за Великой Стеной ждет своего часа Древнее Зло. И когда наступит Длинная Зима, Зло проснется и принесет народам Империи неисчислимые беды.',
         ];
     }
+
+    public function getAvailableFamilyOriginIds()
+    {
+        return [
+            'orphan',
+            'bondman',
+            'gypsy',
+            'church',
+            'craftsman',
+            'merchant',
+            'valetry',
+            'knight',
+            'mprincess',
+        ];
+    }
 }

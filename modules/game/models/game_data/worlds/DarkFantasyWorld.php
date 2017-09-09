@@ -66,4 +66,19 @@ class DarkFantasyWorld implements IWorld
             Драконы сжигают деревни и пожирают скот. Черная смерть косит детей и стариков. И каждый следующий год хуже чем предыдущий.',
         ];
     }
+
+    public function getAvailableFamilyOriginIds()
+    {
+        return [
+            'orphan',
+            'bondman',
+            'gypsy',
+            'church',
+            'craftsman',
+            'merchant',
+            'valetry',
+            'knight',
+            'mprincess',
+        ];
+    }
 }
