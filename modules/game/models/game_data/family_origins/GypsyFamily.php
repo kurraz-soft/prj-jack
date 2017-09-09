@@ -8,6 +8,7 @@ namespace app\modules\game\models\game_data\family_origins;
 
 
 use app\modules\game\helpers\ArrayHelper;
+use app\modules\game\helpers\RandomHelper;
 use app\modules\game\models\game_data\base\IFamilyOrigin;
 
 class GypsyFamily implements IFamilyOrigin
@@ -31,7 +32,7 @@ class GypsyFamily implements IFamilyOrigin
     {
         return ArrayHelper::sumArrays($data, [
             'seed_temper' => 1,
-            'seed_exotic' => mt_rand(1,2.5),
+            'seed_exotic' => RandomHelper::randFloat(1,2.5),
         ]);
     }
 }

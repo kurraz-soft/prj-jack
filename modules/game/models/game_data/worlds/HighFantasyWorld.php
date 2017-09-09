@@ -8,6 +8,7 @@ namespace app\modules\game\models\game_data\worlds;
 
 
 use app\modules\game\helpers\ArrayHelper;
+use app\modules\game\helpers\RandomHelper;
 use app\modules\game\models\game_data\base\IWorld;
 use app\modules\game\models\libraries\WorldLibrary;
 
@@ -30,9 +31,10 @@ class HighFantasyWorld implements IWorld
 
     public function affectJsonData($data)
     {
+
         return ArrayHelper::sumArrays($data,[
             'seed_sensitivity' => 1,
-            'seed_exotic' => mt_rand(1,3),
+            'seed_exotic' => RandomHelper::randFloat(1,3),
         ]);
     }
 

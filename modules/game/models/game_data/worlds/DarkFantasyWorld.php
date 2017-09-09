@@ -8,6 +8,7 @@ namespace app\modules\game\models\game_data\worlds;
 
 
 use app\modules\game\helpers\ArrayHelper;
+use app\modules\game\helpers\RandomHelper;
 use app\modules\game\models\game_data\base\IWorld;
 use app\modules\game\models\libraries\WorldLibrary;
 
@@ -37,7 +38,7 @@ class DarkFantasyWorld implements IWorld
             'seed_sensitivity' => -1,
             'seed_intellect' => -1,
             'seed_pride' => -1,
-            'seed_exotic' => mt_rand(1,4),
+            'seed_exotic' => RandomHelper::randFloat(1,4),
             'seed_custom' => 2,
         ]);
     }
