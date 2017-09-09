@@ -7,6 +7,7 @@
 namespace app\modules\game\models\libraries;
 
 
+use app\modules\game\helpers\RandomHelper;
 use app\modules\game\models\game_data\base\IWorld;
 use app\modules\game\models\game_data\worlds\BarbarianWorld;
 use app\modules\game\models\game_data\worlds\CyberpunkWorld;
@@ -77,27 +78,7 @@ class WorldLibrary
      */
     public static function getRandomWorldId()
     {
-        $world_id = self::PREHISTORIC;
-
-        $weights_sum = array_sum(self::WORLD_RANDOM_WEIGHTS);
-        $world_weights = [];
-        $prev_weight = 0;
-        foreach (self::WORLD_RANDOM_WEIGHTS as $world => $weight)
-        {
-            $world_weights[$world] = ($weight / (float)$weights_sum) * 100 + $prev_weight;
-            $prev_weight = $world_weights[$world];
-        }
-        $rand = mt_rand(0,100);
-        foreach ($world_weights as $world => $weight)
-        {
-            if($rand <= $weight)
-            {
-                $world_id = $world;
-                break;
-            }
-        }
-
-        return $world_id;
+        return RandomHelper::randByWeights(self::WORLD_RANDOM_WEIGHTS);
     }
 
     /**
