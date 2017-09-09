@@ -30,4 +30,10 @@ interface IWorld extends IJsonDataAffectable
      * For NamesLibrary
      */
     public function getNameBase();
+
+    /**
+     * Text descriptions for apprentices coming from this world
+     * @return array
+     */
+    public function getDescriptions();
 }
