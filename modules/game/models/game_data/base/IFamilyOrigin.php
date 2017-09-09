@@ -12,4 +12,9 @@ interface IFamilyOrigin extends IJsonDataAffectable
     public function getId();
     public function getName();
     public function getNameAuc();
+
+    /**
+     * @return array
+     */
+    public function getDescriptions();
 }
