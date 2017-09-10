@@ -17,3 +17,11 @@ if(!function_exists('pre'))
         echo "</pre>";
     }
 }
+
+if(!function_exists('clamp'))
+{
+    function clamp($current, $min, $max)
+    {
+        return max($min, min($max, $current));
+    }
+}
