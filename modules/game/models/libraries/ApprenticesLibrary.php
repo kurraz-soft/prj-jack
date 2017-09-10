@@ -68,7 +68,7 @@ class ApprenticesLibrary
         while(($file = readdir($dir)) !== false)
         {
             list($filename, $ext) = explode('.',$file);
-            if($ext == 'php' && ($with_special || (strpos($filename,'_') === false)))
+            if($ext == 'json' && ($with_special || (strpos($filename,'_') === false)))
                 $file_ids[] = $filename;
         }
 
@@ -93,58 +93,97 @@ class ApprenticesLibrary
     {
         //TODO fill up empty json values
 
-        $data['seed_world'] = VarHelper::existOrElse($data['seed_world'], WorldLibrary::getRandomWorldId());
+        $data['seed_world'] = VarHelper::existOrElse($data, 'seed_world', WorldLibrary::getRandomWorldId());
         $world = WorldLibrary::factory($data['seed_world']);
-        $data['seed_family'] = VarHelper::existOrElse($data['seed_family'], RandomHelper::randArrayValue($world->getAvailableFamilyOriginIds()));
+        $data['seed_family'] = VarHelper::existOrElse($data, 'seed_family', RandomHelper::randArrayValue($world->getAvailableFamilyOriginIds()));
         $family = FamilyOriginLibrary::factory($data['seed_family']);
-        $data['seed_occupation'] = VarHelper::existOrElse($data['seed_occupation'], RandomHelper::randArrayValue($family->getAvailableOccupations()));
+        $data['seed_occupation'] = VarHelper::existOrElse($data, 'seed_occupation', RandomHelper::randArrayValue($family->getAvailableOccupations()));
         $occupation = OccupationsLibrary::factory($data['seed_occupation']);
 
-        $data['seed_name'] = VarHelper::existOrElse($data['seed_name'], NamesLibrary::getRandom($world->getNameBase()));
-        $data['seed_age'] = VarHelper::existOrElse($data['seed_age'], mt_rand(1,AgeFemale::MATURE) - 1); //json age margin = 1
-        $data['seed_beauty'] = VarHelper::existOrElse($data['seed_beauty'], mt_rand(1, 5));
-        $data['seed_sensitivity'] = VarHelper::existOrElse($data['seed_sensitivity'], mt_rand(1,5));
-        $data['seed_temper'] = VarHelper::existOrElse($data['seed_temper'], mt_rand(1,5));
-        $data['seed_ego'] = VarHelper::existOrElse($data['seed_ego'], mt_rand(1,5));
-        $data['seed_pride'] = VarHelper::existOrElse($data['seed_pride'], mt_rand(1,5));
-        $data['seed_intellect'] = VarHelper::existOrElse($data['seed_intellect'], mt_rand(1,5));
-        $data['seed_fat'] = VarHelper::existOrElse($data['seed_fat'], mt_rand(0,4));
-        $data['seed_exotic'] = VarHelper::existOrElse($data['seed_exotic'], mt_rand(1,5));
-        $data['seed_fame_rate'] = VarHelper::existOrElse($data['seed_fame_rate'], mt_rand(1,5));
+        $data['seed_name'] = VarHelper::existOrElse($data, 'seed_name', NamesLibrary::getRandom($world->getNameBase()));
+        $data['seed_age'] = VarHelper::existOrElse($data, 'seed_age', mt_rand(1,AgeFemale::MATURE) - 1); //json age margin = 1
+        $data['seed_beauty'] = VarHelper::existOrElse($data, 'seed_beauty', mt_rand(1, 5));
+        $data['seed_sensitivity'] = VarHelper::existOrElse($data, 'seed_sensitivity', mt_rand(1,5));
+        $data['seed_temper'] = VarHelper::existOrElse($data, 'seed_temper', mt_rand(1,5));
+        $data['seed_ego'] = VarHelper::existOrElse($data, 'seed_ego', mt_rand(1,5));
+        $data['seed_pride'] = VarHelper::existOrElse($data, 'seed_pride', mt_rand(1,5));
+        $data['seed_intellect'] = VarHelper::existOrElse($data, 'seed_intellect', mt_rand(1,5));
+        $data['seed_fat'] = VarHelper::existOrElse($data, 'seed_fat', mt_rand(0,4));
+        $data['seed_exotic'] = VarHelper::existOrElse($data, 'seed_exotic', mt_rand(1,5));
+        $data['seed_fame_rate'] = VarHelper::existOrElse($data, 'seed_fame_rate', mt_rand(1,5));
         $data['seed_fertility'] = ($data['seed_age'] + 1) < AgeFemale::YOUNG ? 0 : RandomHelper::randFloat(1,2);
         $data['seed_fertility_revealed'] = 0;
-        $data['seed_stamina'] = VarHelper::existOrElse($data['seed_stamina'], mt_rand(1,5));
-        //$data['seed_metabolism'] = VarHelper::existOrElse($data['seed_metabolism'], 3);
+        $data['seed_stamina'] = VarHelper::existOrElse($data, 'seed_stamina', mt_rand(1,5));
+        //$data['seed_metabolism'] = VarHelper::existOrElse($data, 'seed_metabolism', 3);
 
-                //Aura
-        $data['seed_custom'];
-        $data['seed_moral'];
-        $data['seed_instinct'];
-        $data['seed_awareness'];
-        $data['seed_obedience'];
-        $data['seed_lust'];
-        $data['seed_fear'];
-        $data['seed_angst'];
+        //Aura
+        $data['seed_custom'] = VarHelper::existOrElse($data, 'seed_custom', 0);
+        $data['seed_moral'] = VarHelper::existOrElse($data,'seed_moral', 0);
+        $data['seed_instinct'] = VarHelper::existOrElse($data,'seed_instinct', 0);
+        $data['seed_awareness'] = VarHelper::existOrElse($data,'seed_awareness', 0);
+        $data['seed_obedience'] = VarHelper::existOrElse($data,'seed_obedience', 0);
+        $data['seed_lust'] = VarHelper::existOrElse($data,'seed_lust', 0);
+        $data['seed_fear'] = VarHelper::existOrElse($data,'seed_fear', 0);
+        $data['seed_angst'] = VarHelper::existOrElse($data,'seed_angst', 0);
+        $data['seed_spoil'] = VarHelper::existOrElse($data,'seed_spoil', 0);
 
-                //Skills
-        $data['seed_expression'];
-        $data['seed_pet'];
-        $data['seed_dressage'];
-        $data['seed_nurse'];
-        $data['seed_service'];
-        $data['seed_cook'];
-        $data['seed_gladiatrix'];
-        $data['seed_enchanter'];
-        $data['seed_vocal'];
-        $data['seed_music'];
-        $data['seed_callisthenics'];
-        $data['seed_secretary'];
+        //Skills
+        $data['seed_expression'] = VarHelper::existOrElse($data,'seed_expression', 0);
+        $data['seed_pet'] = VarHelper::existOrElse($data,'seed_pet', 0);
+        $data['seed_dressage'] = VarHelper::existOrElse($data,'seed_dressage', 0);
+        $data['seed_nurse'] = VarHelper::existOrElse($data,'seed_nurse', 0);
+        $data['seed_service'] = VarHelper::existOrElse($data,'seed_service', 0);
+        $data['seed_cook'] = VarHelper::existOrElse($data,'seed_cook', 0);
+        $data['seed_gladiatrix'] = VarHelper::existOrElse($data,'seed_gladiatrix', 0);
+        $data['seed_enchanter'] = VarHelper::existOrElse($data,'seed_enchanter', 0);
+        $data['seed_vocal'] = VarHelper::existOrElse($data,'seed_vocal', 0);
+        $data['seed_music'] = VarHelper::existOrElse($data,'seed_music', 0);
+        $data['seed_callisthenics'] = VarHelper::existOrElse($data,'seed_callisthenics', 0);
+        $data['seed_secretary'] = VarHelper::existOrElse($data,'seed_secretary', 0);
 
         //Body
-        $data['seed_boobs'];
+        $data['seed_boobs'] = VarHelper::existOrElse($data,'seed_boobs', mt_rand(0, 4));
+        $data['seed_virginity'] = VarHelper::existOrElse($data,'virginity', '');
+
+        //SkillsSex
+        //init vars if they wasn't initialized
+        $data['seed_sub_hj'] = $data['seed_sub_hj'] ?? 0;
+        $data['seed_sub_fj'] = $data['seed_sub_fj'] ?? 0;
+        $data['seed_sub_hug'] = $data['seed_sub_hug'] ?? 0;
+        $data['seed_sub_pazuri'] = $data['seed_sub_pazuri'] ?? 0;
+        $data['seed_sub_kiss'] = $data['seed_sub_kiss'] ?? 0;
+        $data['seed_sub_thongue'] = $data['seed_sub_thongue'] ?? 0;
+        $data['seed_sub_bj'] = $data['seed_sub_bj'] ?? 0;
+        $data['seed_sub_dt'] = $data['seed_sub_dt'] ?? 0;
+        $data['seed_sub_asslik'] = $data['seed_sub_asslik'] ?? 0;
+        $data['seed_sub_vaginal'] = $data['seed_sub_vaginal'] ?? 0;
+        $data['seed_sub_anal'] = $data['seed_sub_anal'] ?? 0;
+        $data['seed_sub_anal_stretch'] = $data['seed_sub_anal_stretch'] ?? 0;
+        $data['seed_sub_fisting'] = $data['seed_sub_fisting'] ?? 0;
+        $data['seed_anal_stretch'] = $data['seed_anal_stretch'] ?? 0;
+        $data['seed_sub_seduce'] = $data['seed_sub_seduce'] ?? 0;
+        $data['seed_sub_masturbation'] = $data['seed_sub_masturbation'] ?? 0;
+        $data['seed_sub_dildo'] = $data['seed_sub_dildo'] ?? 0;
+        $data['seed_sub_exhibit'] = $data['seed_sub_exhibit'] ?? 0;
+        $data['seed_sub_humiliation'] = $data['seed_sub_humiliation'] ?? 0;
+        $data['seed_sub_enema'] = $data['seed_sub_enema'] ?? 0;
+        $data['seed_sub_mazo'] = $data['seed_sub_mazo'] ?? 0;
+        $data['seed_sub_selfpain'] = $data['seed_sub_selfpain'] ?? 0;
+        $data['seed_sub_piss'] = $data['seed_sub_piss'] ?? 0;
+        $data['seed_sub_kopro'] = $data['seed_sub_kopro'] ?? 0;
+        $data['seed_sub_threesome'] = $data['seed_sub_threesome'] ?? 0;
+        $data['seed_sub_dp'] = $data['seed_sub_dp'] ?? 0;
+        $data['seed_sub_tp'] = $data['seed_sub_tp'] ?? 0;
+        $data['seed_sub_gangbang'] = $data['seed_sub_gangbang'] ?? 0;
+        $data['seed_sub_bukake'] = $data['seed_sub_bukake'] ?? 0;
+        $data['seed_sub_zoosex'] = $data['seed_sub_zoosex'] ?? 0;
+        $data['seed_sub_bestiality'] = $data['seed_sub_bestiality'] ?? 0;
+        $data['seed_sub_horse'] = $data['seed_sub_horse'] ?? 0;
+        $data['seed_sub_tentacles'] = $data['seed_sub_tentacles'] ?? 0; // or seed_sub_polypusvermin
+        $data['seed_sub_arachnidSpider'] = $data['seed_sub_arachnidSpider'] ?? 0;
 
         //Virginity
-        if(!VarHelper::exist($data['seed_virginity']))
+        if(!VarHelper::exist($data, 'seed_virginity'))
         {
             if(!$data['seed_virginity'] && ($data['seed_age'] + 1) == AgeFemale::LOLI)
             {
@@ -160,21 +199,19 @@ class ApprenticesLibrary
             }
         }
 
-        //SkillsSex
-
         if(($data['seed_age'] + 1) == AgeFemale::YOUNG)
         {
             $bonus = RandomHelper::randChooseVar(1, 0, 25);
-            $data['seed_sub_anal'] = VarHelper::existOrElse($data['seed_sub_anal'], 0) + $bonus;
+            $data['seed_sub_anal'] = VarHelper::existOrElse($data, 'seed_sub_anal', 0) + $bonus;
 
             $bonus = RandomHelper::randChooseVar(1, 0, 33);
-            $data['seed_sub_bj'] = VarHelper::existOrElse($data['seed_sub_bj'], 0) + $bonus;
+            $data['seed_sub_bj'] = VarHelper::existOrElse($data, 'seed_sub_bj', 0) + $bonus;
 
             $bonus = RandomHelper::randChooseVar(1, 0, 50);
-            $data['seed_sub_masturbation'] = VarHelper::existOrElse($data['seed_sub_masturbation'], 0) + $bonus;
+            $data['seed_sub_masturbation'] = VarHelper::existOrElse($data, 'seed_sub_masturbation', 0) + $bonus;
 
             $bonus = RandomHelper::randChooseVar(1, 0, 33);
-            $data['seed_sub_masturbation'] = VarHelper::existOrElse($data['seed_sub_masturbation'], 0) + $bonus;
+            $data['seed_sub_masturbation'] = VarHelper::existOrElse($data, 'seed_sub_masturbation', 0) + $bonus;
 
             if(RandomHelper::randChooseVar(1,0,25))
             {
@@ -190,41 +227,41 @@ class ApprenticesLibrary
         if(($data['seed_age'] + 1) == AgeFemale::MATURE)
         {
             $bonus = 1;
-            $data['seed_sub_hug'] = VarHelper::existOrElse($data['seed_sub_hug'], 0) + $bonus;
+            $data['seed_sub_hug'] = VarHelper::existOrElse($data, 'seed_sub_hug', 0) + $bonus;
 
             $bonus = 1;
-            $data['seed_sub_kiss'] = VarHelper::existOrElse($data['seed_sub_kiss'], 0) + $bonus;
+            $data['seed_sub_kiss'] = VarHelper::existOrElse($data, 'seed_sub_kiss', 0) + $bonus;
 
             $bonus = RandomHelper::randChooseVar(1, 0, 50);
-            $data['seed_sub_masturbation'] = VarHelper::existOrElse($data['seed_sub_masturbation'], 0) + $bonus;
+            $data['seed_sub_masturbation'] = VarHelper::existOrElse($data, 'seed_sub_masturbation', 0) + $bonus;
 
             $bonus = RandomHelper::randChooseVar(1, 0, 33);
-            $data['seed_sub_masturbation'] = VarHelper::existOrElse($data['seed_sub_masturbation'], 0) + $bonus;
+            $data['seed_sub_masturbation'] = VarHelper::existOrElse($data, 'seed_sub_masturbation', 0) + $bonus;
 
             $bonus = RandomHelper::randChooseVar(1, 0, 25);
-            $data['seed_sub_masturbation'] = VarHelper::existOrElse($data['seed_sub_masturbation'], 0) + $bonus;
+            $data['seed_sub_masturbation'] = VarHelper::existOrElse($data, 'seed_sub_masturbation', 0) + $bonus;
 
             $bonus = RandomHelper::randChooseVar(1, 0, 25);
-            $data['seed_sub_anal'] = VarHelper::existOrElse($data['seed_sub_anal'], 0) + $bonus;
+            $data['seed_sub_anal'] = VarHelper::existOrElse($data, 'seed_sub_anal', 0) + $bonus;
 
             $bonus = RandomHelper::randChooseVar(1, 0, 33);
-            $data['seed_sub_bj'] = VarHelper::existOrElse($data['seed_sub_bj'], 0) + $bonus;
+            $data['seed_sub_bj'] = VarHelper::existOrElse($data, 'seed_sub_bj', 0) + $bonus;
 
             if(RandomHelper::randChooseVar(1,0,75))
             {
                 $data['seed_virginity'] = 1;
 
                 $bonus = 1;
-                $data['seed_sub_hug'] = VarHelper::existOrElse($data['seed_sub_hug'], 0) + $bonus;
+                $data['seed_sub_hug'] = VarHelper::existOrElse($data, 'seed_sub_hug', 0) + $bonus;
 
                 $bonus = 1;
-                $data['seed_sub_kiss'] = VarHelper::existOrElse($data['seed_sub_kiss'], 0) + $bonus;
+                $data['seed_sub_kiss'] = VarHelper::existOrElse($data, 'seed_sub_kiss', 0) + $bonus;
 
                 $bonus = 1;
-                $data['seed_sub_seduce'] = VarHelper::existOrElse($data['seed_sub_seduce'], 0) + $bonus;
+                $data['seed_sub_seduce'] = VarHelper::existOrElse($data, 'seed_sub_seduce', 0) + $bonus;
 
                 $bonus = 2;
-                $data['seed_sub_vaginal'] = VarHelper::existOrElse($data['seed_sub_vaginal'], 0) + $bonus;
+                $data['seed_sub_vaginal'] = VarHelper::existOrElse($data, 'seed_sub_vaginal', 0) + $bonus;
 
                 $data['seed_sub_anal'] += RandomHelper::randChooseVar(1, 0, 33);
                 $data['seed_sub_anal'] += RandomHelper::randChooseVar(1, 0, 25);
@@ -350,7 +387,7 @@ class ApprenticesLibrary
         //Illness
         $data['seed_ill'] = RandomHelper::randChooseVar(1, 0, 20);
         //Parasite
-        if(!VarHelper::exist($data['seed_parasite']))
+        if(!VarHelper::exist($data, 'seed_parasite'))
         {
             if(mt_rand(1, 8) == 4)
             {
@@ -361,7 +398,7 @@ class ApprenticesLibrary
             }
         }
         //Pregnancy
-        if(!VarHelper::exist($data['seed_pregnant']))
+        if(!VarHelper::exist($data, 'seed_pregnant'))
         {
             $data['seed_pregnant'] = 0;
             if ($data['seed_virginity'] > 0 && $data['seed_fertility'] == 0 && $data['seed_parasite'] == 0)
@@ -373,7 +410,7 @@ class ApprenticesLibrary
             }
         }
         //Wounds
-        if(!VarHelper::exist($data['seed_wounds']))
+        if(!VarHelper::exist($data, 'seed_wounds'))
         {
             $data['seed_wounds'] = 0;
             if(mt_rand(1,15) == 8)
@@ -382,7 +419,7 @@ class ApprenticesLibrary
             }
         }
         //Scars
-        if(!VarHelper::exist($data['seed_scares']))
+        if(!VarHelper::exist($data, 'seed_scares'))
         {
             $data['seed_scares'] = 0;
             if(mt_rand(1,8) == 4)
@@ -397,7 +434,7 @@ class ApprenticesLibrary
             }
         }
         //Bruises
-        if(!VarHelper::exist($data['seed_bruises']))
+        if(!VarHelper::exist($data, 'seed_bruises'))
         {
             $data['seed_scares'] = 0;
             if(mt_rand(1,5) == 4)
@@ -412,7 +449,7 @@ class ApprenticesLibrary
             }
         }
         //nymphomania
-        if(!VarHelper::exist($data['seed_nymphomania']))
+        if(!VarHelper::exist($data, 'seed_nymphomania'))
         {
             $data['seed_scares'] = 0;
             if(mt_rand(1,20) == 10)
@@ -421,7 +458,7 @@ class ApprenticesLibrary
             }
         }
         //masohism
-        if(!VarHelper::exist($data['seed_masohism']))
+        if(!VarHelper::exist($data, 'seed_masohism'))
         {
             $data['seed_masohism'] = 0;
             if(mt_rand(1,20) == 10)
@@ -430,7 +467,7 @@ class ApprenticesLibrary
             }
         }
         //exhibitionism
-        if(!VarHelper::exist($data['seed_exhibitionism']))
+        if(!VarHelper::exist($data, 'seed_exhibitionism'))
         {
             $data['seed_exhibitionism'] = 0;
             if(mt_rand(1,20) == 10)
@@ -439,7 +476,7 @@ class ApprenticesLibrary
             }
         }
         //preversion
-        if(!VarHelper::exist($data['seed_preversion']))
+        if(!VarHelper::exist($data, 'seed_preversion'))
         {
             $data['seed_preversion'] = 0;
             if(mt_rand(1,12) == 10)
@@ -448,7 +485,7 @@ class ApprenticesLibrary
             }
         }
         //homosexualism
-        if(!VarHelper::exist($data['seed_homosexualism']))
+        if(!VarHelper::exist($data, 'seed_homosexualism'))
         {
             $data['seed_preversion'] = 0;
             if(mt_rand(1,15) == 10)
@@ -457,7 +494,7 @@ class ApprenticesLibrary
             }
         }
         //abuse_attitude
-        if(!VarHelper::exist($data['seed_abuse_attitude']))
+        if(!VarHelper::exist($data, 'seed_abuse_attitude'))
         {
             $data['seed_abuse_attitude'] = 0;
             if(mt_rand(1,20) == 10)
@@ -466,7 +503,7 @@ class ApprenticesLibrary
             }
         }
         //darkness_attitude
-        if(!VarHelper::exist($data['seed_darkness_attitude']))
+        if(!VarHelper::exist($data, 'seed_darkness_attitude'))
         {
             $data['seed_darkness_attitude'] = 0;
             if(mt_rand(1,20) == 10)
@@ -475,7 +512,7 @@ class ApprenticesLibrary
             }
         }
         //blood_attitude
-        if(!VarHelper::exist($data['seed_blood_attitude']))
+        if(!VarHelper::exist($data, 'seed_blood_attitude'))
         {
             $data['seed_blood_attitude'] = 0;
             if(mt_rand(1,20) == 10)
@@ -484,7 +521,7 @@ class ApprenticesLibrary
             }
         }
         //fire_attitude
-        if(!VarHelper::exist($data['seed_fire_attitude']))
+        if(!VarHelper::exist($data, 'seed_fire_attitude'))
         {
             $data['seed_fire_attitude'] = 0;
             if(mt_rand(1,20) == 10)
@@ -493,7 +530,7 @@ class ApprenticesLibrary
             }
         }
         //water_attitude
-        if(!VarHelper::exist($data['seed_water_attitude']))
+        if(!VarHelper::exist($data, 'seed_water_attitude'))
         {
             $data['seed_water_attitude'] = 0;
             if(mt_rand(1,20) == 10)
@@ -502,7 +539,7 @@ class ApprenticesLibrary
             }
         }
         //vermin_attitude
-        if(!VarHelper::exist($data['seed_vermin_attitude']))
+        if(!VarHelper::exist($data, 'seed_vermin_attitude'))
         {
             $data['seed_vermin_attitude'] = 0;
             if(mt_rand(1,20) == 10)
@@ -511,7 +548,7 @@ class ApprenticesLibrary
             }
         }
         //deprivation_attitude
-        if(!VarHelper::exist($data['seed_deprivation_attitude']))
+        if(!VarHelper::exist($data, 'seed_deprivation_attitude'))
         {
             $data['seed_deprivation_attitude'] = 0;
             if(mt_rand(1,20) == 10)
@@ -520,7 +557,7 @@ class ApprenticesLibrary
             }
         }
         //passion_comfort
-        if(!VarHelper::exist($data['seed_passion_comfort']))
+        if(!VarHelper::exist($data, 'seed_passion_comfort'))
         {
             $data['seed_passion_comfort'] = 0;
             if(mt_rand(1,20) == 10)
@@ -529,7 +566,7 @@ class ApprenticesLibrary
             }
         }
         //passion_luxury
-        if(!VarHelper::exist($data['seed_passion_luxury']))
+        if(!VarHelper::exist($data, 'seed_passion_luxury'))
         {
             $data['seed_passion_luxury'] = 0;
             if(mt_rand(1,20) == 10)
@@ -538,7 +575,7 @@ class ApprenticesLibrary
             }
         }
         //passion_sweets
-        if(!VarHelper::exist($data['seed_passion_sweets']))
+        if(!VarHelper::exist($data, 'seed_passion_sweets'))
         {
             $data['seed_passion_sweets'] = 0;
             if(mt_rand(1,20) == 10)
@@ -547,7 +584,7 @@ class ApprenticesLibrary
             }
         }
         //passion_fame
-        if(!VarHelper::exist($data['seed_passion_fame']))
+        if(!VarHelper::exist($data, 'seed_passion_fame'))
         {
             $data['seed_passion_fame'] = 0;
             if(mt_rand(1,20) == 10)
@@ -556,7 +593,7 @@ class ApprenticesLibrary
             }
         }
         //courage
-        if(!VarHelper::exist($data['seed_courage']))
+        if(!VarHelper::exist($data, 'seed_courage'))
         {
             $data['seed_courage'] = 0;
             if(mt_rand(1,20) == 10)
@@ -565,7 +602,7 @@ class ApprenticesLibrary
             }
         }
         //metabolism
-        if(!VarHelper::exist($data['seed_metabolism']))
+        if(!VarHelper::exist($data, 'seed_metabolism'))
         {
             $data['seed_metabolism'] = 3;
             if(mt_rand(1,20) == 10)
@@ -574,7 +611,7 @@ class ApprenticesLibrary
             }
         }
         //grace
-        if(!VarHelper::exist($data['seed_grace']))
+        if(!VarHelper::exist($data, 'seed_grace'))
         {
             $data['seed_grace'] = 0;
             if(mt_rand(1,20) == 10)
@@ -583,7 +620,7 @@ class ApprenticesLibrary
             }
         }
         //sport_affinity
-        if(!VarHelper::exist($data['seed_sport_affinity']))
+        if(!VarHelper::exist($data, 'seed_sport_affinity'))
         {
             $data['seed_sport_affinity'] = 0;
             if(mt_rand(1,20) == 10)
@@ -604,7 +641,7 @@ class ApprenticesLibrary
         $data['seed_callisthenics_affinity'] = RandomHelper::randChooseVar(1,0, 5);
         $data['seed_secretary_affinity'] = RandomHelper::randChooseVar(1,0, 5);
 
-        if(!VarHelper::exist($data['seed_meekness']))
+        if(!VarHelper::exist($data, 'seed_meekness'))
         {
             $data['seed_meekness'] = 0;
             if(mt_rand(1, 20) == 10)
@@ -612,7 +649,7 @@ class ApprenticesLibrary
                 $data['seed_meekness'] = RandomHelper::randChooseVar(1, 0, 60);
             }
         }
-        if(!VarHelper::exist($data['seed_selfesteem']))
+        if(!VarHelper::exist($data, 'seed_selfesteem'))
         {
             $data['seed_selfesteem'] = 0;
             if(mt_rand(1, 20) == 10)
@@ -620,7 +657,7 @@ class ApprenticesLibrary
                 $data['seed_selfesteem'] = RandomHelper::randChooseVar(1, 0, 33);
             }
         }
-        if(!VarHelper::exist($data['seed_voice']))
+        if(!VarHelper::exist($data, 'seed_voice'))
         {
             $data['seed_voice'] = 0;
             if(mt_rand(1, 20) == 10)
@@ -628,7 +665,7 @@ class ApprenticesLibrary
                 $data['seed_voice'] = RandomHelper::randChooseVar(1, 0, 33);
             }
         }
-        if(!VarHelper::exist($data['seed_compassion']))
+        if(!VarHelper::exist($data, 'seed_compassion'))
         {
             $data['seed_compassion'] = 0;
             if(mt_rand(1, 20) == 10)
@@ -637,8 +674,8 @@ class ApprenticesLibrary
             }
         }
 
-        $data['seed_energy'] = VarHelper::existOrElse($data['seed_energy'], mt_rand(0,3));
-        $data['seed_hygiene'] = VarHelper::existOrElse($data['seed_energy'], mt_rand(0,4));
+        $data['seed_energy'] = VarHelper::existOrElse($data, 'seed_energy', mt_rand(0,3));
+        $data['seed_hygiene'] = VarHelper::existOrElse($data, 'seed_energy', mt_rand(0,4));
         $data['seed_exotic'] = (int)$data['seed_exotic']; //normalize
 
         if($data['seed_virginity'] <= 0)
@@ -715,7 +752,7 @@ class ApprenticesLibrary
         }
 
         //Psy determination
-        if(!VarHelper::exist($data['seed_psy_basic']))
+        if(!VarHelper::exist($data, 'seed_psy_basic'))
         {
             $data['seed_psy_basic'] = RandomHelper::randArrayValue([
                 Mind::STATE_RELUCTANT,
@@ -735,6 +772,7 @@ class ApprenticesLibrary
         }
 
         //TODO ?? что-то связанное с менструацией
+        $data['neg_menstruation'] = 0;
         $data['neg_slave'] = 1 + $data['seed_pride'] + $data['seed_temper'] + $data['seed_ego'] - $data['seed_custom'];
         $data['cycle_day'] = mt_rand(1,28);
         if($data['cycle_day'] < 6) $data['neg_menstruation'] = 6 - $data['seed_stamina'] - $data['cycle_day'];
@@ -744,51 +782,15 @@ class ApprenticesLibrary
         $data['calories'] = $data['seed_stamina'];
         $data['seed_brand'] = 0;
 
-        //init vars if they wasn't initialized
-        $data['seed_sub_hj'] = $data['seed_sub_hj'] ?? 0;
-        $data['seed_sub_fj'] = $data['seed_sub_fj'] ?? 0;
-        $data['seed_sub_hug'] = $data['seed_sub_hug'] ?? 0;
-        $data['seed_sub_pazuri'] = $data['seed_sub_pazuri'] ?? 0;
-        $data['seed_sub_kiss'] = $data['seed_sub_kiss'] ?? 0;
-        $data['seed_sub_thongue'] = $data['seed_sub_thongue'] ?? 0;
-        $data['seed_sub_bj'] = $data['seed_sub_bj'] ?? 0;
-        $data['seed_sub_dt'] = $data['seed_sub_dt'] ?? 0;
-        $data['seed_sub_asslik'] = $data['seed_sub_asslik'] ?? 0;
-        $data['seed_sub_vaginal'] = $data['seed_sub_vaginal'] ?? 0;
-        $data['seed_sub_anal'] = $data['seed_sub_anal'] ?? 0;
-        $data['seed_sub_anal_stretch'] = $data['seed_sub_anal_stretch'] ?? 0;
-        $data['seed_sub_fisting'] = $data['seed_sub_fisting'] ?? 0;
-        $data['seed_anal_stretch'] = $data['seed_anal_stretch'] ?? 0;
-        $data['seed_sub_seduce'] = $data['seed_sub_seduce'] ?? 0;
-        $data['seed_sub_masturbation'] = $data['seed_sub_masturbation'] ?? 0;
-        $data['seed_sub_dildo'] = $data['seed_sub_dildo'] ?? 0;
-        $data['seed_sub_exhibit'] = $data['seed_sub_exhibit'] ?? 0;
-        $data['seed_sub_humiliation'] = $data['seed_sub_humiliation'] ?? 0;
-        $data['seed_sub_enema'] = $data['seed_sub_enema'] ?? 0;
-        $data['seed_sub_mazo'] = $data['seed_sub_mazo'] ?? 0;
-        $data['seed_sub_selfpain'] = $data['seed_sub_selfpain'] ?? 0;
-        $data['seed_sub_piss'] = $data['seed_sub_piss'] ?? 0;
-        $data['seed_sub_kopro'] = $data['seed_sub_kopro'] ?? 0;
-        $data['seed_sub_threesome'] = $data['seed_sub_threesome'] ?? 0;
-        $data['seed_sub_dp'] = $data['seed_sub_dp'] ?? 0;
-        $data['seed_sub_tp'] = $data['seed_sub_tp'] ?? 0;
-        $data['seed_sub_gangbang'] = $data['seed_sub_gangbang'] ?? 0;
-        $data['seed_sub_bukake'] = $data['seed_sub_bukake'] ?? 0;
-        $data['seed_sub_zoosex'] = $data['seed_sub_zoosex'] ?? 0;
-        $data['seed_sub_bestiality'] = $data['seed_sub_bestiality'] ?? 0;
-        $data['seed_sub_horse'] = $data['seed_sub_horse'] ?? 0;
-        $data['seed_sub_tentacles'] = $data['seed_sub_tentacles'] ?? 0; // or seed_sub_polypusvermin
-        $data['seed_sub_arachnidSpider'] = $data['seed_sub_arachnidSpider'] ?? 0;
-
         //Equipment
-        $data['seed_wpn'] = VarHelper::existOrElse($data['seed_wpn'], '');
-        $data['seed_scnd'] = VarHelper::existOrElse($data['seed_scnd'], '');
-        $data['seed_armor'] = VarHelper::existOrElse($data['seed_armor'], '');
-        $data['seed_back_wpn'] = VarHelper::existOrElse($data['seed_back_wpn'], '');
-        $data['seed_left_wpn'] = VarHelper::existOrElse($data['seed_left_wpn'], '');
-        $data['seed_arm_wpn'] = VarHelper::existOrElse($data['seed_arm_wpn'], '');
-        $data['seed_leg_wpn'] = VarHelper::existOrElse($data['seed_leg_wpn'], '');
-        $data['seed_cloth'] = VarHelper::existOrElse($data['seed_cloth'], '');
+        $data['seed_wpn'] = VarHelper::existOrElse($data, 'seed_wpn', '');
+        $data['seed_scnd'] = VarHelper::existOrElse($data, 'seed_scnd', '');
+        $data['seed_armor'] = VarHelper::existOrElse($data, 'seed_armor', '');
+        $data['seed_back_wpn'] = VarHelper::existOrElse($data, 'seed_back_wpn', '');
+        $data['seed_left_wpn'] = VarHelper::existOrElse($data, 'seed_left_wpn', '');
+        $data['seed_arm_wpn'] = VarHelper::existOrElse($data, 'seed_arm_wpn', '');
+        $data['seed_leg_wpn'] = VarHelper::existOrElse($data, 'seed_leg_wpn', '');
+        $data['seed_cloth'] = VarHelper::existOrElse($data, 'seed_cloth', '');
 
         //TODO выяснить что это?
         $data['newness'] = 10 - GameMechanics::getInstance()->gameRegister->character->attributes->mark->value;
@@ -799,9 +801,9 @@ class ApprenticesLibrary
         $data["echeck"] = 0;
 
                 //Descriptions
-        $data['stock_family_description'] = VarHelper::existOrElse($data['stock_family_description'], RandomHelper::randArrayValue($family->getDescriptions()));
-        $data['stock_world_description'] = VarHelper::existOrElse($data['stock_world_description'], RandomHelper::randArrayValue($world->getDescriptions()));
-        $data['stock_occupation_description'] = VarHelper::existOrElse($data['stock_occupation_description'], RandomHelper::randArrayValue($occupation->getDescriptions()));
+        $data['stock_family_description'] = VarHelper::existOrElse($data, 'stock_family_description', RandomHelper::randArrayValue($family->getDescriptions()));
+        $data['stock_world_description'] = VarHelper::existOrElse($data, 'stock_world_description', RandomHelper::randArrayValue($world->getDescriptions()));
+        $data['stock_occupation_description'] = VarHelper::existOrElse($data, 'stock_occupation_description', RandomHelper::randArrayValue($occupation->getDescriptions()));
 
         return $data;
     }
