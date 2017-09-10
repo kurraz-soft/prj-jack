@@ -58,16 +58,17 @@ class ApprenticesLibrary
     }
 
     /**
+     * @param bool $with_special
      * @return array
      */
-    public static function findAll()
+    public static function findAll($with_special = false)
     {
         $dir = opendir(\Yii::getAlias('@game/data/apprentices'));
         $file_ids = [];
         while(($file = readdir($dir)) !== false)
         {
             list($filename, $ext) = explode('.',$file);
-            if($ext == 'php')
+            if($ext == 'php' && ($with_special || (strpos($filename,'_') === false)))
                 $file_ids[] = $filename;
         }
 
