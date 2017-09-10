@@ -18,6 +18,6 @@ class OutfitLegs extends BaseItem
 
     public function getDefaultId()
     {
-        // TODO: Implement getDefaultId() method.
+        return 'nothing';
     }
 }
