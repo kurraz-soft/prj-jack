@@ -11,6 +11,7 @@ use app\modules\game\helpers\RandomHelper;
 use app\modules\game\helpers\VarHelper;
 use app\modules\game\models\game_data\Apprentice;
 use app\modules\game\models\game_data\attributes\AgeFemale;
+use app\modules\game\models\game_data\body\Mind;
 use app\modules\game\models\game_data\traits\AbuseAttitude;
 use app\modules\game\models\game_data\traits\BloodAttitude;
 use app\modules\game\models\game_data\traits\Bruises;
@@ -43,6 +44,7 @@ use app\modules\game\models\game_data\traits\ServiceAffinity;
 use app\modules\game\models\game_data\traits\SportAffinity;
 use app\modules\game\models\game_data\traits\VocalAffinity;
 use app\modules\game\models\game_data\traits\Voice;
+use app\modules\game\models\GameMechanics;
 
 class ApprenticesLibrary
 {
@@ -229,6 +231,11 @@ class ApprenticesLibrary
                 $data['seed_sub_bj'] += RandomHelper::randChooseVar(1, 0, 33);
             }
         }
+
+        //Origin affects
+        $data = $world->affectJsonData($data);
+        $data = $family->affectJsonData($data);
+        $data = $occupation->affectJsonData($data);
 
         //Additional attribute randomizer
         $a = 0;
@@ -669,7 +676,72 @@ class ApprenticesLibrary
             $data['seed_sub_polypusvermin_xp'] = 0;
         }
 
+        //Makes it harder to train in both gladiatrix and pet or pony since they use opposing skills
+        if($data['seed_gladiatrix'] > 2)
+        {
+            $data['seed_pet'] = 0;
+            $data['seed_dressage'] = 0;
+        }
+        if($data['seed_pet'] > 2 || $data['seed_dressage'] > 2)
+        {
+            $data['seed_gladiatrix'] = 0;
+        }
+        if($data['seed_gladiatrix_affinity'])
+        {
+            $data['seed_pet_affinity'] = 0;
+            $data['seed_dressage_affinity'] = 0;
+        }
+        if($data['seed_pet_affinity'] || $data['seed_dressage_affinity'])
+        {
+            $data['seed_gladiatrix_affinity'] = 0;
+        }
 
+        if($data['seed_stamina'] >= 5) $data['seed_metabolism'] += 1;
+        if($data['seed_stamina'] == 1) $data['seed_metabolism'] -= 1;
+        if($data['seed_energy'] > $data['seed_stamina']) $data['seed_energy'] = $data['seed_stamina'];
+        $data['seed_base_exotic'] = $data['seed_exotic']; //??
+
+        //Added code to avoid having slaves with all bottomed out stats
+        if(($data['seed_stamina'] + $data['seed_beauty'] + $data['seed_sensitivity']
+            + $data['seed_intellect'] + $data['seed_temper'] + $data['seed_ego']) < 7)
+        {
+            if($data['seed_stamina'] <= 1) $data['seed_stamina'] += mt_rand(0,2);
+            if($data['seed_beauty'] <= 1) $data['seed_beauty'] += mt_rand(0,2);
+            if($data['seed_sensitivity'] <= 1) $data['seed_sensitivity'] += mt_rand(0,2);
+            if($data['seed_intellect'] <= 1) $data['seed_intellect'] += mt_rand(0,2);
+            if($data['seed_temper'] <= 1) $data['seed_temper'] += mt_rand(0,2);
+            if($data['seed_ego'] <= 1) $data['seed_ego'] += mt_rand(0,2);
+        }
+
+        //Psy determination
+        if(!VarHelper::exist($data['seed_psy_basic']))
+        {
+            $data['seed_psy_basic'] = RandomHelper::randArrayValue([
+                Mind::STATE_RELUCTANT,
+                Mind::STATE_SOFT,
+                Mind::STATE_OPTIMISTIC,
+            ]);
+            if($data['seed_sensitivity'] >= 4) $data['seed_psy_basic'] = Mind::STATE_LACHRYMOSE;
+            if(($data['seed_ego'] + $data['seed_temper'] + $data['seed_pride']) > 10)
+            {
+                if($data['seed_ego'] >= 4) $data['seed_psy_basic'] = Mind::STATE_RESISTANT;
+                if($data['seed_temper'] >= 4) $data['seed_psy_basic'] = Mind::STATE_HATEFUL;
+                if($data['seed_pride'] >= 4) $data['seed_psy_basic'] = Mind::STATE_ARROGANT;
+            }
+            if($data['seed_ego'] >= 5) $data['seed_psy_basic'] = Mind::STATE_RESISTANT;
+            if($data['seed_temper'] >= 5) $data['seed_psy_basic'] = Mind::STATE_HATEFUL;
+            if($data['seed_pride'] >= 5) $data['seed_psy_basic'] = Mind::STATE_ARROGANT;
+        }
+
+        //TODO ?? что-то связанное с менструацией
+        $data['neg_slave'] = 1 + $data['seed_pride'] + $data['seed_temper'] + $data['seed_ego'] - $data['seed_custom'];
+        $data['cycle_day'] = mt_rand(1,28);
+        if($data['cycle_day'] < 6) $data['neg_menstruation'] = 6 - $data['seed_stamina'] - $data['cycle_day'];
+        if($data['neg_menstruation'] < 0) $data['neg_menstruation'] = 0;
+        $data['ovulation'] = 16 - $data['cycle_day'];
+        if($data['ovulation'] < 0 || $data['ovulation'] > 7) $data['ovulation'] = 0;
+        $data['calories'] = $data['seed_stamina'];
+        $data['seed_brand'] = 0;
 
         //init vars if they wasn't initialized
         $data['seed_sub_hj'] = $data['seed_sub_hj'] ?? 0;
@@ -707,110 +779,28 @@ class ApprenticesLibrary
         $data['seed_sub_tentacles'] = $data['seed_sub_tentacles'] ?? 0; // or seed_sub_polypusvermin
         $data['seed_sub_arachnidSpider'] = $data['seed_sub_arachnidSpider'] ?? 0;
 
-        $data['seed_psy_basic'];
+        //Equipment
+        $data['seed_wpn'] = VarHelper::existOrElse($data['seed_wpn'], '');
+        $data['seed_scnd'] = VarHelper::existOrElse($data['seed_scnd'], '');
+        $data['seed_armor'] = VarHelper::existOrElse($data['seed_armor'], '');
+        $data['seed_back_wpn'] = VarHelper::existOrElse($data['seed_back_wpn'], '');
+        $data['seed_left_wpn'] = VarHelper::existOrElse($data['seed_left_wpn'], '');
+        $data['seed_arm_wpn'] = VarHelper::existOrElse($data['seed_arm_wpn'], '');
+        $data['seed_leg_wpn'] = VarHelper::existOrElse($data['seed_leg_wpn'], '');
+        $data['seed_cloth'] = VarHelper::existOrElse($data['seed_cloth'], '');
 
-        //Equipment TODO other slots
-        $data['seed_weapon'];
-        $data['seed_weapon_second'];
-        $data['seed_armor'];
-        $data['seed_cloth'];
+        //TODO выяснить что это?
+        $data['newness'] = 10 - GameMechanics::getInstance()->gameRegister->character->attributes->mark->value;
+
+        //Fixes a potential issue with Neoplasty being already done on new slaves - crushboss TODO ??
+        $data['beauty_enchanced'] = 0;
+        $data["bcheck"] = 0;
+        $data["echeck"] = 0;
 
                 //Descriptions
         $data['stock_family_description'] = VarHelper::existOrElse($data['stock_family_description'], RandomHelper::randArrayValue($family->getDescriptions()));
         $data['stock_world_description'] = VarHelper::existOrElse($data['stock_world_description'], RandomHelper::randArrayValue($world->getDescriptions()));
         $data['stock_occupation_description'] = VarHelper::existOrElse($data['stock_occupation_description'], RandomHelper::randArrayValue($occupation->getDescriptions()));
-
-                //Images
-        $data['seed_ava'];
-        $data['seed_ava_gray'];
-        $data['seed_ava_clear'];
-
-        $data['seed_boobs_img'];
-        $data['seed_pussy_img'];
-
-        $data['bathing_alone'];
-        $data['cello'];
-        $data['cleaning'];
-        $data['cooking'];
-        $data['dance'];
-        $data['desertag'];
-        $data['enchanting'];
-        $data['fighting'];
-        $data['flyte'];
-        $data['guitar'];
-        $data['gymnastics'];
-        $data['lesbo_bath'];
-        $data['nurse'];
-        $data['piano'];
-        $data['rest'];
-        $data['secretary'];
-        $data['student'];
-        $data['singing'];
-        $data['violin'];
-        $data['washing'];
-        $data['analfisting'];
-        $data['analsex'];
-        $data['bondage'];
-        $data['bdsm'];
-        $data['bj'];
-        $data['bukake'];
-        $data['disgrace'];
-        $data['defloration'];
-        $data['deprivation_suit'];
-        $data['dog_sex'];
-        $data['dildo'];
-        $data['dt'];
-        $data['enema'];
-        $data['exhibit'];
-        $data['fisting'];
-        $data['fj'];
-        $data['gangbang'];
-        $data['hj'];
-        $data['horse_sex'];
-        $data['hug'];
-        $data['kiss'];
-        $data['kopro'];
-        $data['kuni'];
-        $data['lesbian'];
-        $data['masturbation'];
-        $data['pazuri'];
-        $data['petplay'];
-        $data['petting'];
-        $data['pig_sex'];
-        $data['ponyplay'];
-        $data['rimming'];
-        $data['seduce'];
-        $data['sex_vaginal'];
-        $data['spider'];
-        $data['thongue'];
-        $data['tentacles'];
-        $data['urine_drink'];
-        $data['branding'];
-        $data['cane'];
-        $data['ear_grab'];
-        $data['ironmaiden'];
-        $data['fireswing'];
-        $data['fist_hit'];
-        $data['leash'];
-        $data['needle'];
-        $data['pins'];
-        $data['slap'];
-        $data['spank'];
-        $data['strappado'];
-        $data['verminpit'];
-        $data['water'];
-        $data['wax'];
-        $data['woodenhorse'];
-        $data['whip'];
-        $data['impaling'];
-        $data['decapitation'];
-        $data['hanging'];
-        $data['throat_slit'];
-        $data['cook_whole'];
-
-        $data = $world->affectJsonData($data);
-        $data = $family->affectJsonData($data);
-        $data = $occupation->affectJsonData($data);
 
         return $data;
     }
@@ -969,11 +959,14 @@ class ApprenticesLibrary
         //Traits
         static::importTraitsFromData($apprentice, $data);
 
-        //Equipment TODO other slots
-        $apprentice->equipment->weapon->id = $data['seed_weapon'];
-        $apprentice->equipment->weaponSecond->id = $data['seed_weapon_second'];
+        //Equipment
+        $apprentice->equipment->weapon->id = $data['seed_wpn'];
+        $apprentice->equipment->weaponSecond->id = $data['seed_scnd'];
         $apprentice->equipment->armor->id = $data['seed_armor'];
         $apprentice->equipment->cloth->id = $data['seed_cloth'];
+        $apprentice->equipment->weaponBack->id = $data['seed_back_wpn'];
+        $apprentice->equipment->weaponLeft->id = $data['seed_left_wpn'];
+        $apprentice->equipment->weaponLeg->id = $data['seed_leg_wpn'];
 
         //Descriptions
         $apprentice->descriptions->family = $data['stock_family_description'];
