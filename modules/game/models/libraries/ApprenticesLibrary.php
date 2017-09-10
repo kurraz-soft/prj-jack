@@ -111,7 +111,7 @@ class ApprenticesLibrary
         $data['seed_fertility'] = ($data['seed_age'] + 1) < AgeFemale::YOUNG ? 0 : RandomHelper::randFloat(1,2);
         $data['seed_fertility_revealed'] = 0;
         $data['seed_stamina'] = VarHelper::existOrElse($data['seed_stamina'], mt_rand(1,5));
-        $data['seed_metabolism'] = VarHelper::existOrElse($data['seed_metabolism'], 3);
+        //$data['seed_metabolism'] = VarHelper::existOrElse($data['seed_metabolism'], 3);
 
                 //Aura
         $data['seed_custom'];
@@ -230,43 +230,484 @@ class ApprenticesLibrary
             }
         }
 
-        $data['seed_sub_hj'];
-        $data['seed_sub_fj'];
-        $data['seed_sub_hug'];
-        $data['seed_sub_pazuri'];
-        $data['seed_sub_kiss'];
-        $data['seed_sub_thongue'];
-        $data['seed_sub_bj'];
-        $data['seed_sub_dt'];
-        $data['seed_sub_asslik'];
-        $data['seed_sub_vaginal'];
-        $data['seed_sub_anal'];
-        $data['seed_sub_fisting'];
-        $data['seed_anal_stretch'];
-        $data['seed_sub_seduce'];
-        $data['seed_sub_masturbation'];
-        $data['seed_sub_dildo'];
-        $data['seed_sub_exhibit'];
-        $data['seed_sub_humiliation'];
-        $data['seed_sub_enema'];
-        $data['seed_sub_mazo'];
-        $data['seed_sub_selfpain'];
-        $data['seed_sub_piss'];
-        $data['seed_sub_kopro'];
-        $data['seed_sub_threesome'];
-        $data['seed_sub_dp'];
-        $data['seed_sub_tp'];
-        $data['seed_sub_gangbang'];
-        $data['seed_sub_bukake'];
-        $data['seed_sub_zoosex'];
-        $data['seed_sub_bestiality'];
-        $data['seed_sub_horse'];
-        $data['seed_sub_tentacles']; // or seed_sub_polypusvermin
-        $data['seed_sub_arachnidSpider'];
+        //Additional attribute randomizer
+        $a = 0;
+        if(($data['seed_age'] + 1) == AgeFemale::LOLI) $a = 15;
+        if(($data['seed_age'] + 1) == AgeFemale::YOUNG) $a = 10;
+        if(($data['seed_age'] + 1) == AgeFemale::MATURE) $a = 8;
+
+        $b = mt_rand(1, $a);
+        if(mt_rand(1, $a) == $b) $data['seed_beauty'] += mt_rand(-2,2);
+        if(mt_rand(1, $a) == $b) $data['seed_stamina'] += mt_rand(-2,2);
+        if(mt_rand(1, $a) == $b) $data['seed_sensitivity'] += mt_rand(-2,2);
+        if(mt_rand(1, $a) == $b) $data['seed_temper'] += mt_rand(-2,2);
+        if(mt_rand(1, $a) == $b) $data['seed_ego'] += mt_rand(-2,2);
+        if(mt_rand(1, $a) == $b) $data['seed_pride'] += mt_rand(-2,2);
+        if(mt_rand(1, $a) == $b) $data['seed_intellect'] += mt_rand(-2,2);
+        if(mt_rand(1, $a) == $b) $data['seed_exotic'] += RandomHelper::randFloat(-2,2);
+        if(mt_rand(1, $a) == $b) $data['seed_fame_rate'] += RandomHelper::randFloat(0.1,2.5);
+
+        $b = mt_rand(1, $a);
+        if(mt_rand(1, $a) == $b) $data['seed_service'] += mt_rand(1,4);
+        if(mt_rand(1, $a) == $b) $data['seed_expression'] += mt_rand(1,4);
+        if(mt_rand(1, $a) == $b) $data['seed_secretary'] += mt_rand(1,4);
+        if(mt_rand(1, $a) == $b) $data['seed_callisthenics'] += mt_rand(1,4);
+        if(mt_rand(1, $a) == $b) $data['seed_gladiatrix'] += mt_rand(1,4);
+        if(mt_rand(1, $a) == $b) $data['seed_cook'] += mt_rand(1,4);
+        if(mt_rand(1, $a) == $b) $data['seed_dressage'] += mt_rand(1,4);
+        if(mt_rand(1, $a) == $b) $data['seed_pet'] += mt_rand(1,4);
+        if(mt_rand(1, $a) == $b) $data['seed_nurse'] += mt_rand(1,4);
+        if(mt_rand(1, $a) == $b) $data['seed_enchanter'] += mt_rand(1,4);
+        if(mt_rand(1, $a) == $b) $data['seed_vocal'] += mt_rand(1,4);
+        if(mt_rand(1, $a) == $b) $data['seed_music'] += mt_rand(1,4);
+
+        $b = mt_rand(1, $a);
+        if(mt_rand(1, $a) == $b) $data['seed_sub_vaginal'] += mt_rand(1,3);
+        if(mt_rand(1, $a) == $b) $data['seed_sub_fisting'] += mt_rand(1,3);
+        if(mt_rand(1, $a) == $b) $data['seed_sub_threesome'] += mt_rand(1,3);
+        if(mt_rand(1, $a) == $b) $data['seed_sub_dp'] += mt_rand(1,3);
+        if(mt_rand(1, $a) == $b) $data['seed_sub_tp'] += mt_rand(1,3);
+        if(mt_rand(1, $a) == $b) $data['seed_sub_gangbang'] += mt_rand(1,3);
+        if(mt_rand(1, $a) == $b) $data['seed_sub_zoosex'] += mt_rand(1,3);
+        if(mt_rand(1, $a) == $b) $data['seed_sub_bestiality'] += mt_rand(1,3);
+        if(mt_rand(1, $a) == $b) $data['seed_sub_horse'] += mt_rand(1,3);
+        if(mt_rand(1, $a) == $b) $data['seed_sub_tentacles'] += mt_rand(1,3);
+        if(mt_rand(1, $a) == $b) $data['seed_sub_arachnidSpider'] += mt_rand(1,3);
+        if(mt_rand(1, $a) == $b) $data['seed_sub_polypusvermin'] += mt_rand(1,3);
+        if(mt_rand(1, $a) == $b) $data['seed_sub_hug'] += mt_rand(1,3);
+        if(mt_rand(1, $a) == $b) $data['seed_sub_kiss'] += mt_rand(1,3);
+        if(mt_rand(1, $a) == $b) $data['seed_sub_bj'] += mt_rand(1,3);
+        if(mt_rand(1, $a) == $b) $data['seed_sub_vaginal'] += mt_rand(1,3);
+        if(mt_rand(1, $a) == $b) $data['seed_sub_anal'] += mt_rand(1,3);
+        if(mt_rand(1, $a) == $b) $data['seed_sub_exhibit'] += mt_rand(1,3);
+        if(mt_rand(1, $a) == $b) $data['seed_sub_humiliation'] += mt_rand(1,3);
+        if(mt_rand(1, $a) == $b) $data['seed_sub_hj'] += mt_rand(1,3);
+        if(mt_rand(1, $a) == $b) $data['seed_sub_fj'] += mt_rand(1,3);
+        if(mt_rand(1, $a) == $b) $data['seed_sub_pazuri'] += mt_rand(1,3);
+        if(mt_rand(1, $a) == $b) $data['seed_sub_thongue'] += mt_rand(1,3);
+        if(mt_rand(1, $a) == $b) $data['seed_sub_dt'] += mt_rand(1,3);
+        if(mt_rand(1, $a) == $b) $data['seed_sub_asslik'] += mt_rand(1,3);
+        if(mt_rand(1, $a) == $b) $data['seed_sub_anal_stretch'] += $data['seed_sub_anal'];
+        if(mt_rand(1, $a) == $b) $data['seed_sub_seduce'] += mt_rand(1,3);
+        if(mt_rand(1, $a) == $b) $data['seed_sub_masturbation'] += mt_rand(1,3);
+        if(mt_rand(1, $a) == $b) $data['seed_sub_dildo'] += mt_rand(1,3);
+        if(mt_rand(1, $a) == $b) $data['seed_sub_enema'] += mt_rand(1,3);
+        if(mt_rand(1, $a) == $b) $data['seed_sub_mazo'] += mt_rand(1,3);
+        if(mt_rand(1, $a) == $b) $data['seed_sub_selfpain'] += mt_rand(1,3);
+        if(mt_rand(1, $a) == $b) $data['seed_sub_piss'] += mt_rand(1,3);
+        if(mt_rand(1, $a) == $b) $data['seed_sub_kopro'] += mt_rand(1,3);
+        if(mt_rand(1, $a) == $b) $data['seed_sub_bukake'] += mt_rand(1,3);
+
+        //Piercings
+
+        //init
+        $data['seed_niple_piercing'] = $data['seed_niple_piercing'] ?? 0;
+        $data['seed_clit_piercing'] = $data['seed_clit_piercing'] ?? 0;
+        $data['seed_ear_piercing'] = $data['seed_ear_piercing'] ?? 0;
+        $data['seed_ear_piercing'] = $data['seed_ear_piercing'] ?? 0;
+        $data['seed_thongue_piercing'] = $data['seed_thongue_piercing'] ?? 0;
+        $data['seed_belly_piercing'] = $data['seed_belly_piercing'] ?? 0;
+        $data['seed_nosdril_piercing'] = $data['seed_nosdril_piercing'] ?? 0;
+        $data['seed_nose_piercing'] = $data['seed_nose_piercing'] ?? 0;
+        $data['seed_thongue_split'] = $data['seed_thongue_split'] ?? 0;
+        $data['seed_scarification'] = $data['seed_scarification'] ?? 0;
+
+        if(($data['seed_age'] + 1) != AgeFemale::LOLI)
+        {
+            $b = mt_rand(1, $a);
+            if(mt_rand(1, $a) == $b) $data['seed_niple_piercing'] = 1;
+            if(mt_rand(1, $a) == $b) $data['seed_clit_piercing'] = 1;
+            if(mt_rand(1, $a) == $b) $data['seed_ear_piercing'] = 1;
+            if(mt_rand(1, $a) == $b) $data['seed_ear_piercing'] = 1;
+            if(mt_rand(1, $a) == $b) $data['seed_thongue_piercing'] = 1;
+            if(mt_rand(1, $a) == $b) $data['seed_belly_piercing'] = 1;
+            if(mt_rand(1, $a) == $b) $data['seed_nosdril_piercing'] = 1;
+            if(mt_rand(1, $a) == $b) $data['seed_nose_piercing'] = 1;
+            if(mt_rand(1, 20) == 3) $data['seed_thongue_split'] = 1;
+            if(mt_rand(1, 20) == 3) $data['seed_scarification'] = 1;
+        }
+
+        //Makeup and Tattoos
+        if(($data['seed_age'] + 1) != AgeFemale::LOLI)
+        {
+            $b = mt_rand(1, $a);
+            if(mt_rand(1, $a) == $b) $data['seed_makeup'] = 3;
+            if(mt_rand(1, $a) == $b) $data['seed_fiend_tattoo'] = 1;
+            if(mt_rand(1, $a) == $b) $data['seed_tatoo'] = mt_rand(1,5);
+            if(mt_rand(1, 15) == 3) $data['seed_fertility'] = -1;
+        }
+
+        ////Traits
+
+        //Illness
+        $data['seed_ill'] = RandomHelper::randChooseVar(1, 0, 20);
+        //Parasite
+        if(!VarHelper::exist($data['seed_parasite']))
+        {
+            if(mt_rand(1, 8) == 4)
+            {
+                $data['seed_parasite'] = mt_rand(1,5);
+            }else
+            {
+                $data['seed_parasite'] = 0;
+            }
+        }
+        //Pregnancy
+        if(!VarHelper::exist($data['seed_pregnant']))
+        {
+            $data['seed_pregnant'] = 0;
+            if ($data['seed_virginity'] > 0 && $data['seed_fertility'] == 0 && $data['seed_parasite'] == 0)
+            {
+                if (mt_rand(1, 12) == 6)
+                {
+                    $data['seed_pregnant'] = mt_rand(1,30);
+                }
+            }
+        }
+        //Wounds
+        if(!VarHelper::exist($data['seed_wounds']))
+        {
+            $data['seed_wounds'] = 0;
+            if(mt_rand(1,15) == 8)
+            {
+                $data['seed_wounds'] = mt_rand(1,5);
+            }
+        }
+        //Scars
+        if(!VarHelper::exist($data['seed_scares']))
+        {
+            $data['seed_scares'] = 0;
+            if(mt_rand(1,8) == 4)
+            {
+                $data['seed_scares'] = RandomHelper::randByWeights([
+                    1 => 5,
+                    2 => 4,
+                    3 => 3,
+                    4 => 3,
+                    5 => 3,
+                ]);
+            }
+        }
+        //Bruises
+        if(!VarHelper::exist($data['seed_bruises']))
+        {
+            $data['seed_scares'] = 0;
+            if(mt_rand(1,5) == 4)
+            {
+                $data['seed_scares'] = RandomHelper::randByWeights([
+                    1 => 5,
+                    2 => 4,
+                    3 => 3,
+                    4 => 3,
+                    5 => 3,
+                ]);
+            }
+        }
+        //nymphomania
+        if(!VarHelper::exist($data['seed_nymphomania']))
+        {
+            $data['seed_scares'] = 0;
+            if(mt_rand(1,20) == 10)
+            {
+                $data['seed_scares'] = RandomHelper::randChooseVar(1,0,33);
+            }
+        }
+        //masohism
+        if(!VarHelper::exist($data['seed_masohism']))
+        {
+            $data['seed_masohism'] = 0;
+            if(mt_rand(1,20) == 10)
+            {
+                $data['seed_masohism'] = RandomHelper::randChooseVar(1,0,50);
+            }
+        }
+        //exhibitionism
+        if(!VarHelper::exist($data['seed_exhibitionism']))
+        {
+            $data['seed_exhibitionism'] = 0;
+            if(mt_rand(1,20) == 10)
+            {
+                $data['seed_exhibitionism'] = RandomHelper::randChooseVar(1,0,50);
+            }
+        }
+        //preversion
+        if(!VarHelper::exist($data['seed_preversion']))
+        {
+            $data['seed_preversion'] = 0;
+            if(mt_rand(1,12) == 10)
+            {
+                $data['seed_preversion'] = RandomHelper::randChooseVar(1,0,50);
+            }
+        }
+        //homosexualism
+        if(!VarHelper::exist($data['seed_homosexualism']))
+        {
+            $data['seed_preversion'] = 0;
+            if(mt_rand(1,15) == 10)
+            {
+                $data['seed_preversion'] = RandomHelper::randChooseVar(1,0,50);
+            }
+        }
+        //abuse_attitude
+        if(!VarHelper::exist($data['seed_abuse_attitude']))
+        {
+            $data['seed_abuse_attitude'] = 0;
+            if(mt_rand(1,20) == 10)
+            {
+                $data['seed_abuse_attitude'] = RandomHelper::randChooseVar(1,0,50);
+            }
+        }
+        //darkness_attitude
+        if(!VarHelper::exist($data['seed_darkness_attitude']))
+        {
+            $data['seed_darkness_attitude'] = 0;
+            if(mt_rand(1,20) == 10)
+            {
+                $data['seed_darkness_attitude'] = RandomHelper::randChooseVar(1,0,50);
+            }
+        }
+        //blood_attitude
+        if(!VarHelper::exist($data['seed_blood_attitude']))
+        {
+            $data['seed_blood_attitude'] = 0;
+            if(mt_rand(1,20) == 10)
+            {
+                $data['seed_blood_attitude'] = RandomHelper::randChooseVar(1,0,50);
+            }
+        }
+        //fire_attitude
+        if(!VarHelper::exist($data['seed_fire_attitude']))
+        {
+            $data['seed_fire_attitude'] = 0;
+            if(mt_rand(1,20) == 10)
+            {
+                $data['seed_fire_attitude'] = RandomHelper::randChooseVar(1,0,50);
+            }
+        }
+        //water_attitude
+        if(!VarHelper::exist($data['seed_water_attitude']))
+        {
+            $data['seed_water_attitude'] = 0;
+            if(mt_rand(1,20) == 10)
+            {
+                $data['seed_water_attitude'] = RandomHelper::randChooseVar(1,0,50);
+            }
+        }
+        //vermin_attitude
+        if(!VarHelper::exist($data['seed_vermin_attitude']))
+        {
+            $data['seed_vermin_attitude'] = 0;
+            if(mt_rand(1,20) == 10)
+            {
+                $data['seed_vermin_attitude'] = RandomHelper::randChooseVar(1,0,50);
+            }
+        }
+        //deprivation_attitude
+        if(!VarHelper::exist($data['seed_deprivation_attitude']))
+        {
+            $data['seed_deprivation_attitude'] = 0;
+            if(mt_rand(1,20) == 10)
+            {
+                $data['seed_deprivation_attitude'] = RandomHelper::randChooseVar(1,0,50);
+            }
+        }
+        //passion_comfort
+        if(!VarHelper::exist($data['seed_passion_comfort']))
+        {
+            $data['seed_passion_comfort'] = 0;
+            if(mt_rand(1,20) == 10)
+            {
+                $data['seed_passion_comfort'] = RandomHelper::randChooseVar(1,0,50);
+            }
+        }
+        //passion_luxury
+        if(!VarHelper::exist($data['seed_passion_luxury']))
+        {
+            $data['seed_passion_luxury'] = 0;
+            if(mt_rand(1,20) == 10)
+            {
+                $data['seed_passion_luxury'] = RandomHelper::randChooseVar(1,0,50);
+            }
+        }
+        //passion_sweets
+        if(!VarHelper::exist($data['seed_passion_sweets']))
+        {
+            $data['seed_passion_sweets'] = 0;
+            if(mt_rand(1,20) == 10)
+            {
+                $data['seed_passion_sweets'] = RandomHelper::randChooseVar(1,0,50);
+            }
+        }
+        //passion_fame
+        if(!VarHelper::exist($data['seed_passion_fame']))
+        {
+            $data['seed_passion_fame'] = 0;
+            if(mt_rand(1,20) == 10)
+            {
+                $data['seed_passion_fame'] = RandomHelper::randChooseVar(1,0,50);
+            }
+        }
+        //courage
+        if(!VarHelper::exist($data['seed_courage']))
+        {
+            $data['seed_courage'] = 0;
+            if(mt_rand(1,20) == 10)
+            {
+                $data['seed_courage'] = RandomHelper::randChooseVar(1,0,50);
+            }
+        }
+        //metabolism
+        if(!VarHelper::exist($data['seed_metabolism']))
+        {
+            $data['seed_metabolism'] = 3;
+            if(mt_rand(1,20) == 10)
+            {
+                $data['seed_metabolism'] = mt_rand(1,5);
+            }
+        }
+        //grace
+        if(!VarHelper::exist($data['seed_grace']))
+        {
+            $data['seed_grace'] = 0;
+            if(mt_rand(1,20) == 10)
+            {
+                $data['seed_grace'] = RandomHelper::randChooseVar(1,0,33);
+            }
+        }
+        //sport_affinity
+        if(!VarHelper::exist($data['seed_sport_affinity']))
+        {
+            $data['seed_sport_affinity'] = 0;
+            if(mt_rand(1,20) == 10)
+            {
+                $data['seed_sport_affinity'] = RandomHelper::randChooseVar(1,0,33);
+            }
+        }
+        $data['seed_expression_affinity'] = RandomHelper::randChooseVar(1,0, 5);
+        $data['seed_pet_affinity'] = RandomHelper::randChooseVar(1,0, 5);
+        $data['seed_dressage_affinity'] = RandomHelper::randChooseVar(1,0, 5);
+        $data['seed_nurse_affinity'] = RandomHelper::randChooseVar(1,0, 5);
+        $data['seed_service_affinity'] = RandomHelper::randChooseVar(1,0, 5);
+        $data['seed_cook_affinity'] = RandomHelper::randChooseVar(1,0, 5);
+        $data['seed_gladiatrix_affinity'] = RandomHelper::randChooseVar(1,0, 5);
+        $data['seed_enchanter_affinity'] = RandomHelper::randChooseVar(1,0, 5);
+        $data['seed_vocal_affinity'] = RandomHelper::randChooseVar(1,0, 5);
+        $data['seed_music_affinity'] = RandomHelper::randChooseVar(1,0, 5);
+        $data['seed_callisthenics_affinity'] = RandomHelper::randChooseVar(1,0, 5);
+        $data['seed_secretary_affinity'] = RandomHelper::randChooseVar(1,0, 5);
+
+        if(!VarHelper::exist($data['seed_meekness']))
+        {
+            $data['seed_meekness'] = 0;
+            if(mt_rand(1, 20) == 10)
+            {
+                $data['seed_meekness'] = RandomHelper::randChooseVar(1, 0, 60);
+            }
+        }
+        if(!VarHelper::exist($data['seed_selfesteem']))
+        {
+            $data['seed_selfesteem'] = 0;
+            if(mt_rand(1, 20) == 10)
+            {
+                $data['seed_selfesteem'] = RandomHelper::randChooseVar(1, 0, 33);
+            }
+        }
+        if(!VarHelper::exist($data['seed_voice']))
+        {
+            $data['seed_voice'] = 0;
+            if(mt_rand(1, 20) == 10)
+            {
+                $data['seed_voice'] = RandomHelper::randChooseVar(1, 0, 33);
+            }
+        }
+        if(!VarHelper::exist($data['seed_compassion']))
+        {
+            $data['seed_compassion'] = 0;
+            if(mt_rand(1, 20) == 10)
+            {
+                $data['seed_compassion'] = RandomHelper::randChooseVar(1, 0, 50);
+            }
+        }
+
+        $data['seed_energy'] = VarHelper::existOrElse($data['seed_energy'], mt_rand(0,3));
+        $data['seed_hygiene'] = VarHelper::existOrElse($data['seed_energy'], mt_rand(0,4));
+        $data['seed_exotic'] = (int)$data['seed_exotic']; //normalize
+
+        if($data['seed_virginity'] <= 0)
+        {
+            $data['seed_ill'] = 0;
+            $data['seed_parasite'] = 0;
+            $data['seed_pregnant'] = 0;
+            $data['seed_sub_vaginal'] = 0;
+            $data['seed_sub_vaginal_xp'] = 0;
+            $data['seed_sub_fisting'] = 0;
+            $data['seed_sub_fisting_xp'] = 0;
+            $data['seed_sub_threesome'] = 0;
+            $data['seed_sub_threesome_xp'] = 0;
+            $data['seed_sub_dp'] = 0;
+            $data['seed_sub_dp_xp'] = 0;
+            $data['seed_sub_tp'] = 0;
+            $data['seed_sub_tp_xp'] = 0;
+            $data['seed_sub_gangbang'] = 0;
+            $data['seed_sub_gangbang_xp'] = 0;
+            $data['seed_sub_bukake'] = 0;
+            $data['seed_sub_bukake_xp'] = 0;
+            $data['seed_sub_anal'] = 0;
+            $data['seed_sub_anal_xp'] = 0;
+            $data['seed_anal_stretch'] = 0;
+            $data['seed_sub_zoosex'] = 0;
+            $data['seed_sub_zoosex_xp'] = 0;
+            $data['seed_sub_bestiality'] = 0;
+            $data['seed_sub_bestiality_xp'] = 0;
+            $data['seed_sub_horse'] = 0;
+            $data['seed_sub_horse_xp'] = 0;
+            $data['seed_sub_tentacles'] = 0;
+            $data['seed_sub_tentacles_xp'] = 0;
+            $data['seed_sub_arachnidspider'] = 0;
+            $data['seed_sub_arachnidspider_xp'] = 0;
+            $data['seed_sub_polypusvermin'] = 0;
+            $data['seed_sub_polypusvermin_xp'] = 0;
+        }
+
+
+
+        //init vars if they wasn't initialized
+        $data['seed_sub_hj'] = $data['seed_sub_hj'] ?? 0;
+        $data['seed_sub_fj'] = $data['seed_sub_fj'] ?? 0;
+        $data['seed_sub_hug'] = $data['seed_sub_hug'] ?? 0;
+        $data['seed_sub_pazuri'] = $data['seed_sub_pazuri'] ?? 0;
+        $data['seed_sub_kiss'] = $data['seed_sub_kiss'] ?? 0;
+        $data['seed_sub_thongue'] = $data['seed_sub_thongue'] ?? 0;
+        $data['seed_sub_bj'] = $data['seed_sub_bj'] ?? 0;
+        $data['seed_sub_dt'] = $data['seed_sub_dt'] ?? 0;
+        $data['seed_sub_asslik'] = $data['seed_sub_asslik'] ?? 0;
+        $data['seed_sub_vaginal'] = $data['seed_sub_vaginal'] ?? 0;
+        $data['seed_sub_anal'] = $data['seed_sub_anal'] ?? 0;
+        $data['seed_sub_anal_stretch'] = $data['seed_sub_anal_stretch'] ?? 0;
+        $data['seed_sub_fisting'] = $data['seed_sub_fisting'] ?? 0;
+        $data['seed_anal_stretch'] = $data['seed_anal_stretch'] ?? 0;
+        $data['seed_sub_seduce'] = $data['seed_sub_seduce'] ?? 0;
+        $data['seed_sub_masturbation'] = $data['seed_sub_masturbation'] ?? 0;
+        $data['seed_sub_dildo'] = $data['seed_sub_dildo'] ?? 0;
+        $data['seed_sub_exhibit'] = $data['seed_sub_exhibit'] ?? 0;
+        $data['seed_sub_humiliation'] = $data['seed_sub_humiliation'] ?? 0;
+        $data['seed_sub_enema'] = $data['seed_sub_enema'] ?? 0;
+        $data['seed_sub_mazo'] = $data['seed_sub_mazo'] ?? 0;
+        $data['seed_sub_selfpain'] = $data['seed_sub_selfpain'] ?? 0;
+        $data['seed_sub_piss'] = $data['seed_sub_piss'] ?? 0;
+        $data['seed_sub_kopro'] = $data['seed_sub_kopro'] ?? 0;
+        $data['seed_sub_threesome'] = $data['seed_sub_threesome'] ?? 0;
+        $data['seed_sub_dp'] = $data['seed_sub_dp'] ?? 0;
+        $data['seed_sub_tp'] = $data['seed_sub_tp'] ?? 0;
+        $data['seed_sub_gangbang'] = $data['seed_sub_gangbang'] ?? 0;
+        $data['seed_sub_bukake'] = $data['seed_sub_bukake'] ?? 0;
+        $data['seed_sub_zoosex'] = $data['seed_sub_zoosex'] ?? 0;
+        $data['seed_sub_bestiality'] = $data['seed_sub_bestiality'] ?? 0;
+        $data['seed_sub_horse'] = $data['seed_sub_horse'] ?? 0;
+        $data['seed_sub_tentacles'] = $data['seed_sub_tentacles'] ?? 0; // or seed_sub_polypusvermin
+        $data['seed_sub_arachnidSpider'] = $data['seed_sub_arachnidSpider'] ?? 0;
 
         $data['seed_psy_basic'];
-
-        //Traits
 
         //Equipment TODO other slots
         $data['seed_weapon'];
@@ -277,7 +718,7 @@ class ApprenticesLibrary
                 //Descriptions
         $data['stock_family_description'] = VarHelper::existOrElse($data['stock_family_description'], RandomHelper::randArrayValue($family->getDescriptions()));
         $data['stock_world_description'] = VarHelper::existOrElse($data['stock_world_description'], RandomHelper::randArrayValue($world->getDescriptions()));
-        $data['stock_occupation_description'] = VarHelper::existOrElse($data['stock_occupation_description'],''); //TODO
+        $data['stock_occupation_description'] = VarHelper::existOrElse($data['stock_occupation_description'], RandomHelper::randArrayValue($occupation->getDescriptions()));
 
                 //Images
         $data['seed_ava'];
