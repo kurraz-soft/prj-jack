@@ -9,6 +9,7 @@ namespace app\modules\game\models\libraries;
 
 use app\modules\game\models\game_data\base\IOccupation;
 use yii\base\Exception;
+use yii\helpers\Inflector;
 
 class OccupationsLibrary
 {
@@ -42,7 +43,8 @@ class OccupationsLibrary
      */
     public static function factory($occupation_id)
     {
-        $class = 'app\modules\game\models\game_data\family_origins\\' . $occupation_id . 'Occupation';
+        $occupation_id = Inflector::id2camel($occupation_id,'_');
+        $class = 'app\modules\game\models\game_data\occupations\\' . $occupation_id . 'Occupation';
         if(!class_exists($class)) throw new Exception("Can't find class with such occupation_id");
         return new $class();
     }
