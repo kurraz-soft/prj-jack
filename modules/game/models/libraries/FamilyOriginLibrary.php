@@ -47,10 +47,17 @@ class FamilyOriginLibrary
         return new $class();
     }
 
-    public static function getRandomId()
+    /**
+     * @param array $intersect_ids
+     * @return array
+     */
+    public static function getRandomId($intersect_ids = [])
     {
         $families = static::findAll();
         $ids = array_keys($families);
+
+        if($intersect_ids)
+            $ids = array_intersect($ids, $intersect_ids);
 
         return $ids[array_rand($ids)];
     }
