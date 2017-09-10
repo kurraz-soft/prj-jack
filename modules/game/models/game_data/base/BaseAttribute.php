@@ -9,28 +9,29 @@ namespace app\modules\game\models\game_data\base;
 
 use app\modules\game\helpers\FormatterHelper;
 
-abstract class BaseAttribute extends BaseGameData implements INamedValues
+/**
+ * Class BaseAttribute
+ * @package app\modules\game\models\game_data\base
+ *
+ * @property int $value
+ */
+abstract class BaseAttribute extends BaseGameDataList implements INamedValues, IValuable
 {
+    use TMagicSetGet;
     /**
      * @var int
      */
-    public $value = 0;
-    public $learnRate = 1;
+    public $_value = 0;
+    public $learn_rate = 1;
+    public $xp = 0;
 
-    public function serialize()
+    public function serializableParams()
     {
         return [
-            'value' => $this->value,
-            'learnRate' => $this->learnRate,
+            '_value' => '',
+            'learn_rate' => '',
+            'xp' => '',
         ];
-    }
-
-    public function unserialize($serialized_data)
-    {
-        if(isset($serialized_data['value']))
-        {
-            $this->value = $serialized_data['value'];
-        }
     }
 
     public function getMaxValue()
@@ -38,8 +39,18 @@ abstract class BaseAttribute extends BaseGameData implements INamedValues
         return max(array_keys($this->valueNames()));
     }
 
+    public function getValue()
+    {
+        return $this->_value;
+    }
+
+    public function setValue($new_value)
+    {
+        $this->_value = clamp($new_value, 0, $this->getMaxValue());
+    }
+
     public function out()
     {
-        return FormatterHelper::colorAttribute($this->valueNames()[$this->value], $this->value);
+        return FormatterHelper::colorAttribute($this->valueNames()[$this->_value], $this->_value);
     }
 }
