@@ -62,47 +62,47 @@ class ApprenticeEquipment extends BaseGameDataList
      */
     public $cloth;
     /**
-     * @var OutfitBody
+     * @var OutfitHead
      */
     public $head;
     /**
-     * @var OutfitBody
+     * @var OutfitEars
      */
     public $ears;
     /**
-     * @var OutfitBody
+     * @var OutfitNeck
      */
     public $neck;
     /**
-     * @var OutfitBody
+     * @var OutfitHands
      */
     public $hands;
     /**
-     * @var OutfitBody
+     * @var OutfitNipples
      */
     public $nipples;
     /**
-     * @var OutfitBody
+     * @var OutfitClit
      */
     public $clit;
     /**
-     * @var OutfitBody
+     * @var OutfitLegs
      */
     public $legs;
     /**
-     * @var OutfitBody
+     * @var OutfitRing
      */
     public $ringLeft;
     /**
-     * @var OutfitBody
+     * @var OutfitRing
      */
     public $ringRight;
     /**
-     * @var OutfitBody
+     * @var OutfitNavel
      */
     public $navel; //Пупок
     /**
-     * @var OutfitBody
+     * @var OutfitTongue
      */
     public $tongue;
 
