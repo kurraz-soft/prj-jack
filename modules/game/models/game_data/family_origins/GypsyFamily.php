@@ -42,4 +42,18 @@ class GypsyFamily implements IFamilyOrigin
             'Меня воспитали цыгане, в бродячем таборе, не сидевшем на одном месте больше нескольких недель. Жизнь моя была довольно беззаботной, хотя и голодной. Одевалась во что придется, крала и клянчила мелочь, но зато была свободна как ветер.'
         ];
     }
+    
+    public function getAvailableOccupations()
+    {
+        return [
+            'thief',
+            'gypsy',
+            'whore',
+            'markitane',
+            'brigand',
+            'heroine',
+            'sorceress',
+            'thug',
+        ];
+    }
 }

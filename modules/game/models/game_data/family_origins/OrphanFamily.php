@@ -43,4 +43,18 @@ class OrphanFamily implements IFamilyOrigin
             'Своих родителей я не помню, наверное, они умерли когда я была маленькой, а может и вовсе бросили меня чтобы не кормить лишний рот. В общем, моей семьей стали бездомные нищие и другие беспризорники. С малых лет мне пришлось учиться добывать себе еду и ночевать на улице.'
         ];
     }
+
+    public function getAvailableOccupations()
+    {
+        return [
+            'thief',
+            'beggar',
+            'whore',
+            'markitane',
+            'valertry',
+            'heroine',
+            'sorceress',
+            'thug',
+        ];
+    }
 }

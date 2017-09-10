@@ -38,4 +38,18 @@ class CraftsmanFamily implements IFamilyOrigin
             'Сколько себя помню, я жила в городе. У моего отца была гончарная мастерская и лавка при ней. Мои братья месили глину, отец лепил горшки, а мы с мамой расписывали их в яркие цвета. Иногда удавалось погулять, хотя меня редко отпускали за городскую стену.'
         ];
     }
+
+    public function getAvailableOccupations()
+    {
+        return [
+            'poor_bride',
+            'nun',
+            'whore',
+            'brothel',
+            'thug',
+            'valertry',
+            'sorceress',
+            'poor_bride',
+        ];
+    }
 }

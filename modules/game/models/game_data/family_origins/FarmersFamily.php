@@ -43,4 +43,14 @@ class FarmersFamily implements IFamilyOrigin
             'Моя семья держала ферму примерно в двадцать акров. Мы растили кукурузу, бобы и имели приличное стадо коров. Я с самого детства помогала родителям по хозяйству, а в свободное время играла с соседскими детьми в ближнем лесу.'
         ];
     }
+
+    public function getAvailableOccupations()
+    {
+        return [
+            'farmer',
+            'milker',
+            'swiner',
+            'poor_bride',
+        ];
+    }
 }

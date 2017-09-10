@@ -44,4 +44,17 @@ class BondmanFamily implements IFamilyOrigin
             'Я родилась в самой обычной семье в деревне неподалеку от замка нашего господина. Отец с братьями работали в поле или в лесу, а я помогала матери прясть пряжу и пасла гусей. С другими детьми мы часто играли в салки и прятки на опушке леса.'
         ];
     }
+
+    public function getAvailableOccupations()
+    {
+        return [
+            'poor_bride',
+            'herbalist',
+            'brigand',
+            'markitane',
+            'valertry',
+            'sorceress',
+            'nun',
+        ];
+    }
 }

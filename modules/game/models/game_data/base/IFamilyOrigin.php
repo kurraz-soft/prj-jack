@@ -17,4 +17,9 @@ interface IFamilyOrigin extends IJsonDataAffectable
      * @return array
      */
     public function getDescriptions();
+
+    /**
+     * @return array
+     */
+    public function getAvailableOccupations();
 }

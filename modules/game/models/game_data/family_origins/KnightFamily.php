@@ -43,4 +43,16 @@ class KnightFamily implements IFamilyOrigin
             'Я выросла в замке своего отца, вместе с сестрами и братьями. Правда, братья покидали замок, едва им исполнялось семь, чтобы обучаться манерам при дворах других лордов. А вот нас с сестрами мама обучала сама. Отца подолгу не бывало дома, он ходил в военные походы.'
         ];
     }
+
+    public function getAvailableOccupations()
+    {
+        return [
+            'noble_bride',
+            'heroine',
+            'sorceress',
+            'brigand',
+            'noble_bride',
+            'heroine',
+        ];
+    }
 }

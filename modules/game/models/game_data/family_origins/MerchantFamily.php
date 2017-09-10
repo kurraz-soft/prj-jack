@@ -40,4 +40,15 @@ class MerchantFamily implements IFamilyOrigin
             'Мой отец был купцом и водил караваны из далеких стран. Мне и сестрам часто доставались разные замечательные гостинцы, особенно если он уезжал надолго. Жили мы получше, чем многие горожане, и уж тем более чем крестьяне в деревнях.'
         ];
     }
+
+    public function getAvailableOccupations()
+    {
+        return [
+            'rich_bride',
+            'nun',
+            'sorceress',
+            'rich_bride',
+            'heroine',
+        ];
+    }
 }

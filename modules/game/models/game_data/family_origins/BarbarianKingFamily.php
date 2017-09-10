@@ -45,4 +45,11 @@ class BarbarianKingFamily implements IFamilyOrigin
             '  Мой отец был мудрым правителем и отважным воином. Он сам водил в поход свои войска и привозил богатую добычу, много золота и рабов. Я жила во дворце, где сотня слуг в любую секунду готова была исполнить любое мое пожелание.'
         ];
     }
+
+    public function getAvailableOccupations()
+    {
+        return [
+            'barbarian_princess',
+        ];
+    }
 }

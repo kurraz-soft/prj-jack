@@ -42,4 +42,18 @@ class ValetryFamily implements IFamilyOrigin
             'Моя мама была служанкой в рыцарском замке, а вот отца своего я никогда не знала. Возможно, что даже старый лорд, хотя я его почти не помню. С самого раннего детства меня обучали помогать и прислуживать, но на игры тоже оставалось немало времени.'
         ];
     }
+
+    public function getAvailableOccupations()
+    {
+        return [
+            'valertry',
+            'nun',
+            'markitane',
+            'herbalist',
+            'brigand',
+            'valertry',
+            'sorceress',
+            'heroine',
+        ];
+    }
 }
