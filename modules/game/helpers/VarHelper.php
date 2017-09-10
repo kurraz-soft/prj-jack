@@ -9,13 +9,13 @@ namespace app\modules\game\helpers;
 
 class VarHelper
 {
-    static public function exist($var)
+    static public function exist($array, $key)
     {
-        return !empty($var) && strlen($var) > 0;
+        return array_key_exists($key, $array) && !empty($array[$key]) && strlen($array[$key]) > 0;
     }
 
-    static public function existOrElse($var, $else)
+    static public function existOrElse($array, $key, $else)
     {
-        return static::exist($var) ? $var : $else;
+        return static::exist($array, $key)? $array[$key] : $else;
     }
 }
