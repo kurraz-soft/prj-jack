@@ -55,4 +55,9 @@ class RandomHelper
     {
         return static::randByWeights([$var => $chance, $else => 100 - $chance]);
     }
+
+    public static function randArrayValue($array)
+    {
+        return $array[array_rand($array)];
+    }
 }
