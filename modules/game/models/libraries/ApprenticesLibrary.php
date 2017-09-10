@@ -92,8 +92,10 @@ class ApprenticesLibrary
 
         $data['seed_world'] = VarHelper::existOrElse($data['seed_world'], WorldLibrary::getRandomWorldId());
         $world = WorldLibrary::factory($data['seed_world']);
-        $data['seed_family'] = VarHelper::existOrElse($data['seed_family'], FamilyOriginLibrary::getRandomId($world->getAvailableFamilyOriginIds()));
+        $data['seed_family'] = VarHelper::existOrElse($data['seed_family'], RandomHelper::randArrayValue($world->getAvailableFamilyOriginIds()));
         $family = FamilyOriginLibrary::factory($data['seed_family']);
+        $data['seed_occupation'] = VarHelper::existOrElse($data['seed_occupation'], RandomHelper::randArrayValue($family->getAvailableOccupations()));
+        $occupation = OccupationsLibrary::factory($data['seed_occupation']);
 
         $data['seed_name'] = VarHelper::existOrElse($data['seed_name'], NamesLibrary::getRandom($world->getNameBase()));
         $data['seed_age'] = VarHelper::existOrElse($data['seed_age'], mt_rand(1,AgeFemale::MATURE) - 1); //json age margin = 1
@@ -367,6 +369,7 @@ class ApprenticesLibrary
 
         $data = $world->affectJsonData($data);
         $data = $family->affectJsonData($data);
+        $data = $occupation->affectJsonData($data);
 
         return $data;
     }
@@ -440,6 +443,7 @@ class ApprenticesLibrary
         $apprentice->world_id = $data['seed_world'];
         $apprentice->family_origin_id = $data['seed_family'];
         $apprentice->template_id = $filename;
+        $apprentice->occupation_id = $data['seed_occupation'];
         $apprentice->age->value = $data['seed_age'] + 1; //json age margin
         $apprentice->attributes->beauty->value = $data['seed_beauty'];
         $apprentice->attributes->sensuality->value = $data['seed_sensitivity'];
