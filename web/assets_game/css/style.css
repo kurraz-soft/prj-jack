@@ -3,17 +3,39 @@
     src: url(../fonts/Victoriana.ttf);
 }
 
+a {
+    color: #000000;
+}
+a:hover {
+    color: #000000;
+    text-decoration: none;
+}
+a:visited {
+    color: #000000;
+    text-decoration: none;
+}
+a:active {
+    color: #000000;
+    text-decoration: none;
+}
+a:focus {
+    color: #000000;
+    text-decoration: none;
+}
+
 .game-wrap {
     font-family: "Comic Sans MS";
 }
 
-.layout-border-v {
+.layout-border-h {
     background: url(../img/layout_border_h.png);
     height: 18px;
 }
-.layout-border-h {
+.layout-border-v {
     background: url(../img/layout_border_v.png);
     width: 18px;
+    height: 100%;
+    float: left;
 }
 .character-block-item {
     padding: 10px;
@@ -164,4 +186,97 @@ a .game-menu-btn, a:hover .game-menu-btn, a:visited .game-menu-btn {
     width: 25px;
     height: 66px;
     display: block;
+}
+
+/*TABS*/
+.g-tabs-wrap {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.g-tab {
+    background: url("../img/tab.png");
+    width: 144px;
+    height: 27px;
+    text-align: center;
+    overflow: hidden;
+}
+.g-tab-content {
+
+}
+.g-tab-panel {
+    display: none;
+}
+.g-tab-panel.active {
+    display: block;;
+}
+/*TABS*/
+
+.g-close-btn {
+    position: absolute; 
+    top: 0; 
+    right: 0;
+    background-image: url("../img/buttons/close_button.png");
+    display: block;
+    width: 30px;
+    height: 30px;
+}
+.g-checkbox {
+    background-image: url("../img/buttons/unsel_button.png");
+    width: 22px;
+    height: 22px;
+    display: block;
+}
+
+.g-checkbox.checked {
+    background-image: url("../img/buttons/sel_button.png");
+    width: 23px;
+    height: 25px;
+}
+.g-checkbox.disabled {
+    background-image: url("../img/buttons/unactive_button.png");
+    width: 25px;
+    height: 25px;
+}
+
+.g-right {
+    float: right;
+}
+
+.g-left {
+    float: left;
+}
+
+.g-apprentice-full-image {
+    width: 795px;
+    height: 596px;
+    margin-left: calc(-795px/4 - 15px);
+    position: absolute;
+    bottom: 0;
+}
+.g-apprentice-full-image-wrap {
+    position: relative;
+    height: 100%;
+}
+.g-transparent {
+    background:rgba(0,0,0,0.5);
+}
+.g-rules-panel {
+    height: 100%;
+    font-size: 18px;
+}
+.g-rules-panel ul > li {
+    margin-bottom: 5px;
+}
+.g-info-stats-panel-right {
+    margin-left: -36px;
+    font-size: 18px;
+    text-align: right;
+}
+.g-info-stats-panel-left {
+    padding: 20px;
+    font-size: 18px;
+}
+.g-info-stats-panel-right h4, .g-info-stats-panel-left h4 {
+    text-decoration: underline;
 }

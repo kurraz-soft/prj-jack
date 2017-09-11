@@ -38,9 +38,10 @@ $asset = \app\modules\game\assets\AppAsset::register($this);
             <div class="row">
                 <?= \app\modules\game\widgets\StatPanel\StatPanel::widget() ?>
             </div>
-            <div class="layout-border-v row"></div>
+            <div class="layout-border-h row"></div>
             <div class="row" style="height: calc(100% - 45px - 18px);">
                 <div class="col-lg-12" style="padding: 0; position: relative; height: 100%">
+                    <?php if($this->context->is_outside): ?>
                     <div class="game-move-quick-panel">
                         <div style="font-weight: bold">Идти</div>
                         <div><a href="<?= Url::to(['white-city/index']) ?>">W</a></div>
@@ -51,11 +52,12 @@ $asset = \app\modules\game\assets\AppAsset::register($this);
                         <div><a href="<?= Url::to(['fog-border/index']) ?>">F</a></div>
                     </div>
                     <a class="game-home-btn" href="<?= Url::to(['home/index']) ?>" title="Домой"></a>
+                    <?php endif; ?>
                     <?= $content ?>
                 </div>
             </div>
         </div>
-        <div class="layout-border-h" style="height: 100%; float: left"></div>
+        <div class="layout-border-v"></div>
         <div class="col-md-2 text-center" style="margin-left: -18px">
             <?= \app\modules\game\widgets\CharacterInfo\CharacterInfo::widget() ?>
             <div class="col-md-12 character-block-item">
@@ -65,7 +67,7 @@ $asset = \app\modules\game\assets\AppAsset::register($this);
                         <div><a href="#" class="game-slave-influence-btn" title="Повлиять">&nbsp;</a></div>
                     </div>
                     <div class="col-md-8">
-                        <a href="#"><img src="<?= $asset->baseUrl . '/img/no_ava.jpg' ?>"></a>
+                        <a href="<?= Url::to(['home/apprentice-screen']) ?>"><img src="<?= $asset->baseUrl . '/img/no_ava.jpg' ?>"></a>
                     </div>
                     <div class="col-md-2" style="display: flex; flex-direction: column">
                         <div><img src="<?= $asset->baseUrl . '/img/ui/jon-UIadds/info_mature.png' ?>"></div>

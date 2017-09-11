@@ -6,6 +6,7 @@
 
 namespace app\modules\game\controllers;
 
+use app\modules\game\models\libraries\ApprenticesLibrary;
 use yii\helpers\Url;
 
 class HomeController extends GameController
@@ -136,6 +137,22 @@ class HomeController extends GameController
 
         return $this->render('index', [
             'menu' => $menu,
+        ]);
+    }
+
+    public function actionApprenticeScreen()
+    {
+        $this->is_outside = false;
+
+        return $this->render('apprentice_screen');
+    }
+
+    public function actionCharacterScreen()
+    {
+        $this->is_outside = false;
+
+        return $this->render('character_screen', [
+
         ]);
     }
 }

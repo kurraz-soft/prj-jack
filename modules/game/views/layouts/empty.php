@@ -37,14 +37,14 @@ $asset = \app\modules\game\assets\AppAsset::register($this);
         <div class="col-md-10" style="height: 100%">
             <div class="row">
             </div>
-            <div class="layout-border-v row"></div>
+            <div class="layout-border-h row"></div>
             <div class="row" style="height: calc(100% - 45px - 18px);">
                 <div class="col-lg-12" style="padding: 0; position: relative; height: 100%">
                     <?= $content ?>
                 </div>
             </div>
         </div>
-        <div class="layout-border-h" style="height: 100%; float: left"></div>
+        <div class="layout-border-v"></div>
         <div class="col-md-2 text-center" style="margin-left: -18px">
         </div>
     </div>

@@ -15,6 +15,8 @@ abstract class GameController extends Controller
 {
     public $asset;
 
+    public $is_outside = true;
+
     public function init()
     {
         $this->on(Controller::EVENT_BEFORE_ACTION, function () {
