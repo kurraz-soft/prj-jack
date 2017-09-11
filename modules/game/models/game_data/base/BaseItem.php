@@ -40,8 +40,13 @@ abstract class BaseItem extends BaseGameDataList
     abstract public function loadFromLibrary();
     abstract public function getDefaultId();
 
-    public function equip()
+    public function equip($id)
     {
+        if(!$id) $id = $this->getDefaultId();
+
+        $this->id = $id;
+        $this->init();
+
         //TODO
     }
 }

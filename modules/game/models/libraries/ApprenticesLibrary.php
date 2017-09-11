@@ -961,13 +961,13 @@ class ApprenticesLibrary
         static::importTraitsFromData($apprentice, $data);
 
         //Equipment
-        $apprentice->equipment->weapon->id = $data['seed_wpn'];
-        $apprentice->equipment->weaponSecond->id = $data['seed_scnd'];
-        $apprentice->equipment->armor->id = $data['seed_armor'];
-        $apprentice->equipment->cloth->id = $data['seed_cloth'];
-        $apprentice->equipment->weaponBack->id = $data['seed_back_wpn'];
-        $apprentice->equipment->weaponLeft->id = $data['seed_left_wpn'];
-        $apprentice->equipment->weaponLeg->id = $data['seed_leg_wpn'];
+        $apprentice->equipment->weapon->equip($data['seed_wpn']);
+        $apprentice->equipment->weaponSecond->equip($data['seed_scnd']);
+        $apprentice->equipment->armor->equip($data['seed_armor']);
+        $apprentice->equipment->cloth->equip($data['seed_cloth']);
+        $apprentice->equipment->weaponBack->equip($data['seed_back_wpn']);
+        $apprentice->equipment->weaponLeft->equip($data['seed_left_wpn']);
+        $apprentice->equipment->weaponLeg->equip($data['seed_leg_wpn']);
 
         //Descriptions
         $apprentice->descriptions->family = $data['stock_family_description'];

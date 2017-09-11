@@ -7,13 +7,13 @@
 namespace app\modules\game\models\game_data\items;
 
 
-use app\modules\game\models\game_data\base\BaseItem;
+use app\modules\game\models\game_data\base\BaseItemOutfit;
 
-class OutfitBody extends BaseItem
+class OutfitBody extends BaseItemOutfit
 {
-    public function loadFromLibrary()
+    public function getType()
     {
-        // TODO: Implement loadFromLibrary() method.
+        return 'body';
     }
 
     public function getDefaultId()

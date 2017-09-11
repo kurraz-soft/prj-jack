@@ -7,6 +7,7 @@
 namespace app\modules\game\models\libraries;
 
 
+use app\modules\game\models\game_data\items\Armor;
 use yii\base\Exception;
 
 class ArmorLibrary
@@ -28,5 +29,12 @@ class ArmorLibrary
         }
 
         throw new Exception("Can't find item");
+    }
+
+    public static function fillObject(Armor $armor, $data)
+    {
+        $armor->name = $data['name'];
+        $armor->description = $data['description'];
+        $armor->bonus = $data['bonus'];
     }
 }
