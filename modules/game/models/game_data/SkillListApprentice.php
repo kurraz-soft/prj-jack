@@ -13,6 +13,7 @@ use app\modules\game\models\game_data\skills\DancerFemale;
 use app\modules\game\models\game_data\skills\EnchanterFemale;
 use app\modules\game\models\game_data\skills\ExpressionFemale;
 use app\modules\game\models\game_data\skills\GladiatorFemale;
+use app\modules\game\models\game_data\skills\GymnasticsFemale;
 use app\modules\game\models\game_data\skills\HorseFemale;
 use app\modules\game\models\game_data\skills\MaidFemale;
 use app\modules\game\models\game_data\skills\MusicFemale;
@@ -37,6 +38,7 @@ use app\modules\game\models\game_data\skills\VocalFemale;
  * @property SecretaryFemale $secretary
  * @property VocalFemale $vocal
  * @property MusicFemale $music
+ * @property GymnasticsFemale $gymnastics
  */
 class SkillListApprentice extends BaseGameDataList
 {
@@ -55,6 +57,7 @@ class SkillListApprentice extends BaseGameDataList
             'secretary' => SecretaryFemale::class,
             'vocal' => VocalFemale::class,
             'music' => MusicFemale::class,
+            'gymnastics' => GymnasticsFemale::class,
         ];
     }
 }
