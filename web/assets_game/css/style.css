@@ -206,6 +206,7 @@ a .game-menu-btn, a:hover .game-menu-btn, a:visited .game-menu-btn {
 }
 .g-tab-panel {
     display: none;
+    height: 650px;
 }
 .g-tab-panel.active {
     display: block;;
@@ -279,4 +280,15 @@ a .game-menu-btn, a:hover .game-menu-btn, a:visited .game-menu-btn {
 }
 .g-info-stats-panel-right h4, .g-info-stats-panel-left h4 {
     text-decoration: underline;
+}
+.g-tab-aura {
+    background: url("../img/ui/grimdark/page_aura.gif") no-repeat center;
+    background-size: cover;
+    height: 100%;
+    margin-left: -15px;
+    margin-right: -15px;
+    padding: 5px 5px 5px 20px;
+}
+.g-info-text-panel {
+    height: 150px;
 }
