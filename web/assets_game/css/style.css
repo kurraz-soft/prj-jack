@@ -270,9 +270,10 @@ a .game-menu-btn, a:hover .game-menu-btn, a:visited .game-menu-btn {
     margin-bottom: 5px;
 }
 .g-info-stats-panel-right {
-    margin-left: -36px;
+    /*margin-left: -36px;*/
     font-size: 18px;
     text-align: right;
+    width: calc(16.6% - 36px);
 }
 .g-info-stats-panel-left {
     padding: 20px;
