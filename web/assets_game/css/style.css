@@ -250,7 +250,7 @@ a .game-menu-btn, a:hover .game-menu-btn, a:visited .game-menu-btn {
 .g-apprentice-full-image {
     width: 795px;
     height: 596px;
-    margin-left: calc(-795px/4 - 15px);
+    margin-left: calc(-650px/4);
     position: absolute;
     bottom: 0;
 }

@@ -51,6 +51,7 @@ $this->title = 'Экран ученика';
             <div class="layout-border-h row"></div>
 
             <div class="g-tab-content" style="height: calc(100% - 200px);">
+<!--                RULES TAB-->
                 <div id="tab-rules" class="row g-tab-panel active" style="background: url(<?=  $this->context->asset->baseUrl . '/img/bg/interiors/basic_kitchen.jpg' ?>) no-repeat center; background-size: cover; color: #d8b317; height: 100%">
                     <div class="col-md-3 g-transparent g-rules-panel">
                         <h4>РЕЖИМ СНА:</h4>
@@ -64,7 +65,7 @@ $this->title = 'Экран ученика';
                         <ul class="list-unstyled">
                             <li class="clearfix"><a href="#" class="g-checkbox g-left"></a>&nbsp; - Сухой корм</li>
                             <li class="clearfix"><a href="#" class="g-checkbox g-left"></a>&nbsp; - Свежая еда</li>
-                            <li class="clearfix"><a href="#" class="g-checkbox g-left"></a>&nbsp; - Сперма исчадия</li>
+                            <li class="clearfix"><a href="#" class="g-checkbox disabled g-left"></a>&nbsp; - Сперма исчадия</li>
                             <li class="clearfix"><a href="#" class="g-checkbox g-left"></a>&nbsp; - Объедки со стола</li>
                         </ul>
                         <br />
@@ -92,15 +93,54 @@ $this->title = 'Экран ученика';
                         </ul>
                     </div>
                 </div>
-                <div id="tab-anatomy" class="g-tab-panel">
-
+<!--                RULES TAB/-->
+<!--                ANATOMY TAB-->
+                <div id="tab-anatomy" class="g-tab-panel" style="font-size: 18px">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div style="
+                            background-image: url(/assets_game/img/girls/body/boobs_B.jpg);
+                            width: 400px;
+                            height: 290px"></div>
+                            <br>
+                            <p>breast</p>
+                            <p>lactation</p>
+                            <p>nipples_piercing</p>
+                            <p>breast_mod</p>
+                            <p>age</p>
+                        </div>
+                        <div class="col-md-6" style="text-align: right">
+                            <div style="
+                            background-image: url(/assets_game/img/girls/body/pussy_g1.jpg);
+                            width: 400px;
+                            height: 290px;
+                            float: right;"></div>
+                            <div class="clearfix"></div>
+                            <br>
+                            <p>vagina</p>
+                            <p>anus</p>
+                            <p>clit</p>
+                            <p>vagina_mod</p>
+                            <p>tattoo</p>
+                        </div>
+                    </div>
+                    <p style="text-align: center">
+                        Шарм
+                        <br>
+                        Красота = Природная красота + Пластическая операция - (Шрамы + Синяки)<br>
+                        Экзотичность = Природная экзотичность + Тауировок нет + Пирсинг + Одежда<br>
+                        Стиль = Одежда + Без косметики + Растрепаные волосы + Уход за телом + Гигиена + Грация<br>
+                    </p>
                 </div>
+<!--                ANATOMY TAB/-->
                 <div id="tab-equipment" class="g-tab-panel">
 
                 </div>
+<!--                AURA TAB-->
                 <div id="tab-aura" class="g-tab-panel">
 
                 </div>
+<!--                AURA TAB/-->
             </div>
 
             <div class="layout-border-h row"></div>
