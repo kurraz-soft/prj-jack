@@ -12,6 +12,12 @@ use app\modules\game\models\game_data\base\INamedValues;
 
 class Brand extends BaseBodyPart implements INamedValues
 {
+    const NO = 0;
+    const CLAIMED = 1;
+    const SLAVE_TATTOO = 2;
+    const MAGIC_BRAND = 3;
+    const FOREIGN_BRAND = 4;
+
     public $value = 0;
 
     public function serializableParams()

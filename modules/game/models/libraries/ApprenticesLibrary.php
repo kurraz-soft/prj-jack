@@ -965,6 +965,8 @@ class ApprenticesLibrary
         $apprentice->body->nose->has_piercing = $data['seed_nose_piercing'];
         $apprentice->body->has_scarification = $data['seed_scarification'];
         //$data['seed_nosdril_piercing'] //??
+        //TODO Tattoos
+        $apprentice->body->brand->value = $data['seed_brand'];
 
         //Traits
         static::importTraitsFromData($apprentice, $data);
