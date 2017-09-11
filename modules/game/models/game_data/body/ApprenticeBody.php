@@ -24,6 +24,26 @@ class ApprenticeBody extends BaseGameDataList
      */
     public $anus;
     /**
+     * @var Ears
+     */
+    public $ears;
+    /**
+     * @var Brand
+     */
+    public $brand;
+    /**
+     * @var Belly
+     */
+    public $belly;
+    /**
+     * @var Nose
+     */
+    public $nose;
+    /**
+     * @var Tongue
+     */
+    public $tongue;
+    /**
      * @var Tattoo
      */
     public $tattoo;
@@ -39,6 +59,10 @@ class ApprenticeBody extends BaseGameDataList
      * @var Mind
      */
     public $mind;
+    /**
+     * @var bool
+     */
+    public $has_scarification = false;
 
     public function serializableParams()
     {
@@ -49,6 +73,12 @@ class ApprenticeBody extends BaseGameDataList
             'tattoo' => Tattoo::class,
             'makeup' => Makeup::class,
             'mind' => Mind::class,
+            'ears' => Ears::class,
+            'brand' => Brand::class,
+            'scarification' => '',
+            'nose' => Nose::class,
+            'belly' => Belly::class,
+            'tongue' => Tongue::class,
         ];
     }
 }

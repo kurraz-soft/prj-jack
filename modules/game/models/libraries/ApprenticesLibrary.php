@@ -347,7 +347,6 @@ class ApprenticesLibrary
         $data['seed_niple_piercing'] = $data['seed_niple_piercing'] ?? 0;
         $data['seed_clit_piercing'] = $data['seed_clit_piercing'] ?? 0;
         $data['seed_ear_piercing'] = $data['seed_ear_piercing'] ?? 0;
-        $data['seed_ear_piercing'] = $data['seed_ear_piercing'] ?? 0;
         $data['seed_thongue_piercing'] = $data['seed_thongue_piercing'] ?? 0;
         $data['seed_belly_piercing'] = $data['seed_belly_piercing'] ?? 0;
         $data['seed_nosdril_piercing'] = $data['seed_nosdril_piercing'] ?? 0;
@@ -956,6 +955,16 @@ class ApprenticesLibrary
         $apprentice->body->vagina->is_virgin = $data['seed_virginity'] == 0;
         $apprentice->body->vagina->value = $apprentice->body->vagina->is_virgin ? 0 : 2;
         $apprentice->body->mind->value = $data['seed_psy_basic'];
+        //Piercing
+        $apprentice->body->breast->has_nipples_piercing = $data['seed_niple_piercing'];
+        $apprentice->body->vagina->has_clit_piercing = $data['seed_clit_piercing'];
+        $apprentice->body->ears->has_piercing = $data['seed_ear_piercing'];
+        $apprentice->body->tongue->has_piercing = $data['seed_thongue_piercing'];
+        $apprentice->body->tongue->splitted = $data['seed_thongue_split'];
+        $apprentice->body->belly->has_navel_piercing = $data['seed_belly_piercing'];
+        $apprentice->body->nose->has_piercing = $data['seed_nose_piercing'];
+        $apprentice->body->has_scarification = $data['seed_scarification'];
+        //$data['seed_nosdril_piercing'] //??
 
         //Traits
         static::importTraitsFromData($apprentice, $data);
