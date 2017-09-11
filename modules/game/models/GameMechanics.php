@@ -48,19 +48,18 @@ class GameMechanics
     {
         /**
          * @var GameData $game_data
+         * @var GameData $game_data_load
          */
         if($n === null)
         {
-            $game_data = GameData::find()->where(['user_id' => \Yii::$app->user->id, 'active' => true])->one();
+            $game_data = GameData::findActive(\Yii::$app->user->id);
         }else
         {
-            $game_data = GameData::find()->where(['user_id' => \Yii::$app->user->id, 'n' => $n])->one();
-            if(!$game_data->active)
-            {
-                GameData::updateAll(['active' => false],['user_id' => \Yii::$app->user->id]);
-                $game_data->active = true;
-                $game_data->save();
-            }
+            $game_data_load = GameData::find()->where(['user_id' => \Yii::$app->user->id, 'n' => $n])->one();
+            $game_data = GameData::findActive(\Yii::$app->user->id);
+
+            $game_data->data = $game_data_load->data;
+            $game_data->save();
         }
         $this->activeGameData = $game_data;
 
@@ -83,19 +82,14 @@ class GameMechanics
     }
 
     /**
-     * @var int $n - save game slot
      * @var string $character_id - character_id from masters library
      * @return GameData
      */
-    public function newGame($n, $character_id)
+    public function newGame($character_id)
     {
-        $game = GameData::find()->where(['user_id' => \Yii::$app->user->id, 'n' => $n])->one();
-        if($game) $game->delete();
-
-        $game = new GameData();
-        $game->n = $n;
-        $game->active = true;
-        $game->user_id = \Yii::$app->user->id;
+        $game = GameData::findActive(\Yii::$app->user->id);
+        $game->data = '';
+        $game->save();
 
         $this->activeGameData = $game;
 

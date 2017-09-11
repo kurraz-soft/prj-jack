@@ -3,7 +3,6 @@
 namespace app\modules\game\models;
 
 use app\models\User;
-use Yii;
 
 /**
  * This is the model class for table "game_data".
@@ -88,5 +87,20 @@ class GameData extends \yii\db\ActiveRecord
     public function getUser()
     {
         return $this->hasOne(User::className(), ['id' => 'user_id']);
+    }
+
+    public static function findActive($user_id)
+    {
+        $data = static::find()->where(['user_id' => $user_id, 'active' => true])->one();
+        if(!$data)
+        {
+            $data = new static();
+            $data->user_id = $user_id;
+            $data->n = -1;
+            $data->active = true;
+            $data->save();
+        }
+
+        return $data;
     }
 }

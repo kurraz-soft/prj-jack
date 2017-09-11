@@ -26,15 +26,14 @@ class DefaultController extends Controller
     }
 
     /**
-     * @param int $n - save_game slot number
      * @param string $id - selected character type id
      * @return string
      */
-    public function actionCharacterSelect($n, $id = null)
+    public function actionCharacterSelect($id = null)
     {
         if($id)
         {
-            GameMechanics::getInstance()->newGame($n, $id);
+            GameMechanics::getInstance()->newGame($id);
             GameMechanics::getInstance()->saveGame();
 
             return $this->redirect(['home/index']);

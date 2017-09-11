@@ -12,7 +12,7 @@ use kartik\widgets\ActiveForm;
 $this->title = 'Jack-o-nine Web version';
 ?>
 <div class="text-vertical-center" style="background: center no-repeat url(/img/msg_bg.jpg);">
-    <h1>Jack-o-nine tails</h1>
+    <h1>Project Jack</h1>
     <h3>Erotic slave trainer game</h3>
     <br>
     <?php if(Yii::$app->user->isGuest): ?>

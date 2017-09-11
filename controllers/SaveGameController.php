@@ -15,28 +15,9 @@ class SaveGameController extends Controller
 {
     public $layout = 'landing';
 
-    public function actionNew($n = null)
+    public function actionNew()
     {
-        if($n !== null)
-        {
-            return $this->redirect(['/game', 'new' => $n]);
-        }else
-        {
-            /**
-             * @var GameData[]
-             */
-            $saves = GameData::find()->where(['user_id' => \Yii::$app->user->id])->all();
-            $tmp = [];
-            foreach ($saves as $s)
-            {
-                $tmp[$s->n] = $s;
-            }
-            $saves = $tmp;
-
-            return $this->render('new', [
-                'saves' => $saves,
-            ]);
-        }
+        return $this->redirect(['/game', 'new' => '1']);
     }
 
     public function actionLoad($n = null)
@@ -51,7 +32,7 @@ class SaveGameController extends Controller
             /**
              * @var GameData[]
              */
-            $saves = GameData::find()->where(['user_id' => \Yii::$app->user->id])->all();
+            $saves = GameData::find()->where(['user_id' => \Yii::$app->user->id, 'active' => false])->all();
             $tmp = [];
             foreach ($saves as $s)
             {
