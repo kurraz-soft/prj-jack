@@ -42,7 +42,7 @@ class ApprenticeTest extends Unit
         $ap->unserialize([
             'attributes' => [
                 'beauty' => [
-                    'value' => 4,
+                    '_value' => 4,
                 ],
             ],
         ]);
@@ -60,7 +60,7 @@ class ApprenticeTest extends Unit
         $ap->unserialize([
             'attributes' => [
                 'beauty' => [
-                    'value' => 4,
+                    '_value' => 4,
                 ],
             ],
             'traits' => [

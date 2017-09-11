@@ -75,7 +75,7 @@ class ApprenticeBody extends BaseGameDataList
             'mind' => Mind::class,
             'ears' => Ears::class,
             'brand' => Brand::class,
-            'scarification' => '',
+            'has_scarification' => '',
             'nose' => Nose::class,
             'belly' => Belly::class,
             'tongue' => Tongue::class,

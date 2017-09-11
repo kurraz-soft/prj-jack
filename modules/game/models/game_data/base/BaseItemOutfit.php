@@ -21,6 +21,8 @@ abstract class BaseItemOutfit extends BaseItem
 
     public function loadFromLibrary()
     {
+        if(!$this->id) $this->id = $this->getDefaultId();
+
         $data = OutfitLibrary::findById($this->id, $this->getType());
         OutfitLibrary::fillObject($this, $data);
     }

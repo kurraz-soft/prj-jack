@@ -16,6 +16,8 @@ class Armor extends BaseItem
 
     public function loadFromLibrary()
     {
+        if(!$this->id) $this->id = $this->getDefaultId();
+
         $item_data = ArmorLibrary::findById($this->id);
         ArmorLibrary::fillObject($this,$item_data);
     }
