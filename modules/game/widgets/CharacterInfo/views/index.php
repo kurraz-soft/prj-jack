@@ -2,6 +2,8 @@
 /**
  * @var \app\modules\game\models\game_data\Character $character
  */
+use yii\helpers\Url;
+
 $asset = new \app\modules\game\assets\AppAsset();
 ?>
  <div class="col-md-12 character-block-item">
@@ -10,7 +12,7 @@ $asset = new \app\modules\game\assets\AppAsset();
             <div>AUS</div>
         </div>
         <div class="col-md-8">
-            <a href="#"><img src="<?= $asset->baseUrl ?>/img/master/master_<?= $character->avatar ?>.jpg"></a>
+            <a href="<?= Url::to(['home/character-screen']) ?>"><img src="<?= $asset->baseUrl ?>/img/master/master_<?= $character->avatar ?>.jpg"></a>
         </div>
         <div class="col-md-2"></div>
     </div>

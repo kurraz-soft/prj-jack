@@ -1,7 +1,6 @@
 <?php
 /**
  * @var \yii\web\View $this
- * @var array $menu
  *
  * @var \app\modules\game\models\game_data\Apprentice $apprentice
  */

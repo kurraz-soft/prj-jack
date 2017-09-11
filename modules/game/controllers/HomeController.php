@@ -6,6 +6,7 @@
 
 namespace app\modules\game\controllers;
 
+use app\modules\game\models\GameMechanics;
 use app\modules\game\models\libraries\ApprenticesLibrary;
 use yii\helpers\Url;
 
@@ -152,7 +153,7 @@ class HomeController extends GameController
         $this->is_outside = false;
 
         return $this->render('character_screen', [
-
+            'character' => GameMechanics::getInstance()->gameRegister->character,
         ]);
     }
 }
