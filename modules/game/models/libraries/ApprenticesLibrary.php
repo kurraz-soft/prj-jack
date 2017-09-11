@@ -91,8 +91,6 @@ class ApprenticesLibrary
      */
     public static function fillUpLoadedData($data)
     {
-        //TODO fill up empty json values
-
         $data['seed_world'] = VarHelper::existOrElse($data, 'seed_world', WorldLibrary::getRandomWorldId());
         $world = WorldLibrary::factory($data['seed_world']);
         $data['seed_family'] = VarHelper::existOrElse($data, 'seed_family', RandomHelper::randArrayValue($world->getAvailableFamilyOriginIds()));
