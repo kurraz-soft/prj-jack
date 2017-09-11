@@ -316,7 +316,7 @@ class ApprenticesLibrary
         if(mt_rand(1, $a) == $b) $data['seed_sub_horse'] += mt_rand(1,3);
         if(mt_rand(1, $a) == $b) $data['seed_sub_tentacles'] += mt_rand(1,3);
         if(mt_rand(1, $a) == $b) $data['seed_sub_arachnidSpider'] += mt_rand(1,3);
-        if(mt_rand(1, $a) == $b) $data['seed_sub_polypusvermin'] += mt_rand(1,3);
+        //if(mt_rand(1, $a) == $b) $data['seed_sub_polypusvermin'] += mt_rand(1,3);
         if(mt_rand(1, $a) == $b) $data['seed_sub_hug'] += mt_rand(1,3);
         if(mt_rand(1, $a) == $b) $data['seed_sub_kiss'] += mt_rand(1,3);
         if(mt_rand(1, $a) == $b) $data['seed_sub_bj'] += mt_rand(1,3);
@@ -967,6 +967,7 @@ class ApprenticesLibrary
         //$data['seed_nosdril_piercing'] //??
         //TODO Tattoos
         $apprentice->body->brand->value = $data['seed_brand'];
+        //TODO Pregnancy
 
         //Traits
         static::importTraitsFromData($apprentice, $data);
