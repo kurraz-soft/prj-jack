@@ -19,7 +19,7 @@ class VarHelper
         return static::exist($array, $key)? $array[$key] : $else;
     }
 
-    static public function getNamespaceClasses($namespace)
+    static public function getNamespaceClasses($namespace, $is_recursive = true)
     {
         $folder = str_replace('app', \Yii::getAlias('@app'), $namespace);
         $folder = preg_replace('#\\\#','/',$folder);
@@ -30,6 +30,14 @@ class VarHelper
 
         foreach ($files as $file)
         {
+            if($file == '.' || $file == '..') continue;
+
+            if($is_recursive && is_dir($folder.'/'.$file))
+            {
+                $classes = array_merge($classes, static::getNamespaceClasses($namespace . '\\' . $file));
+                continue;
+            }
+
             list($name, $ext) = explode('.', $file);
             if($ext != 'php') continue;
 

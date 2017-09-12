@@ -73,6 +73,13 @@ class LocationManager extends BaseGameData
     public function getLocation($route)
     {
         $index = serialize($route);
+
+        if(!isset($this->locations[$index]))
+        {
+            $route_parts = explode('/',$route[0]);
+            $index = serialize([$route_parts[0] . '/' . $route_parts[1] . '/' . $route_parts[2] . '/index']);
+        }
+
         return $this->locations[$index] ?? null;
     }
 }

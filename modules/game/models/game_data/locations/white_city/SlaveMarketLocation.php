@@ -4,7 +4,7 @@
  * User: Kurraz
  */
 
-namespace app\modules\game\models\game_data\locations;
+namespace app\modules\game\models\game_data\locations\white_city;
 
 
 use app\modules\game\models\game_data\Apprentice;
