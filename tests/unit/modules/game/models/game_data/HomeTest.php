@@ -20,4 +20,12 @@ class HomeTest extends Unit
 
         expect($params['storage'])->equals(StorageHomeRoom::class);
     }
+
+    public function testSettingDefaultLocation()
+    {
+        $h = new Home();
+        $h->unserialize([]);
+
+        expect_that(is_array($h->location_route) && count($h->location_route) > 0);
+    }
 }

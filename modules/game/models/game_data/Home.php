@@ -16,6 +16,7 @@ use app\modules\game\models\game_data\home_rooms\KitchenHomeRoom;
 use app\modules\game\models\game_data\home_rooms\LabHomeRoom;
 use app\modules\game\models\game_data\home_rooms\RefrigeratorHomeRoom;
 use app\modules\game\models\game_data\home_rooms\StorageHomeRoom;
+use app\modules\game\models\game_data\locations\WhiteCityLocation;
 
 class Home extends BaseGameDataList
 {
@@ -63,6 +64,17 @@ class Home extends BaseGameDataList
     public $lab_available = false;
 
     public $img_id = 'slum';
+
+    public $location_route;
+
+    public function init()
+    {
+        parent::init();
+
+        //Default district route
+        if(!$this->location_route)
+            $this->location_route = WhiteCityLocation::getRoute();
+    }
 
     public function getImgHall()
     {
