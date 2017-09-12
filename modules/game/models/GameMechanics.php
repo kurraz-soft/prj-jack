@@ -24,19 +24,25 @@ class GameMechanics
      * @var static
      */
     private static $_inst = null;
+    private $user_id;
 
-    static public function getInstance()
+    static public function getInstance($user_id = null)
     {
         if(!static::$_inst)
         {
-            static::$_inst = new static();
+            static::$_inst = new static($user_id);
         }
 
         return static::$_inst;
     }
 
-    private function __construct()
+    private function __construct($user_id)
     {
+        if(!$user_id)
+            $user_id = \Yii::$app->user->id;
+
+        $this->user_id = $user_id;
+
         $this->gameRegister = new GameDataRegister();
     }
 
@@ -52,11 +58,11 @@ class GameMechanics
          */
         if($n === null)
         {
-            $game_data = GameData::findActive(\Yii::$app->user->id);
+            $game_data = GameData::findActive($this->user_id);
         }else
         {
-            $game_data_load = GameData::find()->where(['user_id' => \Yii::$app->user->id, 'n' => $n])->one();
-            $game_data = GameData::findActive(\Yii::$app->user->id);
+            $game_data_load = GameData::find()->where(['user_id' => $this->user_id, 'n' => $n])->one();
+            $game_data = GameData::findActive($this->user_id);
 
             $game_data->data = $game_data_load->data;
             $game_data->save();
@@ -87,7 +93,7 @@ class GameMechanics
      */
     public function newGame($character_id)
     {
-        $game = GameData::findActive(\Yii::$app->user->id);
+        $game = GameData::findActive($this->user_id);
         $game->data = '';
         $game->save();
 
