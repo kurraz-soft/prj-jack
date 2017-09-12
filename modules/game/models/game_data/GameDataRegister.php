@@ -28,6 +28,11 @@ class GameDataRegister
     public $character;
 
     /**
+     * @var LocationManager
+     */
+    public $location_manager;
+
+    /**
      * @var BaseGameData[]
      */
     private $_objects;
@@ -37,6 +42,7 @@ class GameDataRegister
         $this->_objects = [
             $this->date = new Date(),
             $this->debt = new Debt(),
+            $this->location_manager = new LocationManager(),
             $this->character = new Character(),
         ];
     }
@@ -51,5 +57,15 @@ class GameDataRegister
     {
         foreach ($this->_objects as $obj)
             $obj->export($game_data);
+    }
+
+    public function getCharacterLocation()
+    {
+        if(!$this->location_manager->getLocation($this->character->location_route))
+        {
+            $this->character->location_route = LocationManager::getStartLocationRoute();
+        }
+
+        return $this->location_manager->getLocation($this->character->location_route);
     }
 }

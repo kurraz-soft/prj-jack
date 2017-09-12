@@ -8,9 +8,15 @@ namespace app\modules\game\models\game_data\locations;
 
 
 use app\modules\game\models\game_data\Apprentice;
+use app\modules\game\models\game_data\base\BaseLocation;
 
-class SlaveMarketLocation
+class SlaveMarketLocation extends BaseLocation
 {
+    public function getRoute()
+    {
+        return ['/game/white-city/slave-market'];
+    }
+
     public function getSlaveEpithet(Apprentice $apprentice)
     {
         $ret = 'доступная по цене';
@@ -39,5 +45,10 @@ class SlaveMarketLocation
             $ret = 'экзотическая';
 
         return $ret;
+    }
+
+    public function serializableParams()
+    {
+        return [];
     }
 }

@@ -32,7 +32,7 @@ $asset = \app\modules\game\assets\AppAsset::register($this);
 <?= $this->renderFile('@app/views/layouts/_leftmenu.php') ?>
 
 <div class="container-fluid game-wrap">
-    <?php \yii\widgets\Pjax::begin() ?>
+    <?php \app\modules\game\widgets\FixedPjax\FixedPjax::begin() ?>
     <div class="row" style="height: 100vh; background: #e0d2af; min-height: 900px">
         <div class="col-md-10" style="height: 100%">
             <div class="row">
@@ -121,7 +121,7 @@ $asset = \app\modules\game\assets\AppAsset::register($this);
             </div>
         </div>
     </div>
-    <?php \yii\widgets\Pjax::end() ?>
+    <?php \app\modules\game\widgets\FixedPjax\FixedPjax::end() ?>
 </div>
 <!-- /.container -->
 

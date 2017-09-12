@@ -24,8 +24,25 @@ abstract class GameController extends Controller
 
             GameMechanics::getInstance()->loadGame();
 
+            $this->setCharacterLocation();
+        });
+        $this->on(Controller::EVENT_AFTER_ACTION, function (){
+
+            GameMechanics::getInstance()->saveGame();
         });
 
         parent::init();
+    }
+
+    public function setCharacterLocation()
+    {
+        $character = GameMechanics::getInstance()->gameRegister->character;
+        $location_manager = GameMechanics::getInstance()->gameRegister->location_manager;
+
+        //set character current location
+        $route = ['/' . $this->getRoute()];
+
+        if($location_manager->getLocation($route))
+            $character->location_route = $route;
     }
 }

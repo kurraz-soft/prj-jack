@@ -97,4 +97,9 @@ class WhiteCityController extends GameController
             'bg' => 'market_large.jpg',
         ]);
     }
+
+    public function actionSlaveMarket()
+    {
+
+    }
 }

@@ -22,7 +22,9 @@ class DefaultController extends Controller
             return $this->redirect(['character-select','n' => $new]);
         }
 
-        return $this->redirect(['home/index']);
+        GameMechanics::getInstance()->loadGame();
+
+        return $this->redirect(GameMechanics::getInstance()->gameRegister->getCharacterLocation()->getRoute());
     }
 
     /**

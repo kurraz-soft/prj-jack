@@ -19,6 +19,8 @@ use app\modules\game\models\game_data\attributes\PersonalityMale;
 use app\modules\game\models\game_data\attributes\StrengthMale;
 use app\modules\game\models\game_data\base\BaseGameData;
 use app\modules\game\models\game_data\base\BaseSkill;
+use app\modules\game\models\game_data\base\ILocation;
+use app\modules\game\models\GameMechanics;
 use app\modules\game\models\libraries\MastersLibrary;
 
 class Character extends BaseGameData
@@ -71,6 +73,12 @@ class Character extends BaseGameData
      */
     public $skillsSex;
 
+    /**
+     * Current character location
+     * @var array
+     */
+    public $location_route;
+
     private $_child_game_data = [
         'energy' => Energy::class,
         'mood' => MoodMale::class,
@@ -99,6 +107,7 @@ class Character extends BaseGameData
             'skills' => $this->skills->serialize(),
             'skillsSex' => $this->skillsSex->serialize(),
             'avatar' => $this->avatar,
+            'location' => $this->location_route,
         ];
     }
 
@@ -119,6 +128,13 @@ class Character extends BaseGameData
         if(isset($serialized_data['avatar']))
         {
             $this->avatar = $serialized_data['avatar'];
+        }
+        if(!empty($serialized_data['location']))
+        {
+            $this->location_route = $serialized_data['location'];
+        }else
+        {
+            $this->location_route = LocationManager::getStartLocationRoute();
         }
     }
 
