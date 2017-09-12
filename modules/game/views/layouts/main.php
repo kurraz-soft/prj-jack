@@ -8,6 +8,7 @@
 use yii\helpers\Html;
 use yii\helpers\Url;
 
+\edgardmessias\assets\nprogress\NProgressAsset::register($this);
 \app\assets\AppAsset::register($this);
 $asset = \app\modules\game\assets\AppAsset::register($this);
 $character = \app\modules\game\models\GameMechanics::getInstance()->gameRegister->character;
@@ -45,12 +46,12 @@ $character = \app\modules\game\models\GameMechanics::getInstance()->gameRegister
                     <?php if($this->context->is_outside): ?>
                     <div class="game-move-quick-panel">
                         <div style="font-weight: bold">Идти</div>
-                        <div><a href="<?= Url::to(['white-city/index']) ?>">W</a></div>
-                        <div><a href="<?= Url::to(['bull-quoter/index']) ?>">B</a></div>
-                        <div><a href="<?= Url::to(['snake-quoter/index']) ?>">S</a></div>
-                        <div><a href="<?= Url::to(['outcast-quoter/index']) ?>">O</a></div>
-                        <div><a href="<?= Url::to(['necropolis/index']) ?>">N</a></div>
-                        <div><a href="<?= Url::to(['fog-border/index']) ?>">F</a></div>
+                        <div><a href="<?= Url::to(['white-city/index']) ?>" title="Белый город">W</a></div>
+                        <div><a href="<?= Url::to(['bull-quoter/index']) ?>" title="Бычий квартал">B</a></div>
+                        <div><a href="<?= Url::to(['snake-quoter/index']) ?>" title="Квартал змеи">S</a></div>
+                        <div><a href="<?= Url::to(['outcast-quoter/index']) ?>" title="Квартал отверженных">O</a></div>
+                        <div><a href="<?= Url::to(['necropolis/index']) ?>" title="Некрополис">N</a></div>
+                        <div><a href="<?= Url::to(['fog-border/index']) ?>" title="Граница туманов">F</a></div>
                     </div>
                     <?php if($this->context->getRoute() == 'game/home/index'): ?>
                     <a class="game-home-btn" href="<?= Url::to($character->home->location_route) ?>" title="Выйти из дома"></a>

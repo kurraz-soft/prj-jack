@@ -293,3 +293,7 @@ a .game-menu-btn, a:hover .game-menu-btn, a:visited .game-menu-btn {
 .g-info-text-panel {
     height: 150px;
 }
+
+#nprogress .bar {
+    background: red !important;
+}

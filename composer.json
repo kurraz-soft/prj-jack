@@ -21,7 +21,8 @@
 
         "vlucas/phpdotenv": "2.1.x-dev",
         "vova07/yii2-imperavi-widget": "*",
-        "kartik-v/yii2-widgets": "*"
+        "kartik-v/yii2-widgets": "*",
+        "edgardmessias/yii2-nprogress": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",
