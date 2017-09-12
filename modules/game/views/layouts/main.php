@@ -10,6 +10,7 @@ use yii\helpers\Url;
 
 \app\assets\AppAsset::register($this);
 $asset = \app\modules\game\assets\AppAsset::register($this);
+$character = \app\modules\game\models\GameMechanics::getInstance()->gameRegister->character;
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -51,7 +52,11 @@ $asset = \app\modules\game\assets\AppAsset::register($this);
                         <div><a href="<?= Url::to(['necropolis/index']) ?>">N</a></div>
                         <div><a href="<?= Url::to(['fog-border/index']) ?>">F</a></div>
                     </div>
+                    <?php if($this->context->getRoute() == 'game/home/index'): ?>
+                    <a class="game-home-btn" href="<?= Url::to($character->home->location_route) ?>" title="Выйти из дома"></a>
+                    <?php else: ?>
                     <a class="game-home-btn" href="<?= Url::to(['home/index']) ?>" title="Домой"></a>
+                    <?php endif; ?>
                     <?php endif; ?>
                     <?= $content ?>
                 </div>

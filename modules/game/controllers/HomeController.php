@@ -126,7 +126,7 @@ class HomeController extends GameController
             ],
             [
                 'text' => 'Выйти из дома',
-                'url' => '#',
+                'url' => Url::to(GameMechanics::getInstance()->gameRegister->character->home->location_route),
                 'image' => $this->asset->baseUrl . '/img/ui_overhaul/assistant_assignments.png',
             ],
             [
