@@ -16,7 +16,7 @@ class WhiteCityLocation extends BaseLocation
         return [];
     }
 
-    public function getRoute()
+    public static function getRoute()
     {
         return ['/game/white-city/index'];
     }

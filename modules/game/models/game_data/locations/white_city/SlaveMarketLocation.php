@@ -12,7 +12,7 @@ use app\modules\game\models\game_data\base\BaseLocation;
 
 class SlaveMarketLocation extends BaseLocation
 {
-    public function getRoute()
+    public static function getRoute()
     {
         return ['/game/white-city/slave-market'];
     }

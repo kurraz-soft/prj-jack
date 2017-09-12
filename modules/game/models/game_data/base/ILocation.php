@@ -9,5 +9,5 @@ namespace app\modules\game\models\game_data\base;
 
 interface ILocation
 {
-    public function getRoute();
+    public static function getRoute();
 }
