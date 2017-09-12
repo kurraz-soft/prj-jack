@@ -11,6 +11,7 @@ use app\modules\game\models\game_data\attributes\StrengthMale;
 use app\modules\game\models\game_data\AttributesListCharacter;
 use app\modules\game\models\game_data\Character;
 use app\modules\game\models\game_data\Energy;
+use app\modules\game\models\game_data\Home;
 use app\modules\game\models\libraries\MastersLibrary;
 use Codeception\Test\Unit;
 
@@ -26,6 +27,7 @@ class CharacterTest extends Unit
         expect($char->energy)->isInstanceOf(Energy::class);
         expect($char->attributes)->isInstanceOf(AttributesListCharacter::class);
         expect($char->attributes->strength)->isInstanceOf(StrengthMale::class);
+        expect($char->home)->isInstanceOf(Home::class);
     }
 
     public function testUnserializeExist()

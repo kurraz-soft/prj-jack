@@ -7,20 +7,8 @@
 namespace app\modules\game\models\game_data;
 
 
-use app\modules\game\models\game_data\attributes\BeautyMale;
-use app\modules\game\models\game_data\attributes\GuildRepo;
-use app\modules\game\models\game_data\attributes\HealthMale;
-use app\modules\game\models\game_data\attributes\HygieneMale;
-use app\modules\game\models\game_data\attributes\Libido;
-use app\modules\game\models\game_data\attributes\Lifestyle;
-use app\modules\game\models\game_data\attributes\Mark;
 use app\modules\game\models\game_data\attributes\MoodMale;
-use app\modules\game\models\game_data\attributes\PersonalityMale;
-use app\modules\game\models\game_data\attributes\StrengthMale;
 use app\modules\game\models\game_data\base\BaseGameData;
-use app\modules\game\models\game_data\base\BaseSkill;
-use app\modules\game\models\game_data\base\ILocation;
-use app\modules\game\models\GameMechanics;
 use app\modules\game\models\libraries\MastersLibrary;
 
 class Character extends BaseGameData
@@ -79,6 +67,11 @@ class Character extends BaseGameData
      */
     public $location_route;
 
+    /**
+     * @var Home
+     */
+    public $home;
+
     private $_child_game_data = [
         'energy' => Energy::class,
         'mood' => MoodMale::class,
@@ -86,6 +79,7 @@ class Character extends BaseGameData
         'attributes' => AttributesListCharacter::class,
         'skills' => SkillListCharacter::class,
         'skillsSex' => SkillSexListCharacter::class,
+        'home' => Home::class,
     ];
 
     public function __construct()
@@ -108,6 +102,7 @@ class Character extends BaseGameData
             'skillsSex' => $this->skillsSex->serialize(),
             'avatar' => $this->avatar,
             'location' => $this->location_route,
+            'home' => $this->home->serialize(),
         ];
     }
 

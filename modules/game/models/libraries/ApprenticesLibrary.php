@@ -44,7 +44,6 @@ use app\modules\game\models\game_data\traits\ServiceAffinity;
 use app\modules\game\models\game_data\traits\SportAffinity;
 use app\modules\game\models\game_data\traits\VocalAffinity;
 use app\modules\game\models\game_data\traits\Voice;
-use app\modules\game\models\GameMechanics;
 
 class ApprenticesLibrary
 {
@@ -789,8 +788,8 @@ class ApprenticesLibrary
         $data['seed_leg_wpn'] = VarHelper::existOrElse($data, 'seed_leg_wpn', '');
         $data['seed_cloth'] = VarHelper::existOrElse($data, 'seed_cloth', '');
 
-        //TODO выяснить что это?
-        $data['newness'] = 10 - GameMechanics::getInstance()->gameRegister->character->attributes->mark->value;
+        //TODO выяснить что это? Вынести в другое место
+        //$data['newness'] = 10 - GameMechanics::getInstance()->gameRegister->character->attributes->mark->value;
 
         //Fixes a potential issue with Neoplasty being already done on new slaves - crushboss TODO ??
         $data['beauty_enchanced'] = 0;
