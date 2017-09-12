@@ -2,10 +2,11 @@
 /**
  * @var \yii\web\View $this
  * @var array $menu
+ * @var \app\modules\game\models\game_data\Character $character
  */
 $this->title = 'Дом';
 ?>
-<div style="background: url(<?=  $this->context->asset->baseUrl . '/img/bg/interiors/basic_kitchen_large.jpg' ?>) no-repeat center; background-size: cover; width: 100%; height: 100%;">
+<div style="background: url(<?= $character->home->getImgLargeHall() ?>) no-repeat center; background-size: cover; width: 100%; height: 100%;">
 
     <?= \app\modules\game\widgets\GameTextMenu\GameTextMenu::widget([
         'items' => $menu

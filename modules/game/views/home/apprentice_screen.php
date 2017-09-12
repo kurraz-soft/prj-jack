@@ -3,6 +3,7 @@
  * @var \yii\web\View $this
  *
  * @var \app\modules\game\models\game_data\Apprentice $apprentice
+ * @var \app\modules\game\models\game_data\Character $character
  */
 use yii\helpers\Url;
 
@@ -52,7 +53,7 @@ $this->title = 'Экран ученика';
             <div class="g-tab-content" style="height: calc(100% - 200px); font-size: 18px">
 <!--                RULES TAB-->
                 <div id="tab-rules" class="g-tab-panel active">
-                    <div class="row" style="background: url(<?=  $this->context->asset->baseUrl . '/img/bg/interiors/basic_kitchen.jpg' ?>) no-repeat center; background-size: cover; color: #d8b317; height: 100%">
+                    <div class="row" style="background: url(<?= $character->home->getImgHall() ?>) no-repeat center; background-size: cover; color: #d8b317; height: 100%">
                         <div class="col-md-3 g-transparent g-rules-panel">
                             <h4>РЕЖИМ СНА:</h4>
                             <ul class="list-unstyled">

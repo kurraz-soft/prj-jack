@@ -138,6 +138,7 @@ class HomeController extends GameController
 
         return $this->render('index', [
             'menu' => $menu,
+            'character' => GameMechanics::getInstance()->gameRegister->character,
         ]);
     }
 
@@ -145,7 +146,9 @@ class HomeController extends GameController
     {
         $this->is_outside = false;
 
-        return $this->render('apprentice_screen');
+        return $this->render('apprentice_screen',[
+            'character' => GameMechanics::getInstance()->gameRegister->character,
+        ]);
     }
 
     public function actionCharacterScreen()

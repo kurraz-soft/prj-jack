@@ -61,4 +61,26 @@ class Home extends BaseGameDataList
      */
     public $lab;
     public $lab_available = false;
+
+    public $img_id = 'slum';
+
+    public function getImgHall()
+    {
+        return '/assets_game/img/bg/interiors/'.$this->img_id.'_study.jpg';
+    }
+
+    public function getImgLargeHall()
+    {
+        return '/assets_game/img/bg/interiors/'.$this->img_id.'_study_large.jpg';
+    }
+
+    public function getImgBed()
+    {
+        return '/assets_game/img/bg/interiors/'.$this->img_id.'_study.jpg';
+    }
+
+    public function getImgLargeBed()
+    {
+        return '/assets_game/img/bg/interiors/'.$this->img_id.'_study_large.jpg';
+    }
 }
