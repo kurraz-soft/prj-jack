@@ -1,6 +1,7 @@
 Project Jack
 ============================
-18+ slave master game
+18+ slave master game (Work in progress)
+
 web port of Jack-o-nine tails game (qsp)
 
 
