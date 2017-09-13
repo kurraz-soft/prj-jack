@@ -993,6 +993,7 @@ class ApprenticesLibrary
         $apprentice->visuals->boobs = $data['seed_boobs_img'];
         $apprentice->visuals->pussy = $data['seed_pussy_img'];
 
+        $apprentice->visuals->fullimage = $data['fullimage'];
         $apprentice->visuals->bathing_alone = $data['bathing_alone'];
         $apprentice->visuals->cello = $data['cello'];
         $apprentice->visuals->cleaning = $data['cleaning'];

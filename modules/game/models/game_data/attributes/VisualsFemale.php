@@ -15,6 +15,12 @@ class VisualsFemale extends BaseGameDataList
     public $avatar_gray;
     public $avatar_clear;
 
+    /**
+     * @var string
+     * Изображение в полный рост
+     */
+    public $fullimage;
+
     public $boobs;
     public $pussy;
 
