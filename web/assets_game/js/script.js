@@ -9,9 +9,7 @@ $(function () {
         $($(this).attr('href')).show();
     });
 
-    $('body').on('click','.g-tab',function (e) {
-        e.preventDefault();
-
+    $('body').on('click','.g-tab',function () {
         var id = $(this).attr('href');
         var $tabs_wrap = $(this).parents('.g-tabs-wrap');
 
@@ -25,4 +23,14 @@ $(function () {
     });
 
      $('[data-toggle="tooltip"]').tooltip();
+
+     checkTabHash();
 });
+
+function checkTabHash() {
+    var hash = window.location.hash;
+     if(hash.indexOf('#tab-') === 0)
+     {
+         $('.g-tab[href="' + hash + '"]').click();
+     }
+}

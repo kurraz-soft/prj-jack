@@ -28,6 +28,15 @@ class HomeController extends GameController
         ]);
     }
 
+    public function actionApprenticeTeachScreen()
+    {
+        $this->is_outside = false;
+
+        return $this->render('apprentice_teach_screen', [
+
+        ]);
+    }
+
     public function actionCharacterScreen()
     {
         $this->is_outside = false;
