@@ -11,6 +11,9 @@ $this->title = 'Дом';
 
     <?= \app\modules\game\widgets\GameTextMenu\GameTextMenu::widget([
         'items' => \app\modules\game\models\game_data\text_menu\HomeMenu::getMenu(),
+        'params' => [
+            'apprentice_name' => 'Изель',
+        ],
     ]) ?>
 
     <div class="game-side-block" style="float: right; margin-right: 100px; display: flex; align-items: center; flex-direction: column">

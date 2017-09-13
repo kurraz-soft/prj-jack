@@ -26,6 +26,7 @@ class GameTextMenu extends Widget
      * @var array
      */
     public $items = [];
+    public $params = [];
 
     public function run()
     {
@@ -42,6 +43,18 @@ class GameTextMenu extends Widget
                 'is_first' => $k == 0,
             ]);
         }
+
+        if($this->params)
+        {
+            $keys = array_keys($this->params);
+            foreach ($keys as &$key)
+            {
+                $key = '%{'.$key.'}%';
+            }
+            $html = str_replace($keys, array_values($this->params), $html);
+        }
+
+
         return $this->render('view', [
             'menu' => $html,
         ]);
