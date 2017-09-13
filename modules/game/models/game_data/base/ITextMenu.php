@@ -1,0 +1,16 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Kurraz
+ */
+
+namespace app\modules\game\models\game_data\base;
+
+
+interface ITextMenu
+{
+    /**
+     * @return array
+     */
+    public static function getMenu();
+}

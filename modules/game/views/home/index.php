@@ -1,15 +1,16 @@
 <?php
 /**
  * @var \yii\web\View $this
- * @var array $menu
  * @var \app\modules\game\models\game_data\Character $character
  */
+use yii\helpers\Url;
+
 $this->title = 'Дом';
 ?>
 <div style="background: url(<?= $character->home->getImgLargeHall() ?>) no-repeat center; background-size: cover; width: 100%; height: 100%;">
 
     <?= \app\modules\game\widgets\GameTextMenu\GameTextMenu::widget([
-        'items' => $menu
+        'items' => \app\modules\game\models\game_data\text_menu\HomeMenu::getMenu(),
     ]) ?>
 
     <div class="game-side-block" style="float: right; margin-right: 100px; display: flex; align-items: center; flex-direction: column">
@@ -23,7 +24,7 @@ $this->title = 'Дом';
         <a class="game-lab-btn" href="#">&nbsp;</a>
         <br>
         <a class="game-dungeon-btn" href="#">
-            <img src="<?= $this->context->asset->baseUrl . '/img/cage.png' ?>" />
+            <img src="<?= '/assets_game/img/cage.png' ?>" />
         </a>
     </div>
 

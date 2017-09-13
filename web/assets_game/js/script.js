@@ -23,4 +23,6 @@ $(function () {
         $(id).parents('.g-tab-content').find('.g-tab-panel.active').removeClass('active');
         $(id).addClass('active');
     });
+
+     $('[data-toggle="tooltip"]').tooltip();
 });

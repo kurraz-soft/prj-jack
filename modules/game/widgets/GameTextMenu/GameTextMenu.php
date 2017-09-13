@@ -18,6 +18,8 @@ class GameTextMenu extends Widget
      *          'url' => '<url>',
      *          'image' => '<image url>',
      *          'children' => [],
+     *          'comment => '<text>',
+     *          'disabled' => <false>,
      *      ],
      * ]
      *

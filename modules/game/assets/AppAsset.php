@@ -7,6 +7,7 @@
 namespace app\modules\game\assets;
 
 
+use yii\bootstrap\BootstrapPluginAsset;
 use yii\web\AssetBundle;
 use yii\web\View;
 
@@ -25,6 +26,7 @@ class AppAsset extends AssetBundle
     ];
     public $depends = [
         'yii\web\YiiAsset',
+        BootstrapPluginAsset::class,
         'yii\bootstrap\BootstrapAsset',
     ];
 
