@@ -812,7 +812,7 @@ class HomeMenu implements ITextMenu
 
         $menu[] = [
             'text' => 'Расскажи о своем прошлом',
-            'url' => '#',
+            'url' => Url::to(['home/apprentice-talk-ask-about-past']),
             'image' => '/assets_game/img/ui_overhaul/talk.png',
         ];
         $menu[] = [

@@ -2,6 +2,10 @@
     font-family: "Victoriana";
     src: url(../fonts/Victoriana.ttf);
 }
+@font-face {
+    font-family: "Consolas";
+    src: url(../fonts/Consolas.ttf);
+}
 
 a {
     color: #000000;
@@ -307,4 +311,43 @@ a.disabled .game-menu-btn, a:hover.disabled .game-menu-btn, a:visited.disabled .
     padding: 20px;
     max-width: 300px;
     min-width: 100px;
+}
+
+.g-action-slide {
+    display: none;
+    height: 100%;
+}
+.g-action-slide.active {
+    display: block;
+}
+.g-btn {
+    outline: none;
+    border: 0;
+}
+.g-action-btn-forward {
+    background: url("../img/buttons/forward_button.png");
+    width: 50px;
+    height: 37px;
+    display: block;
+    position: absolute;
+    right: calc(-50px/2);
+    top: calc(50% + 2px);
+}
+.g-action-btn-backward {
+    background: url("../img/buttons/back_button.png");
+    width: 50px;
+    height: 37px;
+    display: block;
+    position: absolute;
+    right: calc(-50px/2);
+    top: calc(50% - 37px - 2px);
+}
+.g-action-btn-backward.disabled {
+    background: url("../img/buttons/noback_button.png");
+}
+.g-action-slide-text {
+    height: calc(30% - 18px);
+    padding: 15px 15px 15px 35px;
+    position: relative;
+    font-family: Consolas;
 }

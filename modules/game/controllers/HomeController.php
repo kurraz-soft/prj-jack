@@ -6,6 +6,7 @@
 
 namespace app\modules\game\controllers;
 
+use app\modules\game\models\game_data\actions\home\apprentice\talk\AskAboutPastAction;
 use app\modules\game\models\GameMechanics;
 use app\modules\game\models\libraries\ApprenticesLibrary;
 use yii\helpers\Url;
@@ -44,5 +45,16 @@ class HomeController extends GameController
         return $this->render('character_screen', [
             'character' => GameMechanics::getInstance()->gameRegister->character,
         ]);
+    }
+
+    public function actionApprenticeTalkAskAboutPast()
+    {
+        $this->is_outside = false;
+
+        /*$action = new AskAboutPastAction(ApprenticesLibrary::export('1'),GameMechanics::getInstance()->gameRegister->character->home);
+
+        return $this->render($action->getViewFile(), [
+            'action' => $action,
+        ]);*/
     }
 }
