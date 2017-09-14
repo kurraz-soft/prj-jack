@@ -17,6 +17,7 @@ class HomeController extends GameController
     {
         return $this->render('index', [
             'character' => GameMechanics::getInstance()->gameRegister->character,
+            'apprentice' => GameMechanics::getInstance()->gameRegister->apprentice_manager->active_apprentice,
         ]);
     }
 
@@ -51,10 +52,11 @@ class HomeController extends GameController
     {
         $this->is_outside = false;
 
-        /*$action = new AskAboutPastAction(ApprenticesLibrary::export('1'),GameMechanics::getInstance()->gameRegister->character->home);
+        $action = new AskAboutPastAction(
+            GameMechanics::getInstance()->gameRegister->apprentice,
+            GameMechanics::getInstance()->gameRegister->character->home
+        );
 
-        return $this->render($action->getViewFile(), [
-            'action' => $action,
-        ]);*/
+        return $action->setController($this)->render();
     }
 }

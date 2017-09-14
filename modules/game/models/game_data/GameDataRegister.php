@@ -8,9 +8,10 @@ namespace app\modules\game\models\game_data;
 
 
 use app\modules\game\models\game_data\base\BaseGameData;
+use app\modules\game\models\game_data\base\IAutoSerializable;
 use app\modules\game\models\GameData;
 
-class GameDataRegister
+class GameDataRegister implements IAutoSerializable
 {
     /**
      * @var Date
@@ -28,6 +29,11 @@ class GameDataRegister
     public $character;
 
     /**
+     * @var ApprenticeManager
+     */
+    public $apprentice_manager;
+
+    /**
      * @var LocationManager
      */
     public $location_manager;
@@ -39,18 +45,31 @@ class GameDataRegister
 
     public function __construct()
     {
-        $this->_objects = [
-            $this->date = new Date(),
-            $this->debt = new Debt(),
-            $this->location_manager = new LocationManager(),
-            $this->character = new Character(),
+        foreach ($this->serializableParams() as $name => $class)
+        {
+            $this->$name = new $class();
+            $this->_objects[$name] = &$this->$name;
+        }
+    }
+
+    public function serializableParams()
+    {
+        return [
+            'date' => Date::class,
+            'debt' => Debt::class,
+            'location_manager' => LocationManager::class,
+            'character' => Character::class,
+            'apprentice_manager' => ApprenticeManager::class,
         ];
     }
 
     public function import(GameData $game_data)
     {
         foreach ($this->_objects as $obj)
-            $obj->import($game_data);
+        {
+            if($obj instanceof BaseGameData)
+                $obj->import($game_data);
+        }
     }
 
     public function export(GameData $game_data)

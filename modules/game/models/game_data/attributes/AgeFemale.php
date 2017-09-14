@@ -41,4 +41,24 @@ class AgeFemale extends BaseGameDataList implements INamedValues
     {
         return $this->valueNames()[$this->value];
     }
+
+    public function getIco()
+    {
+        $ico = '';
+
+        switch ($this->value)
+        {
+            case static::LOLI:
+                $ico = 'ui/jon-UIadds/info_immature.png';
+                break;
+            case static::YOUNG:
+                $ico = 'ui/jon-UIadds/info_young.png';
+                break;
+            case static::MATURE:
+                $ico = 'ui/jon-UIadds/info_mature.png';
+                break;
+        }
+
+        return $ico;
+    }
 }

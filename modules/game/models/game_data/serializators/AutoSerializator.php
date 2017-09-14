@@ -74,19 +74,29 @@ class AutoSerializator implements ISerializator
     {
         foreach ($this->obj->serializableParams() as $name => $type)
         {
-            if($this->obj->$name instanceof ISerializable)
+            if(class_exists($type) && (new \ReflectionClass($type))->isSubclassOf(ISerializable::class))
             {
-                $this->obj->$name = new $type();
-                if($this->obj->$name instanceof IChild)
+                if(!empty($serialized_data[$name]))
                 {
-                    $this->obj->$name->setParent($this->obj);
-                }
-                if(isset($serialized_data[$name]))
-                {
+                    $this->obj->$name = new $type();
                     $this->obj->$name->unserialize($serialized_data[$name]);
+                    if($this->obj->$name instanceof IChild)
+                    {
+                        $this->obj->$name->setParent($this->obj);
+                    }
                 }else
                 {
-                    $this->obj->$name->unserialize([]);
+                    if($this->obj->$name instanceof ISerializable)
+                    {
+                        $this->obj->$name->unserialize([]);
+                        if($this->obj->$name instanceof IChild)
+                        {
+                            $this->obj->$name->setParent($this->obj);
+                        }
+                    }else
+                    {
+                        $this->obj->$name = null;
+                    }
                 }
             }else
             {

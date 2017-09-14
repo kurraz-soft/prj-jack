@@ -2,6 +2,7 @@
 /**
  * @var \yii\web\View $this
  * @var \app\modules\game\models\game_data\Character $character
+ * @var \app\modules\game\models\game_data\Apprentice $apprentice
  */
 use yii\helpers\Url;
 
@@ -12,7 +13,7 @@ $this->title = 'Дом';
     <?= \app\modules\game\widgets\GameTextMenu\GameTextMenu::widget([
         'items' => \app\modules\game\models\game_data\text_menu\HomeMenu::getMenu(),
         'params' => [
-            'apprentice_name' => 'Изель',
+            'apprentice_name' => $apprentice->name ?? '',
         ],
     ]) ?>
 

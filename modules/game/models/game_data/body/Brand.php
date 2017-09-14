@@ -42,4 +42,21 @@ class Brand extends BaseBodyPart implements INamedValues
     {
         return $this->valueNames()[$this->value];
     }
+
+    public function getIco()
+    {
+        switch ($this->value)
+        {
+            case static::NO:
+                return 'ui/jon-UIadds/info_nobrand.png';
+            case static::CLAIMED:
+                return 'ui/jon-UIadds/info_brand.png';
+            case static::SLAVE_TATTOO:
+                return 'ui/jon-UIadds/info_brand_tatoo.png';
+            case static::MAGIC_BRAND:
+                return 'ui/jon-UIadds/info_brand_magic.png';
+            case static::FOREIGN_BRAND:
+                return 'ui/jon-UIadds/info_brand_contract.png';
+        }
+    }
 }

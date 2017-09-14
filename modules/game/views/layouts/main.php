@@ -66,38 +66,7 @@ $character = \app\modules\game\models\GameMechanics::getInstance()->gameRegister
         <div class="layout-border-v"></div>
         <div class="col-md-2 text-center" style="margin-left: -18px">
             <?= \app\modules\game\widgets\CharacterInfo\CharacterInfo::widget() ?>
-            <div class="col-md-12 character-block-item">
-                <div class="row">
-                    <div class="col-md-2" style="display: flex; flex-direction: column">
-                        <div><a href="#" class="game-slave-question-btn" title="Спросить">&nbsp;</a></div>
-                        <div><a href="#" class="game-slave-influence-btn" title="Повлиять">&nbsp;</a></div>
-                    </div>
-                    <div class="col-md-8">
-                        <a href="<?= Url::to(['home/apprentice-screen']) ?>"><img src="<?= $asset->baseUrl . '/img/no_ava.jpg' ?>"></a>
-                    </div>
-                    <div class="col-md-2" style="display: flex; flex-direction: column">
-                        <div><img src="<?= $asset->baseUrl . '/img/ui/jon-UIadds/info_mature.png' ?>"></div>
-                        <div><img src="<?= $asset->baseUrl . '/img/ui/jon-UIadds/info_virgin.png' ?>"></div>
-                        <div><img src="<?= $asset->baseUrl . '/img/ui/jon-UIadds/info_fertile.png' ?>"></div>
-                        <div class="game-slave-info-blank">4</div>
-                        <div><img src="<?= $asset->baseUrl . '/img/ui/jon-UIadds/transparent.png' ?>"></div>
-                        <div><img src="<?= $asset->baseUrl . '/img/ui/jon-UIadds/info_brand_tatoo.png' ?>"></div>
-                    </div>
-                </div>
-                <div class="row">
-                    <p>Энергия: *****</p>
-                    <p>Дуется</p>
-                    <div class="game-slave-param-row">
-                        <div>Отличилась [5]</div>
-                        <a href="#" class="game-red-btn" title="Наказать">&nbsp;</a>
-                        <a href="#" class="game-green-btn" title="Наградить">&nbsp;</a>
-                    </div>
-                    <div class="game-slave-param-row">
-                        <div>Чистая</div>
-                        <a href="#" class="game-green-btn" title="Помыть">&nbsp;</a>
-                    </div>
-                </div>
-            </div>
+            <?= \app\modules\game\widgets\ApprenticeInfo\ApprenticeInfo::widget() ?>
             <div class="col-md-12 character-block-item">
                 <div class="row">
                     <div class="col-md-2" style="display: flex; flex-direction: column"></div>
