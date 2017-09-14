@@ -8,6 +8,8 @@ namespace app\tests\unit\modules\game\helpers;
 
 
 use app\modules\game\helpers\AnnotationHelper;
+use app\modules\game\models\game_data\Apprentice;
+use app\modules\game\models\game_data\ApprenticeManager;
 use app\modules\game\models\game_data\attributes\MoodMale;
 use app\modules\game\models\game_data\AttributesListCharacter;
 use app\modules\game\models\game_data\Character;
@@ -29,5 +31,12 @@ class AnnotationHelperTest extends Unit
 
         expect_that(isset($res['attributes']));
         expect($res['mood'])->equals(MoodMale::class);
+    }
+
+    public function testGetObjectPropertiesTypesWithArrayOfObjects()
+    {
+        $res = AnnotationHelper::getObjectPropertiesTypes(new ApprenticeManager(), \ReflectionProperty::IS_PUBLIC);
+
+        expect($res['apprentices'])->equals(Apprentice::class);
     }
 }
