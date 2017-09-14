@@ -40,7 +40,7 @@ class AskAboutPastAction extends BaseGameAction
         );
     }
 
-    public function getEndRoute()
+    public function getEndRoute(): array
     {
         return ['index'];
     }

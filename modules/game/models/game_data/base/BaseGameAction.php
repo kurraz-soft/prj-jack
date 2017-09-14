@@ -8,6 +8,7 @@ namespace app\modules\game\models\game_data\base;
 
 
 use app\modules\game\models\game_data\GameActionSlide;
+use yii\web\Controller;
 
 abstract class BaseGameAction
 {
@@ -28,10 +29,29 @@ abstract class BaseGameAction
      */
     public $info;
 
-    public function getViewFile()
+    /**
+     * @var Controller
+     */
+    public $controller = null;
+
+    public function getViewFile() : string
     {
         return '/action';
     }
 
-    abstract public function getEndRoute();
+    abstract public function getEndRoute() : array;
+
+    public function setController(Controller $controller) : BaseGameAction
+    {
+        $this->controller = $controller;
+
+        return $this;
+    }
+
+    public function render() : string
+    {
+        return $this->controller->render($this->getViewFile(),[
+            'action' => $this,
+        ]);
+    }
 }
