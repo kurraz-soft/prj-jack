@@ -39,17 +39,32 @@ class AutoSerializator implements ISerializator
 
         foreach ($this->obj->serializableParams() as $name => $type)
         {
-            if(class_exists($type))
+            $ret[$name] = $this->serializeItem($this->obj->$name, $type);
+        }
+
+        return $ret;
+    }
+
+    protected function serializeItem($serializable_var, $type)
+    {
+        $ret = null;
+
+        if(class_exists($type))
+        {
+            if(is_array($serializable_var))
             {
-                $serializable_var = $this->obj->$name;
-                if($serializable_var instanceof ISerializable)
+                $ret = [];
+                foreach ($serializable_var as $key => $array_item)
                 {
-                    $ret[$name] = $serializable_var->serialize();
+                    $ret[$key] = $this->serializeItem($array_item, $type);
                 }
-            }else
+            }elseif($serializable_var instanceof ISerializable)
             {
-                $ret[$name] = $this->obj->$name;
+                $ret = $serializable_var->serialize();
             }
+        }else
+        {
+            $ret = $serializable_var;
         }
 
         return $ret;
