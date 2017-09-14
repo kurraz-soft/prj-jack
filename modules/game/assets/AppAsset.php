@@ -28,6 +28,7 @@ class AppAsset extends AssetBundle
         'yii\web\YiiAsset',
         BootstrapPluginAsset::class,
         'yii\bootstrap\BootstrapAsset',
+        \app\modules\game\widgets\GameTextMenu\assets\Asset::class,
     ];
 
     public function init()

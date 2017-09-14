@@ -11,7 +11,7 @@ $asset = new \app\modules\game\assets\AppAsset();
     <div class="row">
         <div class="col-md-2" style="display: flex; flex-direction: column">
             <div><a href="#game-text-menu-0-0-0-0" class="game-slave-question-btn game-menu-quick-link" title="Спросить">&nbsp;</a></div>
-            <div><a href="#" class="game-slave-influence-btn" title="Повлиять">&nbsp;</a></div>
+            <div><a href="#game-text-menu-0-0-0-1" class="game-slave-influence-btn game-menu-quick-link" title="Повлиять">&nbsp;</a></div>
         </div>
         <div class="col-md-8">
             <a href="<?= Url::to(['home/apprentice-screen']) ?>"><img src="<?= $asset->baseUrl . '/img/'.$apprentice->visuals->avatar_clear ?>"></a>
@@ -42,12 +42,12 @@ $asset = new \app\modules\game\assets\AppAsset();
         </div>
     </div>
     <div class="row">
-        <p>Энергия: *****</p>
+        <p>Энергия: <?= $apprentice->energy->out() ?></p>
         <p>Дуется</p>
         <div class="game-slave-param-row">
             <div>Отличилась [5]</div>
-            <a href="#" class="game-red-btn" title="Наказать">&nbsp;</a>
-            <a href="#" class="game-green-btn" title="Наградить">&nbsp;</a>
+            <a href="#game-text-menu-0-0-5" class="game-red-btn game-menu-quick-link" title="Наказать">&nbsp;</a>
+            <a href="#game-text-menu-0-0-4" class="game-green-btn game-menu-quick-link" title="Наградить">&nbsp;</a>
         </div>
         <div class="game-slave-param-row">
             <div>Чистая</div>

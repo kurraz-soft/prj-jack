@@ -53,7 +53,7 @@ class HomeController extends GameController
         $this->is_outside = false;
 
         $action = new AskAboutPastAction(
-            GameMechanics::getInstance()->gameRegister->apprentice,
+            GameMechanics::getInstance()->gameRegister->apprentice_manager->active_apprentice,
             GameMechanics::getInstance()->gameRegister->character->home
         );
 

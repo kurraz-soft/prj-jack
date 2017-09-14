@@ -143,7 +143,7 @@ class HomeMenu implements ITextMenu
         ];
         $menu[] = [
             'text' => 'Провести урок',
-            'url' => '#',
+            'url' => Url::to(['apprentice-teach-screen']),
             'image' => '/assets_game/img/ui_overhaul/conduct a lesson.png',
         ];
         /*$menu[] = [
@@ -153,7 +153,7 @@ class HomeMenu implements ITextMenu
         ];*/
         $menu[] = [
             'text' => 'Пригласить репетитора',
-            'url' => '#',
+            'url' => Url::to(['apprentice-teach-screen','#' => 'tab-tutor']),
             'image' => '/assets_game/img/ui_overhaul/invite a tutor.png',
         ];
         $menu[] = [

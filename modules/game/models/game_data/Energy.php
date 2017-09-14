@@ -30,6 +30,10 @@ class Energy extends BaseGameData
 
     public function out()
     {
-        return str_repeat('*', $this->value);
+        $str = str_repeat('*', abs($this->value));
+        $color_grade = $this->value > 0 ? 5 : 0;
+        $str = '<span class="g-color-grade-'.$color_grade.'">'.$str.'</span>';
+
+        return $str;
     }
 }

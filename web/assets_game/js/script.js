@@ -22,7 +22,9 @@ $(function () {
         $(id).addClass('active');
     });
 
-     $('[data-toggle="tooltip"]').tooltip();
+     $('body').tooltip({
+         selector: '[data-toggle="tooltip"]'
+     });
 
      checkTabHash();
 });
