@@ -44,6 +44,8 @@ class ApprenticesLibraryTest extends Unit
         $ap = ApprenticesLibrary::export('1');
 
         expect($ap)->isInstanceOf(Apprentice::class);
-        expect($ap->age->value)->equals(AgeFemale::YOUNG);
+        expect($ap->age->value)->equals(AgeFemale::LOLI);
+        expect($ap->visuals->fullimage)->notEmpty();
+        expect($ap->visuals->cleaning)->notEmpty();
     }
 }

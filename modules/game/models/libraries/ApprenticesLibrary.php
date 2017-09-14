@@ -90,6 +90,17 @@ class ApprenticesLibrary
      */
     public static function fillUpLoadedData($data)
     {
+        $age_assoc = [
+            0 => AgeFemale::YOUNG,
+            1 => AgeFemale::LOLI,
+            2 => AgeFemale::MATURE,
+        ];
+        /*$age_assoc = [
+            AgeFemale::YOUNG => 0,
+            AgeFemale::LOLI => 1,
+            AgeFemale::MATURE => 2,
+        ];*/
+
         $data['seed_world'] = VarHelper::existOrElse($data, 'seed_world', WorldLibrary::getRandomWorldId());
         $world = WorldLibrary::factory($data['seed_world']);
         $data['seed_family'] = VarHelper::existOrElse($data, 'seed_family', RandomHelper::randArrayValue($world->getAvailableFamilyOriginIds()));
@@ -98,7 +109,7 @@ class ApprenticesLibrary
         $occupation = OccupationsLibrary::factory($data['seed_occupation']);
 
         $data['seed_name'] = VarHelper::existOrElse($data, 'seed_name', NamesLibrary::getRandom($world->getNameBase()));
-        $data['seed_age'] = VarHelper::existOrElse($data, 'seed_age', mt_rand(1,AgeFemale::MATURE) - 1); //json age margin = 1
+        $data['seed_age'] = VarHelper::existOrElse($data, 'seed_age', mt_rand(0,2));
         $data['seed_beauty'] = VarHelper::existOrElse($data, 'seed_beauty', mt_rand(1, 5));
         $data['seed_sensitivity'] = VarHelper::existOrElse($data, 'seed_sensitivity', mt_rand(1,5));
         $data['seed_temper'] = VarHelper::existOrElse($data, 'seed_temper', mt_rand(1,5));
@@ -108,7 +119,7 @@ class ApprenticesLibrary
         $data['seed_fat'] = VarHelper::existOrElse($data, 'seed_fat', mt_rand(0,4));
         $data['seed_exotic'] = VarHelper::existOrElse($data, 'seed_exotic', mt_rand(1,5));
         $data['seed_fame_rate'] = VarHelper::existOrElse($data, 'seed_fame_rate', mt_rand(1,5));
-        $data['seed_fertility'] = ($data['seed_age'] + 1) < AgeFemale::YOUNG ? 0 : RandomHelper::randFloat(1,2);
+        $data['seed_fertility'] = $age_assoc[$data['seed_age']] == AgeFemale::LOLI? 0 : RandomHelper::randFloat(1,2);
         $data['seed_fertility_revealed'] = 0;
         $data['seed_stamina'] = VarHelper::existOrElse($data, 'seed_stamina', mt_rand(1,5));
         //$data['seed_metabolism'] = VarHelper::existOrElse($data, 'seed_metabolism', 3);
@@ -182,21 +193,21 @@ class ApprenticesLibrary
         //Virginity
         if(!VarHelper::exist($data, 'seed_virginity'))
         {
-            if(!$data['seed_virginity'] && ($data['seed_age'] + 1) == AgeFemale::LOLI)
+            if(!$data['seed_virginity'] && $age_assoc[$data['seed_age']] == AgeFemale::LOLI)
             {
                 $data['seed_virginity'] = RandomHelper::randChooseVar(0,1, 80);
             }
-            if(!$data['seed_virginity'] && ($data['seed_age'] + 1) == AgeFemale::YOUNG)
+            if(!$data['seed_virginity'] && $age_assoc[$data['seed_age']] == AgeFemale::YOUNG)
             {
                 $data['seed_virginity'] = RandomHelper::randChooseVar(0,1, 50);
             }
-            if(!$data['seed_virginity'] && ($data['seed_age'] + 1) == AgeFemale::MATURE)
+            if(!$data['seed_virginity'] && $age_assoc[$data['seed_age']] == AgeFemale::MATURE)
             {
                 $data['seed_virginity'] = RandomHelper::randChooseVar(0,1, 20);
             }
         }
 
-        if(($data['seed_age'] + 1) == AgeFemale::YOUNG)
+        if($age_assoc[$data['seed_age']] == AgeFemale::YOUNG)
         {
             $bonus = RandomHelper::randChooseVar(1, 0, 25);
             $data['seed_sub_anal'] = VarHelper::existOrElse($data, 'seed_sub_anal', 0) + $bonus;
@@ -221,7 +232,7 @@ class ApprenticesLibrary
             }
         }
 
-        if(($data['seed_age'] + 1) == AgeFemale::MATURE)
+        if($age_assoc[$data['seed_age']] == AgeFemale::MATURE)
         {
             $bonus = 1;
             $data['seed_sub_hug'] = VarHelper::existOrElse($data, 'seed_sub_hug', 0) + $bonus;
@@ -274,9 +285,9 @@ class ApprenticesLibrary
 
         //Additional attribute randomizer
         $a = 0;
-        if(($data['seed_age'] + 1) == AgeFemale::LOLI) $a = 15;
-        if(($data['seed_age'] + 1) == AgeFemale::YOUNG) $a = 10;
-        if(($data['seed_age'] + 1) == AgeFemale::MATURE) $a = 8;
+        if($age_assoc[$data['seed_age']] == AgeFemale::LOLI) $a = 15;
+        if($age_assoc[$data['seed_age']] == AgeFemale::YOUNG) $a = 10;
+        if($age_assoc[$data['seed_age']] == AgeFemale::MATURE) $a = 8;
 
         $b = mt_rand(1, $a);
         if(mt_rand(1, $a) == $b) $data['seed_beauty'] += mt_rand(-2,2);
@@ -353,7 +364,7 @@ class ApprenticesLibrary
         $data['seed_thongue_split'] = $data['seed_thongue_split'] ?? 0;
         $data['seed_scarification'] = $data['seed_scarification'] ?? 0;
 
-        if(($data['seed_age'] + 1) != AgeFemale::LOLI)
+        if($age_assoc[$data['seed_age']] != AgeFemale::LOLI)
         {
             $b = mt_rand(1, $a);
             if(mt_rand(1, $a) == $b) $data['seed_niple_piercing'] = 1;
@@ -369,7 +380,7 @@ class ApprenticesLibrary
         }
 
         //Makeup and Tattoos
-        if(($data['seed_age'] + 1) != AgeFemale::LOLI)
+        if($age_assoc[$data['seed_age']] != AgeFemale::LOLI)
         {
             $b = mt_rand(1, $a);
             if(mt_rand(1, $a) == $b) $data['seed_makeup'] = 3;
@@ -863,6 +874,12 @@ class ApprenticesLibrary
      */
     public static function export($filename)
     {
+        $age_assoc = [
+            0 => AgeFemale::YOUNG,
+            1 => AgeFemale::LOLI,
+            2 => AgeFemale::MATURE,
+        ];
+
         $apprentice = new Apprentice();
 
         $data = static::load($filename);
@@ -874,7 +891,7 @@ class ApprenticesLibrary
         $apprentice->family_origin_id = $data['seed_family'];
         $apprentice->template_id = $filename;
         $apprentice->occupation_id = $data['seed_occupation'];
-        $apprentice->age->value = $data['seed_age'] + 1; //json age margin
+        $apprentice->age->value = $age_assoc[$data['seed_age']]; //json age margin
         $apprentice->attributes->beauty->value = $data['seed_beauty'];
         $apprentice->attributes->sensuality->value = $data['seed_sensitivity'];
         $apprentice->attributes->temperament->value = $data['seed_temper'];
