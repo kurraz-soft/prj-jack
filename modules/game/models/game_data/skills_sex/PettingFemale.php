@@ -43,7 +43,13 @@ class PettingFemale extends BaseSkill implements IAutoSerializable
 
     public function getValue()
     {
-        // TODO: Implement getValue() method.
+        $v = 0;
+        foreach ($this->subSkills->serializableParams() as $name => $class)
+        {
+            $v += $this->subSkills->$name->value;
+        }
+
+        return $v;
     }
 
     public function setValue($new_value)

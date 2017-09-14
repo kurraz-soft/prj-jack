@@ -1,6 +1,7 @@
 <?php
 /**
  * @var \app\modules\game\models\game_data\Apprentice $apprentice
+ * @var bool $buttons_enabled
  */
 use yii\helpers\Url;
 
@@ -10,8 +11,10 @@ $asset = new \app\modules\game\assets\AppAsset();
     <?php if($apprentice): ?>
     <div class="row">
         <div class="col-md-2" style="display: flex; flex-direction: column">
+            <?php if($buttons_enabled): ?>
             <div><a href="#game-text-menu-0-0-0-0" class="game-slave-question-btn game-menu-quick-link" title="Спросить">&nbsp;</a></div>
             <div><a href="#game-text-menu-0-0-0-1" class="game-slave-influence-btn game-menu-quick-link" title="Повлиять">&nbsp;</a></div>
+            <?php endif; ?>
         </div>
         <div class="col-md-8">
             <a href="<?= Url::to(['home/apprentice-screen']) ?>"><img src="<?= $asset->baseUrl . '/img/'.$apprentice->visuals->avatar_clear ?>"></a>
@@ -46,15 +49,15 @@ $asset = new \app\modules\game\assets\AppAsset();
         <p><?= $apprentice->mood->getStatus() ?></p>
         <div class="game-slave-param-row">
             <div><?= $apprentice->behavior->getStatus() ?></div>
-            <?php if($apprentice->behavior->value < 0): ?>
+            <?php if($buttons_enabled && $apprentice->behavior->value < 0): ?>
             <a href="#game-text-menu-0-0-5" class="game-red-btn game-menu-quick-link" title="Наказать">&nbsp;</a>
-            <?php elseif($apprentice->behavior->value > 0): ?>
+            <?php elseif($buttons_enabled && $apprentice->behavior->value > 0): ?>
             <a href="#game-text-menu-0-0-4" class="game-green-btn game-menu-quick-link" title="Наградить">&nbsp;</a>
             <?php endif; ?>
         </div>
         <div class="game-slave-param-row">
             <div><?= $apprentice->attributes->hygiene->getStatus() ?></div>
-            <?php if($apprentice->attributes->hygiene->value < 5): ?>
+            <?php if($buttons_enabled && $apprentice->attributes->hygiene->value < 5): ?>
             <a href="#" class="game-green-btn" title="Помыть">&nbsp;</a>
             <?php endif; ?>
         </div>

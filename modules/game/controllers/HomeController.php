@@ -15,9 +15,11 @@ class HomeController extends GameController
 {
     public function actionIndex()
     {
+        $this->character_panel_active = true;
+
         return $this->render('index', [
-            'character' => GameMechanics::getInstance()->gameRegister->character,
-            'apprentice' => GameMechanics::getInstance()->gameRegister->apprentice_manager->active_apprentice,
+            'character' => $this->gameRegister->character,
+            'apprentice' => $this->gameRegister->apprentice_manager->active_apprentice,
         ]);
     }
 
@@ -26,7 +28,8 @@ class HomeController extends GameController
         $this->is_outside = false;
 
         return $this->render('apprentice_screen',[
-            'character' => GameMechanics::getInstance()->gameRegister->character,
+            'character' => $this->gameRegister->character,
+            'apprentice' => $this->gameRegister->apprentice_manager->active_apprentice,
         ]);
     }
 
@@ -35,7 +38,7 @@ class HomeController extends GameController
         $this->is_outside = false;
 
         return $this->render('apprentice_teach_screen', [
-
+            'apprentice' => $this->gameRegister->apprentice_manager->active_apprentice,
         ]);
     }
 

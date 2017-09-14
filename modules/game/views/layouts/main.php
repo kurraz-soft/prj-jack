@@ -65,8 +65,12 @@ $character = \app\modules\game\models\GameMechanics::getInstance()->gameRegister
         </div>
         <div class="layout-border-v"></div>
         <div class="col-md-2 text-center" style="margin-left: -18px">
-            <?= \app\modules\game\widgets\CharacterInfo\CharacterInfo::widget() ?>
-            <?= \app\modules\game\widgets\ApprenticeInfo\ApprenticeInfo::widget() ?>
+            <?= \app\modules\game\widgets\CharacterInfo\CharacterInfo::widget([
+                    'buttons_enabled' => $this->context->character_panel_active,
+            ]) ?>
+            <?= \app\modules\game\widgets\ApprenticeInfo\ApprenticeInfo::widget([
+                    'buttons_enabled' => $this->context->character_panel_active,
+            ]) ?>
             <div class="col-md-12 character-block-item">
                 <div class="row">
                     <div class="col-md-2" style="display: flex; flex-direction: column"></div>

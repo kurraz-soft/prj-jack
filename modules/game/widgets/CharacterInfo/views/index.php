@@ -1,6 +1,7 @@
 <?php
 /**
  * @var \app\modules\game\models\game_data\Character $character
+ * @var bool $buttons_enabled
  */
 use yii\helpers\Url;
 
@@ -21,13 +22,13 @@ $asset = new \app\modules\game\assets\AppAsset();
         <p><?= $character->mood->getStatus() ?></p>
         <div class="game-slave-param-row">
             <div><?= $character->attributes->libido->getStatus() ?></div>
-            <?php if($character->attributes->libido->value > 0): ?>
+            <?php if($buttons_enabled && $character->attributes->libido->value > 0): ?>
             <a href="#game-text-menu-0-0-1" class="game-green-btn game-menu-quick-link" title="Секс" data-toggle="tooltip">&nbsp;</a>
             <?php endif; ?>
         </div>
         <div class="game-slave-param-row">
             <div><?= $character->attributes->hygiene->getStatus() ?></div>
-            <?php if($character->attributes->hygiene->value < 5): ?>
+            <?php if($buttons_enabled && $character->attributes->hygiene->value < 5): ?>
             <a href="#" class="game-green-btn" title="Помыться">&nbsp;</a>
             <?php endif; ?>
         </div>

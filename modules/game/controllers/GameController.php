@@ -9,6 +9,7 @@ namespace app\modules\game\controllers;
 
 use app\components\Controller;
 use app\modules\game\assets\AppAsset;
+use app\modules\game\models\game_data\GameDataRegister;
 use app\modules\game\models\GameMechanics;
 
 abstract class GameController extends Controller
@@ -16,6 +17,12 @@ abstract class GameController extends Controller
     public $asset;
 
     public $is_outside = true;
+    public $character_panel_active = false;
+
+    /**
+     * @var GameDataRegister
+     */
+    public $gameRegister;
 
     public function init()
     {
@@ -23,6 +30,8 @@ abstract class GameController extends Controller
             $this->asset = AppAsset::register($this->view);
 
             GameMechanics::getInstance()->loadGame();
+
+            $this->gameRegister = GameMechanics::getInstance()->gameRegister;
 
             $this->setCharacterLocation();
         });

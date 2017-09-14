@@ -11,5 +11,5 @@ interface IChild
 {
     public function setParent($parent_obj);
     public function getParent();
-    public function getDependency($class);
+    public function getDependency($class, $objects_passed = []);
 }

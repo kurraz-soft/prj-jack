@@ -30,6 +30,7 @@ abstract class ApprenticeTrait implements ITrait
 
     public function initContext($context)
     {
+        if(!$context) throw new Exception("Context is null");
         $this->_context = $context;
     }
 

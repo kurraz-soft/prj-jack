@@ -7,6 +7,7 @@
 namespace app\modules\game\models\game_data;
 
 
+use app\modules\game\helpers\FormatterHelper;
 use app\modules\game\models\game_data\base\BaseGameData;
 
 class RankApprentice extends BaseGameData
@@ -25,7 +26,7 @@ class RankApprentice extends BaseGameData
         $this->value = $serialized_data['value'] ?? 0;
     }
 
-    public function out()
+    public function getStatus()
     {
         $str = '';
 
@@ -68,6 +69,6 @@ class RankApprentice extends BaseGameData
                 $str = 'S+';
                 break;
         }
-        return $str;
+        return FormatterHelper::colorAttribute($str,$this->value);
     }
 }

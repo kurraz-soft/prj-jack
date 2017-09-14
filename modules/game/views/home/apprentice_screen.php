@@ -13,27 +13,29 @@ $this->title = 'Экран ученика';
     <div class="row" style="width: 100%; height: 100%;">
         <div class="col-md-2">
             <div class="g-info-stats-panel-left">
-                <p>Имя: </p>
-                <p>Возраст: </p>
-                <p>Ранг: </p>
-                <p>Прошло дней: </p>
+                <p>Имя: <?= $apprentice->name ?></p>
+                <p>Возраст: <?= $apprentice->age->getStatus() ?></p>
+                <p>Ранг: <?= $apprentice->rank->getStatus() ?></p>
+                <p>Прошло дней: <?= $apprentice->days_owned ?></p>
                 <h4>РЕЗЮМЕ</h4>
                 <ul class="list-unstyled">
-                    <li>? </li>
-                    <li>? </li>
-                    <li>? </li>
-                    <li>? </li>
-                    <li>? </li>
-                    <li>? </li>
-                    <li>? </li>
-                    <li>? </li>
-                    <li>? </li>
-                    <li>? </li>
-                    <li>? </li>
+                    <li><?= $apprentice->attributes->beauty->getStatus() ?></li>
+                    <li><?= $apprentice->attributes->stamina->getStatus() ?></li>
+                    <li><?= $apprentice->attributes->sensuality->getStatus() ?></li>
+                    <li><?= $apprentice->attributes->temperament->getStatus() ?></li>
+                    <li><?= $apprentice->attributes->intellect->getStatus() ?></li>
+                    <li><?= $apprentice->attributes->ego->getStatus() ?></li>
+                    <li><?= $apprentice->attributes->pride->getStatus() ?></li>
+                    <li><?= $apprentice->attributes->exoticism->getStatus() ?></li>
+                    <li><?= $apprentice->attributes->constitution->getStatus() ?></li>
+                    <li><?= $apprentice->attributes->style->getStatus() ?></li>
+                    <li><?= $apprentice->attributes->arenaFame->getStatus() ?></li>
                 </ul>
                 <h4>ОСОБЕННОСТИ</h4>
                 <ul class="list-unstyled">
-                    <li>?</li>
+                    <?php foreach ($apprentice->traits->getRevealedTraits() as $trait): ?>
+                    <li><?= $trait->getName() ?></li>
+                    <?php endforeach; ?>
                 </ul>
             </div>
         </div>
@@ -83,7 +85,7 @@ $this->title = 'Экран ученика';
                         <div class="col-md-6" style="height: 100%">
                             <div class="g-apprentice-full-image-wrap">
                                 <div class="g-apprentice-full-image" style="
-                                    background: url(/assets_game/img/girls/full/001_blond_long_blue.gif);
+                                    background: url(/assets_game/img/<?= $apprentice->visuals->fullimage ?>.gif);
                                 "></div>
                             </div>
                         </div>
@@ -107,29 +109,28 @@ $this->title = 'Экран ученика';
                         <div class="row">
                             <div class="col-md-6">
                                 <div style="
-                                background-image: url(/assets_game/img/girls/body/boobs_B.jpg);
+                                background-image: url(/assets_game/img/girls/body/<?= $apprentice->body->breast->getImageId() ?>.jpg);
                                 width: 400px;
                                 height: 290px"></div>
                                 <br>
-                                <p>breast</p>
-                                <p>lactation</p>
-                                <p>nipples_piercing</p>
-                                <p>breast_mod</p>
-                                <p>age</p>
+                                <p><?= $apprentice->body->breast->getStatus() ?></p>
+                                <p><?= $apprentice->body->breast->getStatusLactation() ?></p>
+                                <p><?= $apprentice->body->breast->getStatusModifications() ?></p>
+                                <p><?= $apprentice->age->getStatus() ?></p>
                             </div>
                             <div class="col-md-6" style="text-align: right">
                                 <div style="
-                                background-image: url(/assets_game/img/girls/body/pussy_g1.jpg);
+                                background-image: url(/assets_game/img/girls/body/<?= $apprentice->body->vagina->getImageId() ?>.jpg);
                                 width: 400px;
                                 height: 290px;
                                 float: right;"></div>
                                 <div class="clearfix"></div>
                                 <br>
-                                <p>vagina</p>
-                                <p>anus</p>
-                                <p>clit</p>
-                                <p>vagina_mod</p>
-                                <p>tattoo</p>
+                                <p><?= $apprentice->body->vagina->getStatus() ?></p>
+                                <p><?= $apprentice->body->anus->getStatus() ?></p>
+                                <p><?= $apprentice->body->vagina->getStatusClit() ?></p>
+                                <p><?= $apprentice->body->vagina->getStatusModification() ?></p>
+                                <p><?= $apprentice->body->tattoo->getStatus() ?></p>
                             </div>
                         </div>
                         <p style="text-align: center">
@@ -208,30 +209,30 @@ $this->title = 'Экран ученика';
         <div class="col-md-2 g-info-stats-panel-right">
             <h4>НАВЫКИ</h4>
             <ul class="list-unstyled">
-                <li>maid</li>
-                <li>cook</li>
-                <li>nurse</li>
-                <li>secretary</li>
-                <li>gladiator</li>
-                <li>enchanter</li>
-                <li>expression</li>
-                <li>dancer</li>
-                <li>gym</li>
-                <li>vocal</li>
-                <li>music</li>
-                <li>pet</li>
-                <li>horse</li>
+                <li><?= $apprentice->skills->maid->getStatus() ?></li>
+                <li><?= $apprentice->skills->cook->getStatus() ?></li>
+                <li><?= $apprentice->skills->nurse->getStatus() ?></li>
+                <li><?= $apprentice->skills->secretary->getStatus() ?></li>
+                <li><?= $apprentice->skills->gladiator->getStatus() ?></li>
+                <li><?= $apprentice->skills->enchanter->getStatus() ?></li>
+                <li><?= $apprentice->skills->expression->getStatus() ?></li>
+                <li><?= $apprentice->skills->dancer->getStatus() ?></li>
+                <li><?= $apprentice->skills->gymnastics->getStatus() ?></li>
+                <li><?= $apprentice->skills->vocal->getStatus() ?></li>
+                <li><?= $apprentice->skills->music->getStatus() ?></li>
+                <li><?= $apprentice->skills->pet->getStatus() ?></li>
+                <li><?= $apprentice->skills->horse->getStatus() ?></li>
             </ul>
             <br>
             <h4>СЕКС-ТЕХНИКИ</h4>
             <ul class="list-unstyled">
-                <li>petting</li>
-                <li>oral</li>
-                <li>penetration</li>
-                <li>orgy</li>
-                <li>demonstration</li>
-                <li>fetish</li>
-                <li>xeno</li>
+                <li><?= $apprentice->skillsSex->petting->getStatus() ?></li>
+                <li><?= $apprentice->skillsSex->oral->getStatus() ?></li>
+                <li><?= $apprentice->skillsSex->penetration->getStatus() ?></li>
+                <li><?= $apprentice->skillsSex->orgy->getStatus() ?></li>
+                <li><?= $apprentice->skillsSex->demonstration->getStatus() ?></li>
+                <li><?= $apprentice->skillsSex->fetish->getStatus() ?></li>
+                <li><?= $apprentice->skillsSex->xenophily->getStatus() ?></li>
             </ul>
         </div>
     </div>

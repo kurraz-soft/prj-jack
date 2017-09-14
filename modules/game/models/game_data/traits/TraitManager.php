@@ -32,13 +32,6 @@ class TraitManager extends BaseGameDataList
         ];
     }
 
-    public function unserialize($serialized_data)
-    {
-        parent::unserialize($serialized_data);
-
-        $this->init();
-    }
-
     public function init()
     {
         foreach ($this->traitClassesData as $class => $data)
@@ -83,6 +76,9 @@ class TraitManager extends BaseGameDataList
         }
     }
 
+    /**
+     * @return ITrait[]
+     */
     public function getRevealedTraits()
     {
         $traits = [];

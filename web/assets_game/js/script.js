@@ -23,7 +23,8 @@ $(function () {
     });
 
      $('body').tooltip({
-         selector: '[data-toggle="tooltip"]'
+         //selector: '[data-toggle="tooltip"]'
+         selector: '[title]'
      });
 
      checkTabHash();

@@ -47,17 +47,20 @@ abstract class BaseGameData implements ISerializable, IChild, IInitable
      * Dependency Injection
      *
      * @param $class
+     * @param array $objects_passed
      * @return object
      * @throws Exception
      */
-    public function getDependency($class)
+    public function getDependency($class, $objects_passed = [])
     {
-        if($this->getParent() == null) throw new Exception('No parent');
+        //if($this->getParent() == null) throw new Exception('No parent');
+        if(in_array($this, $objects_passed)) throw new Exception();
+        array_push($objects_passed, $this);
 
-        $properties = (new \ReflectionObject($this->getParent()))->getProperties(\ReflectionProperty::IS_PUBLIC);
+        $properties = (new \ReflectionObject($this))->getProperties(\ReflectionProperty::IS_PUBLIC);
         foreach ($properties as $property)
         {
-            $obj = $this->_parent->{$property->name};
+            $obj = $this->{$property->name};
             if($obj instanceof $class)
             {
                 return $obj;
@@ -66,12 +69,12 @@ abstract class BaseGameData implements ISerializable, IChild, IInitable
 
         foreach ($properties as $property)
         {
-            $obj = $this->_parent->{$property->name};
-            if($obj instanceof IChild)
+            $obj = $this->{$property->name};
+            if(($obj instanceof IChild))
             {
                 try
                 {
-                    return $obj->getDependency($class);
+                    return $obj->getDependency($class, $objects_passed);
                 }catch (Exception $e)
                 {
 
@@ -79,7 +82,13 @@ abstract class BaseGameData implements ISerializable, IChild, IInitable
             }
         }
 
-        throw new Exception('Can\'t find dependency');
+        if($this->getParent() && ($this->getParent() instanceof IChild))
+        {
+            return $this->getParent()->getDependency($class, $objects_passed);
+        }else
+        {
+            throw new Exception("No parent");
+        }
     }
 
     /**

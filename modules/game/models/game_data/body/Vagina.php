@@ -79,7 +79,7 @@ class Vagina extends BaseBodyPart implements INamedValues
         }
 
         $img_id = 'pussy_' . $val;
-        $size = $this->value > 3 ? 3 : $this->value;
+        $size = $this->value > 3 ? 3 : ($this->value + 1);
         $img_id .= $size;
         return $img_id;
     }

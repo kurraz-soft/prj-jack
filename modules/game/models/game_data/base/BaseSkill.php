@@ -7,6 +7,8 @@
 namespace app\modules\game\models\game_data\base;
 
 
+use app\modules\game\helpers\FormatterHelper;
+
 abstract class BaseSkill extends BaseGameData implements IValuable, INamedValues
 {
     /**
@@ -22,5 +24,10 @@ abstract class BaseSkill extends BaseGameData implements IValuable, INamedValues
     public function unserialize($serialized_data)
     {
         $this->getSerializator()->unserialize($serialized_data);
+    }
+
+    public function getStatus()
+    {
+        return FormatterHelper::colorAttribute($this->valueNames()[$this->getValue()], $this->getValue());
     }
 }
