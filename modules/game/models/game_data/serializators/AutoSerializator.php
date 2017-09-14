@@ -79,20 +79,20 @@ class AutoSerializator implements ISerializator
                 if(!empty($serialized_data[$name]))
                 {
                     $this->obj->$name = new $type();
-                    $this->obj->$name->unserialize($serialized_data[$name]);
                     if($this->obj->$name instanceof IChild)
                     {
                         $this->obj->$name->setParent($this->obj);
                     }
+                    $this->obj->$name->unserialize($serialized_data[$name]);
                 }else
                 {
                     if($this->obj->$name instanceof ISerializable)
                     {
-                        $this->obj->$name->unserialize([]);
                         if($this->obj->$name instanceof IChild)
                         {
                             $this->obj->$name->setParent($this->obj);
                         }
+                        $this->obj->$name->unserialize([]);
                     }else
                     {
                         $this->obj->$name = null;
