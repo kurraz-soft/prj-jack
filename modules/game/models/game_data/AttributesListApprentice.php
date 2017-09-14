@@ -13,6 +13,7 @@ use app\modules\game\models\game_data\attributes\ConstitutionFemale;
 use app\modules\game\models\game_data\attributes\ExoticismFemale;
 use app\modules\game\models\game_data\attributes\FertilityFemale;
 use app\modules\game\models\game_data\attributes\HealthFemale;
+use app\modules\game\models\game_data\attributes\HygieneFemale;
 use app\modules\game\models\game_data\attributes\IntellectFemale;
 use app\modules\game\models\game_data\attributes\Metabolism;
 use app\modules\game\models\game_data\attributes\PrideFemale;
@@ -41,6 +42,7 @@ use app\modules\game\models\game_data\base\BaseGameDataList;
  * @property EgoFemale $ego
  * @property FertilityFemale $fertility
  * @property Metabolism $metabolism
+ * @property HygieneFemale $hygiene
  */
 class AttributesListApprentice extends BaseGameDataList
 {
@@ -61,6 +63,7 @@ class AttributesListApprentice extends BaseGameDataList
             'stamina' => StaminaFemale::class,
             'fertility' => FertilityFemale::class,
             'metabolism' => Metabolism::class,
+            'hygiene' => HygieneFemale::class,
         ];
     }
 }

@@ -9,34 +9,22 @@ namespace app\modules\game\helpers;
 
 class FormatterHelper
 {
-    static $colors = [
-        'red'=> '#cd0000',
-        'pink' => '#C71585',
-        'purple' => '#4B0082',
-        'blue' => '#0000CD',
-        'cyan' => '#008080',
-        'black' => '#000000',
-    ];
-
-    static public function colorState($s, $state)
+    static public function colorState($s, $state, $grade_assoc_callback = null)
     {
-        if($state < 0)
+        if(!$grade_assoc_callback || !is_callable($grade_assoc_callback))
         {
-            $color = static::$colors['red'];
-        }elseif($state == 0)
-        {
-            $color = static::$colors['black'];
+            $grade = $state > 0 ? 5 : 0;
         }else
         {
-            $color = static::$colors['cyan'];
+            $grade = $grade_assoc_callback($state);
         }
 
-        return '<span style="color: '.$color.'">' . $s . '</span>';
+        return '<span class="g-color-grade-'.$grade.'">' . $s . '</span>';
     }
 
     static public function colorAttribute($s, $attr)
     {
-        $color = static::$colors['black']; //TODO
-        return '<span style="color: '.$color.'">' . $s . '</span>';
+        $grade = $attr > 0 ? $attr : 0;
+        return '<span class="g-color-grade-'.$grade.'">' . $s . '</span>';
     }
 }

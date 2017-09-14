@@ -905,6 +905,7 @@ class ApprenticesLibrary
         $apprentice->attributes->fertility->revealed = $data['seed_fertility_revealed'];
         $apprentice->attributes->stamina->value = $data['seed_stamina'];
         $apprentice->attributes->metabolism->value = $data['seed_metabolism'];
+        $apprentice->attributes->hygiene->value = $data['seed_hygiene'];
 
         //Aura
         $apprentice->aura->habit->value = $data['seed_custom'];

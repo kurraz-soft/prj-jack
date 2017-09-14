@@ -39,6 +39,11 @@ abstract class BaseAttribute extends BaseGameDataList implements INamedValues, I
         return max(array_keys($this->valueNames()));
     }
 
+    public function getMinValue()
+    {
+        return min(array_keys($this->valueNames()));
+    }
+
     public function getValue()
     {
         return $this->_value;
@@ -46,11 +51,11 @@ abstract class BaseAttribute extends BaseGameDataList implements INamedValues, I
 
     public function setValue($new_value)
     {
-        $this->_value = clamp($new_value, 0, $this->getMaxValue());
+        $this->_value = clamp($new_value, $this->getMinValue(), $this->getMaxValue());
     }
 
-    public function out()
+    public function getStatus()
     {
-        return FormatterHelper::colorAttribute($this->valueNames()[$this->_value], $this->_value);
+        return FormatterHelper::colorAttribute($this->valueNames()[$this->value], $this->value);
     }
 }

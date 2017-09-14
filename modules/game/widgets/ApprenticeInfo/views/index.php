@@ -43,15 +43,20 @@ $asset = new \app\modules\game\assets\AppAsset();
     </div>
     <div class="row">
         <p>Энергия: <?= $apprentice->energy->out() ?></p>
-        <p>Дуется</p>
+        <p><?= $apprentice->mood->getStatus() ?></p>
         <div class="game-slave-param-row">
-            <div>Отличилась [5]</div>
+            <div><?= $apprentice->behavior->getStatus() ?></div>
+            <?php if($apprentice->behavior->value < 0): ?>
             <a href="#game-text-menu-0-0-5" class="game-red-btn game-menu-quick-link" title="Наказать">&nbsp;</a>
+            <?php elseif($apprentice->behavior->value > 0): ?>
             <a href="#game-text-menu-0-0-4" class="game-green-btn game-menu-quick-link" title="Наградить">&nbsp;</a>
+            <?php endif; ?>
         </div>
         <div class="game-slave-param-row">
-            <div>Чистая</div>
+            <div><?= $apprentice->attributes->hygiene->getStatus() ?></div>
+            <?php if($apprentice->attributes->hygiene->value < 5): ?>
             <a href="#" class="game-green-btn" title="Помыть">&nbsp;</a>
+            <?php endif; ?>
         </div>
     </div>
     <?php else: ?>
