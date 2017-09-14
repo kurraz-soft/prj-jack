@@ -11,7 +11,7 @@ class VarHelper
 {
     static public function exist($array, $key)
     {
-        return array_key_exists($key, $array) && !empty($array[$key]) && strlen($array[$key]) > 0;
+        return array_key_exists($key, $array) && isset($array[$key]) && strlen($array[$key]) > 0;
     }
 
     static public function existOrElse($array, $key, $else)
