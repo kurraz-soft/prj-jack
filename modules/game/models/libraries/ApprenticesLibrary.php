@@ -1003,9 +1003,13 @@ class ApprenticesLibrary
         $apprentice->descriptions->occupation = $data['stock_occupation_description'];
 
         //Images
-        $apprentice->visuals->avatar = $data['seed_ava'];
-        $apprentice->visuals->avatar_gray = $data['seed_ava_gray'];
-        $apprentice->visuals->avatar_clear = $data['seed_ava_clear'];
+        $matches = [];
+        preg_match('#content/pic/(.+)#', $data['seed_ava'], $matches);
+        $apprentice->visuals->avatar = isset($matches[1]) ? $matches[1] . '.jpg' : '';
+        preg_match('#content/pic/(.+)#', $data['seed_ava_gray'], $matches);
+        $apprentice->visuals->avatar_gray = isset($matches[1]) ? $matches[1] . '.jpg' : '';
+        preg_match('#content/pic/(.+)#', $data['seed_ava_clear'], $matches);
+        $apprentice->visuals->avatar_clear = isset($matches[1]) ? $matches[1] . '.jpg' : '';
 
         $apprentice->visuals->boobs = $data['seed_boobs_img'];
         $apprentice->visuals->pussy = $data['seed_pussy_img'];
