@@ -76,7 +76,7 @@ a.disabled .game-menu-btn, a:hover.disabled .game-menu-btn, a:visited.disabled .
     text-decoration: none;
 }
 .game-menu {
-    margin-top: 50px;
+    margin-top: 10px;
     margin-left: 30px;
 }
 .game-menu > li {
