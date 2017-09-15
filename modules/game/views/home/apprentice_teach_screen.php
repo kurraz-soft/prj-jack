@@ -15,30 +15,7 @@ $this->title = 'Обучение ученика';
 <div style="width: 100%; height: 100%;">
     <div class="row" style="width: 100%; height: 100%;">
         <div class="col-md-2">
-            <div class="g-info-stats-panel-left">
-                <p>Имя: </p>
-                <p>Возраст: </p>
-                <p>Ранг: </p>
-                <p>Прошло дней: </p>
-                <h4>РЕЗЮМЕ</h4>
-                <ul class="list-unstyled">
-                    <li>? </li>
-                    <li>? </li>
-                    <li>? </li>
-                    <li>? </li>
-                    <li>? </li>
-                    <li>? </li>
-                    <li>? </li>
-                    <li>? </li>
-                    <li>? </li>
-                    <li>? </li>
-                    <li>? </li>
-                </ul>
-                <h4>ОСОБЕННОСТИ</h4>
-                <ul class="list-unstyled">
-                    <li>?</li>
-                </ul>
-            </div>
+            <?= $this->renderAjax('_apprentice_attributes', ['apprentice' => $apprentice]) ?>
         </div>
         <div class="layout-border-v"></div>
         <div class="col-md-8" style="height: calc(100% - 18px - 20px);">
@@ -226,33 +203,7 @@ $this->title = 'Обучение ученика';
         </div>
         <div class="layout-border-v"></div>
         <div class="col-md-2 g-info-stats-panel-right">
-            <h4>НАВЫКИ</h4>
-            <ul class="list-unstyled">
-                <li>maid</li>
-                <li>cook</li>
-                <li>nurse</li>
-                <li>secretary</li>
-                <li>gladiator</li>
-                <li>enchanter</li>
-                <li>expression</li>
-                <li>dancer</li>
-                <li>gym</li>
-                <li>vocal</li>
-                <li>music</li>
-                <li>pet</li>
-                <li>horse</li>
-            </ul>
-            <br>
-            <h4>СЕКС-ТЕХНИКИ</h4>
-            <ul class="list-unstyled">
-                <li>petting</li>
-                <li>oral</li>
-                <li>penetration</li>
-                <li>orgy</li>
-                <li>demonstration</li>
-                <li>fetish</li>
-                <li>xeno</li>
-            </ul>
+            <?= $this->renderAjax('_apprentice_skills',['apprentice' => $apprentice]) ?>
         </div>
     </div>
 </div>

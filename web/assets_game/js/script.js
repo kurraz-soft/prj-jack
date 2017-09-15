@@ -16,8 +16,6 @@ $(function () {
         $tabs_wrap.find('.g-tab > .g-checkbox.checked').removeClass('checked');
         $(this).find('.g-checkbox').addClass('checked');
 
-        console.log(id);
-
         $(id).parents('.g-tab-content').find('.g-tab-panel.active').removeClass('active');
         $(id).addClass('active');
     });
@@ -25,6 +23,24 @@ $(function () {
      $('body').tooltip({
          //selector: '[data-toggle="tooltip"]'
          selector: '[title]'
+     });
+
+     $('body').on('click', '.g-checkbox.g-ajax-link:not(.disabled)', function (e) {
+         e.preventDefault();
+         e.stopImmediatePropagation();
+
+         if($(this).hasClass('g-radio'))
+         {
+             $('.g-radio[rel="'+$(this).attr('rel')+'"].checked').removeClass('checked');
+         }
+
+         $(this).toggleClass('checked');
+
+         $.ajax({
+             url: $(this).attr('href'),
+             success: function (data) {
+             }
+         });
      });
 
      checkTabHash();
