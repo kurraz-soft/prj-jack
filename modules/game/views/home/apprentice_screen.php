@@ -6,6 +6,24 @@
  * @var \app\modules\game\models\game_data\Character $character
  */
 use yii\helpers\Url;
+use app\modules\game\models\game_data\rules\Sleep;
+use app\modules\game\models\game_data\rules\Food;
+use app\modules\game\models\game_data\rules\FoodValue;
+use app\modules\game\models\game_data\rules\Cook;
+use app\modules\game\models\game_data\rules\BeastMilker;
+use app\modules\game\models\game_data\rules\Maid;
+use app\modules\game\models\game_data\rules\Washer;
+use app\modules\game\models\game_data\rules\NoMasturbation;
+use app\modules\game\models\game_data\rules\NoCumming;
+use app\modules\game\models\game_data\rules\MasterName;
+use app\modules\game\models\game_data\rules\Silence;
+use app\modules\game\models\game_data\rules\NoDefecation;
+use app\modules\game\models\game_data\rules\Animal;
+use app\modules\game\models\game_data\rules\Alarm;
+use app\modules\game\models\game_data\rules\Urinar;
+use app\modules\game\models\game_data\rules\Toilet;
+use app\modules\game\models\game_data\rules\VBalls;
+use app\modules\game\models\game_data\rules\Forced;
 
 $this->title = 'Экран ученика';
 ?>
@@ -34,27 +52,27 @@ $this->title = 'Экран ученика';
                         <div class="col-md-3 g-transparent g-rules-panel">
                             <h4>РЕЖИМ СНА:</h4>
                             <ul class="list-unstyled">
-                                <li class="clearfix"><a href="#" class="g-checkbox g-left g-ajax-link g-radio" rel="sleep_mode"></a>&nbsp; - В клетке</li>
-                                <li class="clearfix"><a href="#" class="g-checkbox g-left g-ajax-link g-radio" rel="sleep_mode"></a>&nbsp; - Холодный пол</li>
-                                <li class="clearfix"><a href="#" class="g-checkbox g-left g-ajax-link g-radio" rel="sleep_mode"></a>&nbsp; - Циновка и плед</li>
-                                <li class="clearfix"><a href="#" class="g-checkbox g-left g-ajax-link g-radio" rel="sleep_mode"></a>&nbsp; - Спи со мной</li>
-                                <li class="clearfix"><a href="#" class="g-checkbox g-left g-ajax-link g-radio" rel="sleep_mode"></a>&nbsp; - Спи в будуаре</li>
+                                <li class="clearfix"><a href="<?= Url::to(['apprentice-rule','id' =>'sleep','value' => Sleep::CAGE]) ?>" class="g-checkbox g-left g-ajax-link g-radio <?= $apprentice->rules->getRule(Sleep::class)->getValue() == Sleep::CAGE ? 'checked' : ''?>" rel="sleep_mode"></a>&nbsp; - В клетке</li>
+                                <li class="clearfix"><a href="<?= Url::to(['apprentice-rule','id' =>'sleep','value' => Sleep::COLD_FLOOR]) ?>" class="g-checkbox g-left g-ajax-link g-radio <?= $apprentice->rules->getRule(Sleep::class)->getValue() == Sleep::COLD_FLOOR ? 'checked' : ''?>" rel="sleep_mode"></a>&nbsp; - Холодный пол</li>
+                                <li class="clearfix"><a href="<?= Url::to(['apprentice-rule','id' =>'sleep','value' => Sleep::MAT]) ?>" class="g-checkbox g-left g-ajax-link g-radio <?= $apprentice->rules->getRule(Sleep::class)->getValue() == Sleep::MAT ? 'checked' : ''?>" rel="sleep_mode"></a>&nbsp; - Циновка и плед</li>
+                                <li class="clearfix"><a href="<?= Url::to(['apprentice-rule','id' =>'sleep','value' => Sleep::WITH_MASTER]) ?>" class="g-checkbox g-left g-ajax-link g-radio <?= $apprentice->rules->getRule(Sleep::class)->getValue() == Sleep::WITH_MASTER ? 'checked' : ''?>" rel="sleep_mode"></a>&nbsp; - Спи со мной</li>
+                                <li class="clearfix"><a href="<?= Url::to(['apprentice-rule','id' =>'sleep','value' => Sleep::BOUDOIR]) ?>" class="g-checkbox g-left g-ajax-link g-radio <?= $apprentice->rules->getRule(Sleep::class)->getValue() == Sleep::BOUDOIR ? 'checked' : ''?>" rel="sleep_mode"></a>&nbsp; - Спи в будуаре</li>
                             </ul>
                             <h4>РЕЖИМ ПИТАНИЯ:</h4>
                             <ul class="list-unstyled">
-                                <li class="clearfix"><a href="#" class="g-checkbox g-left g-ajax-link g-radio" rel="food"></a>&nbsp; - Ничего</li>
-                                <li class="clearfix"><a href="#" class="g-checkbox g-left g-ajax-link g-radio" rel="food"></a>&nbsp; - Сухой корм</li>
-                                <li class="clearfix"><a href="#" class="g-checkbox g-left g-ajax-link g-radio" rel="food"></a>&nbsp; - Свежая еда</li>
-                                <li class="clearfix"><a href="#" class="g-checkbox g-ajax-link disabled g-left g-radio" rel="food"></a>&nbsp; - Сперма исчадия</li>
-                                <li class="clearfix"><a href="#" class="g-checkbox g-left g-ajax-link"></a>&nbsp; - Объедки со стола</li>
+                                <li class="clearfix"><a href="<?= Url::to(['apprentice-rule','id' =>'food','value' => Food::NO]) ?>" class="g-checkbox g-left g-ajax-link g-radio <?= $apprentice->rules->getRule(Food::class)->getValue() == Food::NO? 'checked' : ''?>" rel="food"></a>&nbsp; - Ничего</li>
+                                <li class="clearfix"><a href="<?= Url::to(['apprentice-rule','id' =>'food','value' => Food::DRY_FOOD]) ?>" class="g-checkbox g-left g-ajax-link g-radio <?= $apprentice->rules->getRule(Food::class)->getValue() == Food::DRY_FOOD? 'checked' : ''?>" rel="food"></a>&nbsp; - Сухой корм</li>
+                                <li class="clearfix"><a href="<?= Url::to(['apprentice-rule','id' =>'food','value' => Food::FRESH_FOOD]) ?>" class="g-checkbox g-left g-ajax-link g-radio <?= $apprentice->rules->getRule(Food::class)->getValue() == Food::FRESH_FOOD? 'checked' : ''?>" rel="food"></a>&nbsp; - Свежая еда</li>
+                                <li class="clearfix"><a href="<?= Url::to(['apprentice-rule','id' =>'food','value' => Food::BEAST_SPERM]) ?>" class="g-checkbox g-ajax-link disabled g-left g-radio <?= $apprentice->rules->getRule(Food::class)->getValue() == Food::BEAST_SPERM? 'checked' : ''?>" rel="food"></a>&nbsp; - Сперма исчадия</li>
+                                <li class="clearfix"><a href="<?= Url::to(['apprentice-rule','id' =>'food','value' => Food::MASTERS_FOOD]) ?>" class="g-checkbox g-left g-ajax-link <?= $apprentice->rules->getRule(Food::class)->masters_food ? 'checked' : ''?>"></a>&nbsp; - Объедки со стола</li>
                             </ul>
                             <br />
                             <ul class="list-unstyled">
-                                <li class="clearfix"><a href="#" class="g-checkbox g-left g-ajax-link g-radio" rel="food_mode"></a>&nbsp; - Похудание</li>
-                                <li class="clearfix"><a href="#" class="g-checkbox g-left g-ajax-link g-radio" rel="food_mode"></a>&nbsp; - Поддержка веса</li>
-                                <li class="clearfix"><a href="#" class="g-checkbox g-left g-ajax-link g-radio" rel="food_mode"></a>&nbsp; - Набор веса</li>
-                                <li class="clearfix"><a href="#" class="g-checkbox g-left g-ajax-link"></a>&nbsp; - Диетолог</li>
-                                <li class="clearfix"><a href="#" class="g-checkbox g-left g-ajax-link"></a>&nbsp; - Биодобавки</li>
+                                <li class="clearfix"><a href="<?= Url::to(['apprentice-rule','id' =>'food_value','value' => FoodValue::LOOSE_WEIGHT]) ?>" class="g-checkbox g-left g-ajax-link g-radio <?= $apprentice->rules->getRule(FoodValue::class)->getValue() == FoodValue::LOOSE_WEIGHT? 'checked' : ''?>" rel="food_mode"></a>&nbsp; - Похудение</li>
+                                <li class="clearfix"><a href="<?= Url::to(['apprentice-rule','id' =>'food_value','value' => FoodValue::KEEP_WEIGHT]) ?>" class="g-checkbox g-left g-ajax-link g-radio <?= $apprentice->rules->getRule(FoodValue::class)->getValue() == FoodValue::KEEP_WEIGHT? 'checked' : ''?>" rel="food_mode"></a>&nbsp; - Поддержка веса</li>
+                                <li class="clearfix"><a href="<?= Url::to(['apprentice-rule','id' =>'food_value','value' => FoodValue::GAIN_WEIGHT]) ?>" class="g-checkbox g-left g-ajax-link g-radio <?= $apprentice->rules->getRule(FoodValue::class)->getValue() == FoodValue::GAIN_WEIGHT? 'checked' : ''?>" rel="food_mode"></a>&nbsp; - Набор веса</li>
+                                <li class="clearfix"><a href="<?= Url::to(['apprentice-rule','id' =>'food_value','value' => FoodValue::DIET_DOCTOR]) ?>" class="g-checkbox g-left g-ajax-link <?= $apprentice->rules->getRule(FoodValue::class)->diet_doctor ? 'checked' : ''?>"></a>&nbsp; - Диетолог</li>
+                                <li class="clearfix"><a href="<?= Url::to(['apprentice-rule','id' =>'food_value','value' => FoodValue::BIO_ADDONS]) ?>" class="g-checkbox g-left g-ajax-link <?= $apprentice->rules->getRule(FoodValue::class)->bio_addons ? 'checked' : ''?>"></a>&nbsp; - Биодобавки</li>
                             </ul>
                             <h4>СЧЕТЧИК КАЛОРИЙ:</h4>
                             <p>1 калорий</p>
@@ -69,21 +87,21 @@ $this->title = 'Экран ученика';
                         <div class="col-md-3 g-transparent g-rules-panel" style="text-align: right;">
                             <h4>ПРАВИЛА:</h4>
                             <ul class="list-unstyled">
-                                <li class="clearfix">Ты кухарка - &nbsp;<a href="#" class="g-checkbox g-ajax-link g-right"></a></li>
-                                <li class="clearfix">Ты доярка - &nbsp;<a href="#" class="g-checkbox g-ajax-link g-right"></a></li>
-                                <li class="clearfix">Ты горничная - &nbsp;<a href="#" class="g-checkbox g-ajax-link g-right"></a></li>
-                                <li class="clearfix">Ты меня моешь - &nbsp;<a href="#" class="g-checkbox g-ajax-link g-right"></a></li>
-                                <li class="clearfix">Не дрочить - &nbsp;<a href="#" class="g-checkbox g-ajax-link g-right"></a></li>
-                                <li class="clearfix">Не кончать - &nbsp;<a href="#" class="g-checkbox g-ajax-link g-right"></a></li>
-                                <li class="clearfix">Я Хозяин - &nbsp;<a href="#" class="g-checkbox g-ajax-link g-right"></a></li>
-                                <li class="clearfix">Ты молчишь - &nbsp;<a href="#" class="g-checkbox g-ajax-link g-right"></a></li>
-                                <li class="clearfix">Не гадить - &nbsp;<a href="#" class="g-checkbox g-ajax-link g-right"></a></li>
-                                <li class="clearfix">Ты животное - &nbsp;<a href="#" class="g-checkbox g-ajax-link g-right"></a></li>
-                                <li class="clearfix">Ты будильник - &nbsp;<a href="#" class="g-checkbox g-ajax-link g-right"></a></li>
-                                <li class="clearfix">Ты писсуар - &nbsp;<a href="#" class="g-checkbox g-ajax-link g-right"></a></li>
-                                <li class="clearfix">Ты унитаз - &nbsp;<a href="#" class="g-checkbox g-ajax-link g-right"></a></li>
-                                <li class="clearfix">V-шарики - &nbsp;<a href="#" class="g-checkbox g-ajax-link g-right"></a></li>
-                                <li class="clearfix">Форсировано - &nbsp;<a href="#" class="g-checkbox g-ajax-link g-right"></a></li>
+                                <li class="clearfix">Ты кухарка - &nbsp;<a href="<?= Url::to(['apprentice-rule','id' =>'cook']) ?>" class="g-checkbox g-ajax-link g-right <?= $apprentice->rules->getRule(Cook::class)->getValue()? 'checked' : ''?>"></a></li>
+                                <li class="clearfix">Ты доярка - &nbsp;<a href="<?= Url::to(['apprentice-rule','id' =>'beast_milker']) ?>" class="g-checkbox g-ajax-link g-right <?= $apprentice->rules->getRule(BeastMilker::class)->getValue()? 'checked' : ''?>"></a></li>
+                                <li class="clearfix">Ты горничная - &nbsp;<a href="<?= Url::to(['apprentice-rule','id' =>'maid']) ?>" class="g-checkbox g-ajax-link g-right <?= $apprentice->rules->getRule(Maid::class)->getValue()? 'checked' : ''?>"></a></li>
+                                <li class="clearfix">Ты меня моешь - &nbsp;<a href="<?= Url::to(['apprentice-rule','id' =>'washer']) ?>" class="g-checkbox g-ajax-link g-right <?= $apprentice->rules->getRule(Washer::class)->getValue()? 'checked' : ''?>"></a></li>
+                                <li class="clearfix">Не дрочить - &nbsp;<a href="<?= Url::to(['apprentice-rule','id' =>'no_masturbation']) ?>" class="g-checkbox g-ajax-link g-right <?= $apprentice->rules->getRule(NoMasturbation::class)->getValue()? 'checked' : ''?>"></a></li>
+                                <li class="clearfix">Не кончать - &nbsp;<a href="<?= Url::to(['apprentice-rule','id' =>'no_cumming']) ?>" class="g-checkbox g-ajax-link g-right <?= $apprentice->rules->getRule(NoCumming::class)->getValue()? 'checked' : ''?>"></a></li>
+                                <li class="clearfix">Я Хозяин - &nbsp;<a href="<?= Url::to(['apprentice-rule','id' =>'master_name']) ?>" class="g-checkbox g-ajax-link g-right <?= $apprentice->rules->getRule(MasterName::class)->getValue()? 'checked' : ''?>"></a></li>
+                                <li class="clearfix">Ты молчишь - &nbsp;<a href="<?= Url::to(['apprentice-rule','id' =>'silence']) ?>" class="g-checkbox g-ajax-link g-right <?= $apprentice->rules->getRule(Silence::class)->getValue()? 'checked' : ''?>"></a></li>
+                                <li class="clearfix">Не гадить - &nbsp;<a href="<?= Url::to(['apprentice-rule','id' =>'no_defecation']) ?>" class="g-checkbox g-ajax-link g-right <?= $apprentice->rules->getRule(NoDefecation::class)->getValue()? 'checked' : ''?>"></a></li>
+                                <li class="clearfix">Ты животное - &nbsp;<a href="<?= Url::to(['apprentice-rule','id' =>'animal']) ?>" class="g-checkbox g-ajax-link g-right <?= $apprentice->rules->getRule(Animal::class)->getValue()? 'checked' : ''?>"></a></li>
+                                <li class="clearfix">Ты будильник - &nbsp;<a href="<?= Url::to(['apprentice-rule','id' =>'alarm']) ?>" class="g-checkbox g-ajax-link g-right <?= $apprentice->rules->getRule(Alarm::class)->getValue()? 'checked' : ''?>"></a></li>
+                                <li class="clearfix">Ты писсуар - &nbsp;<a href="<?= Url::to(['apprentice-rule','id' =>'urinar']) ?>" class="g-checkbox g-ajax-link g-right <?= $apprentice->rules->getRule(Urinar::class)->getValue()? 'checked' : ''?>"></a></li>
+                                <li class="clearfix">Ты унитаз - &nbsp;<a href="<?= Url::to(['apprentice-rule','id' =>'toilet']) ?>" class="g-checkbox g-ajax-link g-right <?= $apprentice->rules->getRule(Toilet::class)->getValue()? 'checked' : ''?>"></a></li>
+                                <li class="clearfix">V-шарики - &nbsp;<a href="<?= Url::to(['apprentice-rule','id' =>'v_balls']) ?>" class="g-checkbox g-ajax-link g-right <?= $apprentice->rules->getRule(VBalls::class)->getValue()? 'checked' : ''?>"></a></li>
+                                <li class="clearfix">Форсировано - &nbsp;<a href="<?= Url::to(['apprentice-rule','id' =>'forced']) ?>" class="g-checkbox g-ajax-link g-right <?= $apprentice->rules->getRule(Forced::class)->getValue()? 'checked' : ''?>"></a></li>
                                 <li class="clearfix"><span class="g-color-grade-5">Исполняет правила</span></li>
                             </ul>
                         </div>

@@ -7,26 +7,26 @@
 namespace app\modules\game\models\game_data\base;
 
 
-abstract class BaseRule extends BaseGameData
+abstract class BaseRule extends BaseGameData implements IValuable
 {
     /**
      * @var bool
      */
-    public $active = false;
+    public $value = 0;
     public $name;
 
     public function serialize()
     {
         return [
-            'active' => $this->active,
+            'value' => $this->value,
         ];
     }
 
     public function unserialize($serialized_data)
     {
-        if(isset($serialized_data['active']))
+        if(isset($serialized_data['value']))
         {
-            $this->active = $serialized_data['active'];
+            $this->value = $serialized_data['value'];
         }
     }
 
@@ -37,5 +37,15 @@ abstract class BaseRule extends BaseGameData
     public static function factory($type)
     {
         return new $type();
+    }
+
+    public function getValue()
+    {
+        return $this->value;
+    }
+
+    public function setValue($new_value)
+    {
+        $this->value = $new_value;
     }
 }

@@ -19,7 +19,7 @@ class RulesApprenticeTest extends Unit
         $data = [
             'rules' => [
                 Food::class => [
-                    'active' => true,
+                    'value' => Food::DRY_FOOD,
                 ],
             ],
         ];
@@ -28,7 +28,7 @@ class RulesApprenticeTest extends Unit
         $rules->unserialize($data);
 
         expect($rules->rules[Food::class])->isInstanceOf(Food::class);
-        expect($rules->rules[Food::class]->active)->equals(true);
+        expect($rules->rules[Food::class]->getValue())->equals(Food::DRY_FOOD);
         expect($rules->rules[FoodValue::class])->isInstanceOf(FoodValue::class);
     }
 }

@@ -8,8 +8,6 @@ namespace app\modules\game\controllers;
 
 use app\modules\game\models\game_data\actions\home\apprentice\talk\AskAboutPastAction;
 use app\modules\game\models\GameMechanics;
-use app\modules\game\models\libraries\ApprenticesLibrary;
-use yii\helpers\Url;
 
 class HomeController extends GameController
 {
@@ -61,5 +59,18 @@ class HomeController extends GameController
         );
 
         return $action->setController($this)->render();
+    }
+
+    public function actionApprenticeRule($id, $value = null)
+    {
+        if($value === null)
+        {
+            $this->gameRegister->apprentice_manager->active_apprentice->rules->toggleRuleValue($id);
+        }else
+        {
+            $this->gameRegister->apprentice_manager->active_apprentice->rules->setRuleValue($id, $value);
+        }
+
+        echo "OK";
     }
 }
