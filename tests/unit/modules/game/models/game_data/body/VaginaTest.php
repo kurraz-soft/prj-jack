@@ -19,7 +19,7 @@ class VaginaTest extends Unit
             'value' => 2,
         ]);
 
-        expect($v->getImageId())->equals('pussy_l2');
+        expect($v->getImageId())->equals('pussy_l3');
     }
 
     public function testGetStatus()
