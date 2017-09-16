@@ -82,6 +82,7 @@ class RulesApprentice extends BaseGameData
             {
                 if(isset($serialized_data['rules'][$type]))
                 {
+                    $rule->setParent($this);
                     $rule->unserialize($serialized_data['rules'][$type]);
                 }
             }

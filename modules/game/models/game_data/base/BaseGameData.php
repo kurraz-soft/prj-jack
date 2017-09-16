@@ -82,6 +82,8 @@ abstract class BaseGameData implements ISerializable, IChild, IInitable
             }
         }
 
+        if($this->getParent() instanceof $class) return $this->getParent();
+
         if($this->getParent() && ($this->getParent() instanceof IChild))
         {
             return $this->getParent()->getDependency($class, $objects_passed);

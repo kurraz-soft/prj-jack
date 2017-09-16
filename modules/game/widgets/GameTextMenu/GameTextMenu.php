@@ -7,6 +7,7 @@
 namespace app\modules\game\widgets\GameTextMenu;
 
 
+use app\modules\game\helpers\VarHelper;
 use yii\base\Widget;
 
 class GameTextMenu extends Widget
@@ -46,14 +47,8 @@ class GameTextMenu extends Widget
 
         if($this->params)
         {
-            $keys = array_keys($this->params);
-            foreach ($keys as &$key)
-            {
-                $key = '%{'.$key.'}%';
-            }
-            $html = str_replace($keys, array_values($this->params), $html);
+            $html = VarHelper::fillStringVars($html, $this->params);
         }
-
 
         return $this->render('view', [
             'menu' => $html,

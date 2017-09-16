@@ -36,6 +36,19 @@ $(function () {
 
          $(this).toggleClass('checked');
 
+         if($(this).is('[data-info-id]'))
+         {
+             var info_id;
+             if($(this).is('.checked'))
+             {
+                 info_id = $(this).data('infoId') + '-' + 1;
+             }else
+             {
+                 info_id = $(this).data('infoId') + '-' + 0;
+             }
+             $('.g-info-text-content:visible').html($('#' + info_id).html());
+         }
+
          $.ajax({
              url: $(this).attr('href'),
              success: function (data) {

@@ -49,4 +49,14 @@ class VarHelper
 
         return $classes;
     }
+
+    static public function fillStringVars($s, $vars)
+    {
+        $keys = array_keys($vars);
+        foreach ($keys as &$key)
+        {
+            $key = '%{'.$key.'}%';
+        }
+        return str_replace($keys, array_values($vars), $s);
+    }
 }
