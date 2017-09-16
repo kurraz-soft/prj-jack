@@ -42,4 +42,11 @@ abstract class BaseAuraAttribute extends BaseGameData implements IValuable
     {
         $this->getSerializator()->unserialize($serialized_data);
     }
+
+    abstract public function valueDescriptions();
+
+    public function getStatus()
+    {
+        return $this->valueDescriptions()[$this->getValue()];
+    }
 }

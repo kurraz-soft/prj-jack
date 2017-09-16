@@ -53,6 +53,11 @@ class Aura extends BaseGameDataList
      */
     public $loyalty; //moral
 
+    /**
+     * @var Power
+     */
+    public $power; //supremacy
+
     public function serializableParams()
     {
         return [
@@ -65,6 +70,7 @@ class Aura extends BaseGameDataList
             'habit' => Habit::class,
             'corruption' => Corruption::class,
             'loyalty' => Loyalty::class,
+            'power' => Power::class,
         ];
     }
 }

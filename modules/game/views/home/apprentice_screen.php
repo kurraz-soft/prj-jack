@@ -162,23 +162,23 @@ $this->title = 'Экран ученика';
                     <div class="row" style="height: 100%">
                         <div class="col-md-6">
                             <h4 style="text-align: center; text-decoration: underline;">СНАРЯЖЕНИЕ</h4>
-                            <p>Доспехи: Без доспеха</p>
-                            <p>За спиной: </p>
-                            <p>На поясе слева: </p>
-                            <p>На поясе справа: </p>
+                            <p>Доспехи: <?= $apprentice->equipment->armor->name ?></p>
+                            <p>За спиной: <?= $apprentice->equipment->weaponBack->name ?></p>
+                            <p>На поясе слева: <?= $apprentice->equipment->weaponLeft->name ?></p>
+                            <p>На поясе справа: <?= $apprentice->equipment->weaponRight->name ?></p>
                             <br>
-                            <p>Одежда: </p>
-                            <p>На голове: </p>
-                            <p>В ушах: </p>
-                            <p>На шее: </p>
-                            <p>На руках: </p>
-                            <p>В сосках: </p>
-                            <p>В клиторе: </p>
-                            <p>На ногах: </p>
-                            <p>Левое кольцо: </p>
-                            <p>Правое кольцо: </p>
-                            <p>В пупке: </p>
-                            <p>В языке: </p>
+                            <p>Одежда: <?= $apprentice->equipment->cloth->name ?></p>
+                            <p>На голове: <?= $apprentice->equipment->head->name ?></p>
+                            <p>В ушах: <?= $apprentice->equipment->ears->name ?></p>
+                            <p>На шее: <?= $apprentice->equipment->neck->name ?></p>
+                            <p>На руках: <?= $apprentice->equipment->hands->name ?></p>
+                            <p>В сосках: <?= $apprentice->equipment->nipples->name ?></p>
+                            <p>В клиторе: <?= $apprentice->equipment->clit->name ?></p>
+                            <p>На ногах: <?= $apprentice->equipment->legs->name ?></p>
+                            <p>Левое кольцо: <?= $apprentice->equipment->ringLeft->name ?></p>
+                            <p>Правое кольцо: <?= $apprentice->equipment->ringRight->name ?></p>
+                            <p>В пупке: <?= $apprentice->equipment->navel->name ?></p>
+                            <p>В языке: <?= $apprentice->equipment->tongue->name ?></p>
                         </div>
                         <div class="col-md-6">
                             <h4 style="text-align: center; text-decoration: underline;">ДОСТУПНЫЕ ВАРИАНТЫ</h4>
@@ -194,16 +194,16 @@ $this->title = 'Экран ученика';
 <!--                EQUIPMENT TAB/-->
 <!--                AURA TAB-->
                 <div id="tab-aura" class="g-tab-panel">
-                    <div class="row g-tab-aura" style="height: 100%">
-                        <p>obedience</p>
-                        <p>lust</p>
-                        <p>fear</p>
-                        <p>desperation</p>
-                        <p>awareness</p>
-                        <p>taming</p>
-                        <p>habit</p>
-                        <p>corruption</p>
-                        <p>loyalty</p>
+                    <div class="row g-tab-aura" style="height: 100%; color: #0000CD">
+                        <p><?= $apprentice->aura->obedience->getStatus() ?> <?= $apprentice->aura->power->getStatus() ?></p>
+                        <p><?= $apprentice->aura->lust->getStatus() ?></p>
+                        <p><?= $apprentice->aura->fear->getStatus() ?></p>
+                        <p><?= $apprentice->aura->desperation->getStatus() ?></p>
+                        <p><?= $apprentice->aura->awareness->getStatus() ?></p>
+                        <p><?= $apprentice->aura->taming->getStatus() ?></p>
+                        <p><?= $apprentice->aura->habit->getStatus() ?></p>
+                        <p><?= $apprentice->aura->corruption->getStatus() ?></p>
+                        <p><?= $apprentice->aura->loyalty->getStatus() ?></p>
                     </div>
 
                     <div class="layout-border-h row"></div>
