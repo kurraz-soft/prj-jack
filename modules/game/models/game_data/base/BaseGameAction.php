@@ -19,15 +19,15 @@ abstract class BaseGameAction
     /**
      * @var string
      */
-    public $caption;
+    public $caption = '';
     /**
      * @var string
      */
-    public $description;
+    public $description = '';
     /**
      * @var string
      */
-    public $info;
+    public $info = '';
 
     /**
      * @var Controller
@@ -39,7 +39,10 @@ abstract class BaseGameAction
         return '/action';
     }
 
-    abstract public function getEndRoute() : array;
+    public function getEndRoute() : array
+    {
+        return ['index'];
+    }
 
     public function setController(Controller $controller) : BaseGameAction
     {

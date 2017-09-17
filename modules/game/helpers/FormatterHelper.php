@@ -27,4 +27,9 @@ class FormatterHelper
         $grade = $attr > 0 ? $attr : 0;
         return '<span class="g-color-grade-'.$grade.'">' . $s . '</span>';
     }
+
+    static public function imgPath($img, $ext)
+    {
+        return '/assets_game/img/' . $img . '.'.$ext;
+    }
 }

@@ -6,6 +6,7 @@
 
 namespace app\modules\game\controllers;
 
+use app\modules\game\models\game_data\actions\home\apprentice\orders\Wash;
 use app\modules\game\models\game_data\actions\home\apprentice\talk\AskAboutPastAction;
 use app\modules\game\models\GameMechanics;
 
@@ -63,6 +64,8 @@ class HomeController extends GameController
 
     public function actionApprenticeRule($id, $value = null)
     {
+        if(!\Yii::$app->request->isAjax) throw new \HttpException(400);
+
         if($value === null)
         {
             $this->gameRegister->apprentice_manager->active_apprentice->rules->toggleRuleValue($id);
@@ -72,5 +75,27 @@ class HomeController extends GameController
         }
 
         echo "OK";
+    }
+
+    public function actionApprenticeOrderWash()
+    {
+        $action = new Wash(
+            $this->gameRegister->apprentice_manager->active_apprentice,
+            null, //TODO pass assistant
+            $this->gameRegister->character->home
+        );
+
+        return $action->setController($this)->render();
+    }
+
+    public function actionCharacterWash()
+    {
+        $action = new \app\modules\game\models\game_data\actions\home\character\Wash(
+            $this->gameRegister->character,
+            $this->gameRegister->apprentice_manager->active_apprentice,
+            null
+        );
+
+        return $action->setController($this)->render();
     }
 }

@@ -26,7 +26,7 @@ use app\modules\game\models\game_data\rules\Sleep;
 use app\modules\game\models\game_data\rules\Toilet;
 use app\modules\game\models\game_data\rules\Urinar;
 use app\modules\game\models\game_data\rules\VBalls;
-use app\modules\game\models\game_data\rules\Washer;
+use app\modules\game\models\game_data\rules\MasterWasher;
 use yii\helpers\Inflector;
 
 class RulesApprentice extends BaseGameData
@@ -56,7 +56,7 @@ class RulesApprentice extends BaseGameData
             Toilet::class => new Toilet(),
             Urinar::class => new Urinar(),
             VBalls::class => new VBalls(),
-            Washer::class => new Washer(),
+            MasterWasher::class => new MasterWasher(),
         ];
     }
 

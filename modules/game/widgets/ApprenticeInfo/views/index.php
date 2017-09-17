@@ -58,7 +58,7 @@ $asset = new \app\modules\game\assets\AppAsset();
         <div class="game-slave-param-row">
             <div><?= $apprentice->attributes->hygiene->getStatus() ?></div>
             <?php if($buttons_enabled && $apprentice->attributes->hygiene->value < 5): ?>
-            <a href="#" class="game-green-btn" title="Помыть">&nbsp;</a>
+            <a href="<?= Url::to(['apprentice-order-wash']) ?>" class="game-green-btn" title="Помыть">&nbsp;</a>
             <?php endif; ?>
         </div>
     </div>

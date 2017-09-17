@@ -12,7 +12,7 @@ use app\modules\game\models\game_data\rules\FoodValue;
 use app\modules\game\models\game_data\rules\Cook;
 use app\modules\game\models\game_data\rules\BeastMilker;
 use app\modules\game\models\game_data\rules\Maid;
-use app\modules\game\models\game_data\rules\Washer;
+use app\modules\game\models\game_data\rules\MasterWasher;
 use app\modules\game\models\game_data\rules\NoMasturbation;
 use app\modules\game\models\game_data\rules\NoCumming;
 use app\modules\game\models\game_data\rules\MasterName;
@@ -90,7 +90,7 @@ $this->title = 'Экран ученика';
                                 <li class="clearfix">Ты кухарка - &nbsp;<a data-info-id="cook" href="<?= Url::to(['apprentice-rule','id' =>'cook']) ?>" class="g-checkbox g-ajax-link g-right <?= $apprentice->rules->getRule(Cook::class)->getValue()? 'checked' : ''?>"></a></li>
                                 <li class="clearfix">Ты доярка - &nbsp;<a data-info-id="beast_milker" href="<?= Url::to(['apprentice-rule','id' =>'beast_milker']) ?>" class="g-checkbox g-ajax-link g-right <?= $apprentice->rules->getRule(BeastMilker::class)->getValue()? 'checked' : ''?>"></a></li>
                                 <li class="clearfix">Ты горничная - &nbsp;<a data-info-id="maid" href="<?= Url::to(['apprentice-rule','id' =>'maid']) ?>" class="g-checkbox g-ajax-link g-right <?= $apprentice->rules->getRule(Maid::class)->getValue()? 'checked' : ''?>"></a></li>
-                                <li class="clearfix">Ты меня моешь - &nbsp;<a data-info-id="washer" href="<?= Url::to(['apprentice-rule','id' =>'washer']) ?>" class="g-checkbox g-ajax-link g-right <?= $apprentice->rules->getRule(Washer::class)->getValue()? 'checked' : ''?>"></a></li>
+                                <li class="clearfix">Ты меня моешь - &nbsp;<a data-info-id="washer" href="<?= Url::to(['apprentice-rule','id' =>'washer']) ?>" class="g-checkbox g-ajax-link g-right <?= $apprentice->rules->getRule(MasterWasher::class)->getValue()? 'checked' : ''?>"></a></li>
                                 <li class="clearfix">Не дрочить - &nbsp;<a data-info-id="no_masturbation" href="<?= Url::to(['apprentice-rule','id' =>'no_masturbation']) ?>" class="g-checkbox g-ajax-link g-right <?= $apprentice->rules->getRule(NoMasturbation::class)->getValue()? 'checked' : ''?>"></a></li>
                                 <li class="clearfix">Не кончать - &nbsp;<a data-info-id="no_cumming" href="<?= Url::to(['apprentice-rule','id' =>'no_cumming']) ?>" class="g-checkbox g-ajax-link g-right <?= $apprentice->rules->getRule(NoCumming::class)->getValue()? 'checked' : ''?>"></a></li>
                                 <li class="clearfix">Я Хозяин - &nbsp;<a data-info-id="master_name" href="<?= Url::to(['apprentice-rule','id' =>'master_name']) ?>" class="g-checkbox g-ajax-link g-right <?= $apprentice->rules->getRule(MasterName::class)->getValue()? 'checked' : ''?>"></a></li>
@@ -246,8 +246,8 @@ $this->title = 'Экран ученика';
     <div id="beast_milker-1"><?= $apprentice->rules->getRule(BeastMilker::class)->getValueText(1) ?></div>
     <div id="maid-0"><?= $apprentice->rules->getRule(Maid::class)->getValueText(0) ?></div>
     <div id="maid-1"><?= $apprentice->rules->getRule(Maid::class)->getValueText(1) ?></div>
-    <div id="washer-0"><?= $apprentice->rules->getRule(Washer::class)->getValueText(0) ?></div>
-    <div id="washer-1"><?= $apprentice->rules->getRule(Washer::class)->getValueText(1) ?></div>
+    <div id="washer-0"><?= $apprentice->rules->getRule(MasterWasher::class)->getValueText(0) ?></div>
+    <div id="washer-1"><?= $apprentice->rules->getRule(MasterWasher::class)->getValueText(1) ?></div>
     <div id="no_masturbation-0"><?= $apprentice->rules->getRule(NoMasturbation::class)->getValueText(0) ?></div>
     <div id="no_masturbation-1"><?= $apprentice->rules->getRule(NoMasturbation::class)->getValueText(1) ?></div>
     <div id="no_cumming-0"><?= $apprentice->rules->getRule(NoCumming::class)->getValueText(0) ?></div>
