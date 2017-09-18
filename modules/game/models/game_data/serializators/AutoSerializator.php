@@ -62,6 +62,9 @@ class AutoSerializator implements ISerializator
             {
                 $ret = $serializable_var->serialize();
             }
+        }elseif($type === '__class')
+        {
+            $ret = get_class($this->obj);
         }else
         {
             $ret = $serializable_var;
@@ -78,7 +81,10 @@ class AutoSerializator implements ISerializator
             {
                 if(!empty($serialized_data[$name]))
                 {
-                    $this->obj->$name = new $type();
+                    if(!empty($serialized_data[$name]['__class']))
+                        $this->obj->$name = new $serialized_data[$name]['__class']();
+                    else
+                        $this->obj->$name = new $type();
                     if($this->obj->$name instanceof IChild)
                     {
                         $this->obj->$name->setParent($this->obj);

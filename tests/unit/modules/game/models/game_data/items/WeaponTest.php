@@ -19,7 +19,7 @@ class WeaponTest extends Unit
         $w->unserialize([]);
 
         expect($w->id)->equals('fist');
-        expect($w->name)->equals('Кулак');
+        expect($w->name)->equals('Без оружия');
     }
 
     public function testWeaponApprentiseUnserialize()
@@ -36,6 +36,6 @@ class WeaponTest extends Unit
         $ap = new Apprentice();
         $ap->unserialize([]);
 
-        expect($ap->equipment->weapon->name)->equals('Кулак');
+        expect($ap->equipment->weapon->name)->equals('Без оружия');
     }
 }

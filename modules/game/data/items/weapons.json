@@ -1,7 +1,7 @@
 [
   {
     "id": "fist",
-    "name": "Кулак",
+    "name": "Без оружия",
     "description": "Ваше единственное оружие - собственные кулаки.",
     "damageAttribute": "strength",
     "damageBonus": 0,

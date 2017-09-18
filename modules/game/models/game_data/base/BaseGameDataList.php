@@ -19,7 +19,7 @@ abstract class BaseGameDataList extends BaseGameData implements IAutoSerializabl
     {
         foreach ($this->serializableParams() as $name => $class)
         {
-            if(class_exists($class))
+            if(class_exists($class) && !(new \ReflectionClass($class))->isAbstract())
                 $this->$name = new $class();
         }
 

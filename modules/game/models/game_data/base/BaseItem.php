@@ -13,6 +13,8 @@ abstract class BaseItem extends BaseGameDataList
     public $name;
     public $description;
 
+    public $__class = '';
+
     public function getName()
     {
         return $this->name;
@@ -27,6 +29,7 @@ abstract class BaseItem extends BaseGameDataList
     {
         return [
             'id' => '',
+            '__class' => '__class',
         ];
     }
 
