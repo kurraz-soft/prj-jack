@@ -1,0 +1,15 @@
+{
+  "slum": {
+    "name": "Муравейник",
+    "location_route": [
+      "/game/white-city/index"
+    ],
+    "refrigerator_available": false,
+    "kitchen_available": false,
+    "jail_available": false,
+    "bath_available": false,
+    "beast_cage_availabe": false,
+    "lab_available": false,
+    "img_id": "slum"
+  }
+}

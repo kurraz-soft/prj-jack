@@ -17,6 +17,7 @@ use app\modules\game\models\game_data\home_rooms\LabHomeRoom;
 use app\modules\game\models\game_data\home_rooms\RefrigeratorHomeRoom;
 use app\modules\game\models\game_data\home_rooms\StorageHomeRoom;
 use app\modules\game\models\game_data\locations\WhiteCityLocation;
+use yii\base\Exception;
 
 class Home extends BaseGameDataList
 {
@@ -44,6 +45,7 @@ class Home extends BaseGameDataList
      */
     public $jail;
     public $jail_available = false;
+    public $jail_rent = false;
 
     /**
      * @var BathHomeRoom
@@ -56,16 +58,20 @@ class Home extends BaseGameDataList
      */
     public $beast_cage;
     public $beast_cage_available = false;
+    public $beast_cage_rent = false;
 
     /**
      * @var LabHomeRoom
      */
     public $lab;
     public $lab_available = false;
+    public $lab_rent = false;
 
     public $img_id = 'slum';
 
     public $location_route;
+
+    public $name = 'Муравейник';
 
     public function init()
     {
@@ -94,5 +100,27 @@ class Home extends BaseGameDataList
     public function getImgLargeBed()
     {
         return '/assets_game/img/bg/interiors/'.$this->img_id.'_study_large.jpg';
+    }
+
+    public function loadFromLibrary($id)
+    {
+        //reset non library params
+        $this->beast_cage_rent = false;
+        $this->lab_rent = false;
+        $this->jail_rent = false;
+
+        $data = json_decode(file_get_contents(\Yii::getAlias('@game/data/homes.json')),true);
+
+        if(!isset($data[$id])) throw new Exception("There is no home with such id in library");
+
+        $this->name = $data[$id]['name'];
+        $this->bath_available = $data[$id]['bath_available'];
+        $this->jail_available = $data[$id]['jail_available'];
+        $this->refrigerator_available = $data[$id]['refrigerator_available'];
+        $this->kitchen_available = $data[$id]['kitchen_available'];
+        $this->beast_cage_available = $data[$id]['beast_cage_available'];
+        $this->lab_available = $data[$id]['lab_available'];
+        $this->img_id = $data[$id]['img_id'];
+        $this->location_route = $data[$id]['location_route'];
     }
 }
