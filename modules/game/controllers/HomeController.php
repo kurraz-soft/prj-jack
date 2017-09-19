@@ -9,6 +9,7 @@ namespace app\modules\game\controllers;
 use app\modules\game\models\game_data\actions\home\apprentice\orders\Wash;
 use app\modules\game\models\game_data\actions\home\apprentice\talk\AskAboutPastAction;
 use app\modules\game\models\GameMechanics;
+use yii\web\HttpException;
 
 class HomeController extends GameController
 {
@@ -29,6 +30,16 @@ class HomeController extends GameController
         return $this->render('apprentice_screen',[
             'character' => $this->gameRegister->character,
             'apprentice' => $this->gameRegister->apprentice_manager->active_apprentice,
+        ]);
+    }
+
+    public function actionAssistantScreen()
+    {
+        $this->is_outside = false;
+
+        return $this->render('assistant_screen',[
+            'character' => $this->gameRegister->character,
+            'apprentice' => $this->gameRegister->apprentice_manager->active_assistant,
         ]);
     }
 
@@ -64,7 +75,7 @@ class HomeController extends GameController
 
     public function actionApprenticeRule($id, $value = null)
     {
-        if(!\Yii::$app->request->isAjax) throw new \HttpException(400);
+        if(!\Yii::$app->request->isAjax) throw new HttpException(400);
 
         if($value === null)
         {
@@ -77,11 +88,26 @@ class HomeController extends GameController
         echo "OK";
     }
 
+    public function actionAssistantRule($id, $value = null)
+    {
+        if(!\Yii::$app->request->isAjax) throw new HttpException(400);
+
+        if($value === null)
+        {
+            $this->gameRegister->apprentice_manager->active_assistant->assistantBehavior->rules->toggleRuleValue($id);
+        }else
+        {
+            $this->gameRegister->apprentice_manager->active_assistant->assistantBehavior->rules->setRuleValue($id, $value);
+        }
+
+        echo "OK";
+    }
+
     public function actionApprenticeOrderWash()
     {
         $action = new Wash(
             $this->gameRegister->apprentice_manager->active_apprentice,
-            null, //TODO pass assistant
+            $this->gameRegister->apprentice_manager->active_assistant,
             $this->gameRegister->character->home
         );
 
@@ -93,7 +119,7 @@ class HomeController extends GameController
         $action = new \app\modules\game\models\game_data\actions\home\character\Wash(
             $this->gameRegister->character,
             $this->gameRegister->apprentice_manager->active_apprentice,
-            null
+            $this->gameRegister->apprentice_manager->active_assistant
         );
 
         return $action->setController($this)->render();

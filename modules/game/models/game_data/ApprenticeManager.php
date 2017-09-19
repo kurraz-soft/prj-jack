@@ -22,6 +22,10 @@ class ApprenticeManager extends BaseGameData implements IAutoSerializable
      */
     public $active_apprentice = null;
     /**
+     * @var Person
+     */
+    public $active_assistant = null;
+    /**
      * @var Person[]
      */
     public $apprentices = [];

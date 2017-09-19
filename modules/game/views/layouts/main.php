@@ -66,36 +66,22 @@ $character = \app\modules\game\models\GameMechanics::getInstance()->gameRegister
         <div class="layout-border-v"></div>
         <div class="col-md-2 text-center" style="margin-left: -18px">
             <?= \app\modules\game\widgets\CharacterInfo\CharacterInfo::widget([
-                    'buttons_enabled' => $this->context->character_panel_active,
+                'buttons_enabled' => $this->context->character_panel_active,
             ]) ?>
             <?= \app\modules\game\widgets\ApprenticeInfo\ApprenticeInfo::widget([
-                    'buttons_enabled' => $this->context->character_panel_active,
+                'buttons_enabled' => $this->context->character_panel_active,
             ]) ?>
-            <div class="col-md-12 character-block-item">
-                <div class="row">
-                    <div class="col-md-2" style="display: flex; flex-direction: column"></div>
-                    <div class="col-md-8">
-                        <a href="#"><img src="<?= $asset->baseUrl . '/img/no_ava.jpg' ?>"></a>
-                    </div>
-                    <div class="col-md-2" style="display: flex; flex-direction: column">
-                        <div><img src="<?= $asset->baseUrl . '/img/ui/jon-UIadds/info_mature.png' ?>"></div>
-                        <div><img src="<?= $asset->baseUrl . '/img/ui/jon-UIadds/info_virgin.png' ?>"></div>
-                        <div><img src="<?= $asset->baseUrl . '/img/ui/jon-UIadds/info_fertile.png' ?>"></div>
-                        <div class="game-slave-info-blank">4</div>
-                        <div><img src="<?= $asset->baseUrl . '/img/ui/jon-UIadds/transparent.png' ?>"></div>
-                        <div><img src="<?= $asset->baseUrl . '/img/ui/jon-UIadds/info_brand_tatoo.png' ?>"></div>
-                    </div>
+            <?= \app\modules\game\widgets\AssistantInfo\AssistantInfo::widget([
+                'buttons_enabled' => $this->context->character_panel_active,
+            ]) ?>
+            <div class="col-md-12">
+                <div class="game-slave-param-row">
+                    <div>Легкий беспорядок</div>
+                    <a href="#" class="game-green-btn" title="Убрать">&nbsp;</a>
                 </div>
-                <div class="row">
-                    <p>Энергия: *****</p>
-                    <div class="game-slave-param-row">
-                        <div>Легкий беспорядок</div>
-                        <a href="#" class="game-green-btn" title="Убрать">&nbsp;</a>
-                    </div>
-                    <div class="game-slave-param-row">
-                        <div>Еда не готова</div>
-                        <a href="#" class="game-green-btn" title="Приготовить еду">&nbsp;</a>
-                    </div>
+                <div class="game-slave-param-row">
+                    <div>Еда не готова</div>
+                    <a href="#" class="game-green-btn" title="Приготовить еду">&nbsp;</a>
                 </div>
             </div>
         </div>
