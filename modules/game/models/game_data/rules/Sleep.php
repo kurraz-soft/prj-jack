@@ -17,6 +17,8 @@ class Sleep extends BaseRule
     const WITH_MASTER = 4;
     const BOUDOIR = 5;
 
+    public $value = self::MAT;
+
     public $name = 'Режим сна';
 
     public function valueTextTemplates()

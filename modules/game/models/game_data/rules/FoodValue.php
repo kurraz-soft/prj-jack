@@ -17,6 +17,8 @@ class FoodValue extends BaseRule
     const DIET_DOCTOR = 4;
     const BIO_ADDONS = 5;
 
+    public $value = self::KEEP_WEIGHT;
+
     public $bio_addons = false;
 
     public function setValue($new_value)

@@ -7,7 +7,6 @@
 namespace app\modules\game\models\game_data\rules;
 
 
-use app\modules\game\helpers\VarHelper;
 use app\modules\game\models\game_data\base\BaseRule;
 
 class Food extends BaseRule
@@ -17,6 +16,8 @@ class Food extends BaseRule
     const FRESH_FOOD = 3;
     const BEAST_SPERM = 4;
     const MASTERS_FOOD = 5;
+
+    public $value = self::DRY_FOOD;
 
     public $masters_food = false;
 
