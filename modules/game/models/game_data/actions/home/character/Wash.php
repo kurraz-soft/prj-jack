@@ -7,7 +7,7 @@
 namespace app\modules\game\models\game_data\actions\home\character;
 
 
-use app\modules\game\models\game_data\Apprentice;
+use app\modules\game\models\game_data\Person;
 use app\modules\game\models\game_data\base\BaseGameAction;
 use app\modules\game\models\game_data\Character;
 use app\modules\game\models\game_data\rules\MasterWasher;
@@ -19,11 +19,11 @@ class Wash extends BaseGameAction
      */
     public $action;
 
-    public function __construct(Character $character, Apprentice $apprentice, $assistant)
+    public function __construct(Character $character, Person $apprentice, $assistant)
     {
         if($character->home->bath_available)
         {
-            if($apprentice->rules->getRule(MasterWasher::class)->getValue() == true)
+            if($apprentice->apprenticeBehavior->rules->getRule(MasterWasher::class)->getValue() == true)
             {
 
             }elseif(false)

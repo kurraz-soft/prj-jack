@@ -2,7 +2,7 @@
 /**
  * @var \yii\web\View $this
  * @var \app\modules\game\models\game_data\Character $character
- * @var \app\modules\game\models\game_data\Apprentice $apprentice
+ * @var \app\modules\game\models\game_data\Person $apprentice
  */
 use yii\helpers\Url;
 

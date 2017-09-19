@@ -7,7 +7,7 @@
 namespace app\tests\unit\modules\game\models\game_data;
 
 
-use app\modules\game\models\game_data\Apprentice;
+use app\modules\game\models\game_data\Person;
 use app\modules\game\models\game_data\attributes\HealthFemale;
 use app\modules\game\models\game_data\aura\Obedience;
 use app\modules\game\models\game_data\body\Breast;
@@ -18,13 +18,13 @@ use app\modules\game\models\game_data\skills_sex\sub_skills\Hj;
 use app\modules\game\models\game_data\traits\Scars;
 use Codeception\Test\Unit;
 
-class ApprenticeTest extends Unit
+class PersonTest extends Unit
 {
     public function testUnserializeEmpty()
     {
         $test_data = [];
 
-        $ap = new Apprentice();
+        $ap = new Person();
         $ap->unserialize($test_data);
 
         expect($ap->attributes->health)->isInstanceOf(HealthFemale::class);
@@ -38,7 +38,7 @@ class ApprenticeTest extends Unit
 
     public function testTraitsNew()
     {
-        $ap = new Apprentice();
+        $ap = new Person();
         $ap->unserialize([
             'attributes' => [
                 'beauty' => [
@@ -56,7 +56,7 @@ class ApprenticeTest extends Unit
 
     public function testTraitsExist()
     {
-        $ap = new Apprentice();
+        $ap = new Person();
         $ap->unserialize([
             'attributes' => [
                 'beauty' => [

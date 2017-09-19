@@ -2,7 +2,7 @@
 /**
  * @var \yii\web\View $this
  *
- * @var \app\modules\game\models\game_data\Apprentice $apprentice
+ * @var \app\modules\game\models\game_data\Person $apprentice
  * @var \app\modules\game\models\game_data\Character $character
  */
 use yii\helpers\Url;
@@ -52,27 +52,27 @@ $this->title = 'Экран ученика';
                         <div class="col-md-3 g-transparent g-rules-panel">
                             <h4>РЕЖИМ СНА:</h4>
                             <ul class="list-unstyled">
-                                <li class="clearfix"><a data-info-id="sleep-<?= Sleep::CAGE ?>" href="<?= Url::to(['apprentice-rule','id' =>'sleep','value' => Sleep::CAGE]) ?>" class="g-checkbox g-left g-ajax-link g-radio <?= $apprentice->rules->getRule(Sleep::class)->getValue() == Sleep::CAGE ? 'checked' : ''?>" rel="sleep_mode"></a>&nbsp; - В клетке</li>
-                                <li class="clearfix"><a data-info-id="sleep-<?= Sleep::COLD_FLOOR ?>" href="<?= Url::to(['apprentice-rule','id' =>'sleep','value' => Sleep::COLD_FLOOR]) ?>" class="g-checkbox g-left g-ajax-link g-radio <?= $apprentice->rules->getRule(Sleep::class)->getValue() == Sleep::COLD_FLOOR ? 'checked' : ''?>" rel="sleep_mode"></a>&nbsp; - Холодный пол</li>
-                                <li class="clearfix"><a data-info-id="sleep-<?= Sleep::MAT ?>" href="<?= Url::to(['apprentice-rule','id' =>'sleep','value' => Sleep::MAT]) ?>" class="g-checkbox g-left g-ajax-link g-radio <?= $apprentice->rules->getRule(Sleep::class)->getValue() == Sleep::MAT ? 'checked' : ''?>" rel="sleep_mode"></a>&nbsp; - Циновка и плед</li>
-                                <li class="clearfix"><a data-info-id="sleep-<?= Sleep::WITH_MASTER ?>" href="<?= Url::to(['apprentice-rule','id' =>'sleep','value' => Sleep::WITH_MASTER]) ?>" class="g-checkbox g-left g-ajax-link g-radio <?= $apprentice->rules->getRule(Sleep::class)->getValue() == Sleep::WITH_MASTER ? 'checked' : ''?>" rel="sleep_mode"></a>&nbsp; - Спи со мной</li>
-                                <li class="clearfix"><a data-info-id="sleep-<?= Sleep::BOUDOIR ?>" href="<?= Url::to(['apprentice-rule','id' =>'sleep','value' => Sleep::BOUDOIR]) ?>" class="g-checkbox g-left g-ajax-link g-radio <?= $apprentice->rules->getRule(Sleep::class)->getValue() == Sleep::BOUDOIR ? 'checked' : ''?>" rel="sleep_mode"></a>&nbsp; - Спи в будуаре</li>
+                                <li class="clearfix"><a data-info-id="sleep-<?= Sleep::CAGE ?>" href="<?= Url::to(['apprentice-rule','id' =>'sleep','value' => Sleep::CAGE]) ?>" class="g-checkbox g-left g-ajax-link g-radio <?= $apprentice->apprenticeBehavior->rules->getRule(Sleep::class)->getValue() == Sleep::CAGE ? 'checked' : ''?>" rel="sleep_mode"></a>&nbsp; - В клетке</li>
+                                <li class="clearfix"><a data-info-id="sleep-<?= Sleep::COLD_FLOOR ?>" href="<?= Url::to(['apprentice-rule','id' =>'sleep','value' => Sleep::COLD_FLOOR]) ?>" class="g-checkbox g-left g-ajax-link g-radio <?= $apprentice->apprenticeBehavior->rules->getRule(Sleep::class)->getValue() == Sleep::COLD_FLOOR ? 'checked' : ''?>" rel="sleep_mode"></a>&nbsp; - Холодный пол</li>
+                                <li class="clearfix"><a data-info-id="sleep-<?= Sleep::MAT ?>" href="<?= Url::to(['apprentice-rule','id' =>'sleep','value' => Sleep::MAT]) ?>" class="g-checkbox g-left g-ajax-link g-radio <?= $apprentice->apprenticeBehavior->rules->getRule(Sleep::class)->getValue() == Sleep::MAT ? 'checked' : ''?>" rel="sleep_mode"></a>&nbsp; - Циновка и плед</li>
+                                <li class="clearfix"><a data-info-id="sleep-<?= Sleep::WITH_MASTER ?>" href="<?= Url::to(['apprentice-rule','id' =>'sleep','value' => Sleep::WITH_MASTER]) ?>" class="g-checkbox g-left g-ajax-link g-radio <?= $apprentice->apprenticeBehavior->rules->getRule(Sleep::class)->getValue() == Sleep::WITH_MASTER ? 'checked' : ''?>" rel="sleep_mode"></a>&nbsp; - Спи со мной</li>
+                                <li class="clearfix"><a data-info-id="sleep-<?= Sleep::BOUDOIR ?>" href="<?= Url::to(['apprentice-rule','id' =>'sleep','value' => Sleep::BOUDOIR]) ?>" class="g-checkbox g-left g-ajax-link g-radio <?= $apprentice->apprenticeBehavior->rules->getRule(Sleep::class)->getValue() == Sleep::BOUDOIR ? 'checked' : ''?>" rel="sleep_mode"></a>&nbsp; - Спи в будуаре</li>
                             </ul>
                             <h4>РЕЖИМ ПИТАНИЯ:</h4>
                             <ul class="list-unstyled">
-                                <li class="clearfix"><a data-info-id="food-<?= Food::NO ?>" href="<?= Url::to(['apprentice-rule','id' =>'food','value' => Food::NO]) ?>" class="g-checkbox g-left g-ajax-link g-radio <?= $apprentice->rules->getRule(Food::class)->getValue() == Food::NO? 'checked' : ''?>" rel="food"></a>&nbsp; - Ничего</li>
-                                <li class="clearfix"><a data-info-id="food-<?= Food::DRY_FOOD ?>" href="<?= Url::to(['apprentice-rule','id' =>'food','value' => Food::DRY_FOOD]) ?>" class="g-checkbox g-left g-ajax-link g-radio <?= $apprentice->rules->getRule(Food::class)->getValue() == Food::DRY_FOOD? 'checked' : ''?>" rel="food"></a>&nbsp; - Сухой корм</li>
-                                <li class="clearfix"><a data-info-id="food-<?= Food::FRESH_FOOD ?>" href="<?= Url::to(['apprentice-rule','id' =>'food','value' => Food::FRESH_FOOD]) ?>" class="g-checkbox g-left g-ajax-link g-radio <?= $apprentice->rules->getRule(Food::class)->getValue() == Food::FRESH_FOOD? 'checked' : ''?>" rel="food"></a>&nbsp; - Свежая еда</li>
-                                <li class="clearfix"><a data-info-id="food-<?= Food::BEAST_SPERM ?>" href="<?= Url::to(['apprentice-rule','id' =>'food','value' => Food::BEAST_SPERM]) ?>" class="g-checkbox g-ajax-link disabled g-left g-radio <?= $apprentice->rules->getRule(Food::class)->getValue() == Food::BEAST_SPERM? 'checked' : ''?>" rel="food"></a>&nbsp; - Сперма исчадия</li>
-                                <li class="clearfix"><a data-info-id="food-<?= Food::MASTERS_FOOD ?>" href="<?= Url::to(['apprentice-rule','id' =>'food','value' => Food::MASTERS_FOOD]) ?>" class="g-checkbox g-left g-ajax-link <?= $apprentice->rules->getRule(Food::class)->masters_food ? 'checked' : ''?>"></a>&nbsp; - Объедки со стола</li>
+                                <li class="clearfix"><a data-info-id="food-<?= Food::NO ?>" href="<?= Url::to(['apprentice-rule','id' =>'food','value' => Food::NO]) ?>" class="g-checkbox g-left g-ajax-link g-radio <?= $apprentice->apprenticeBehavior->rules->getRule(Food::class)->getValue() == Food::NO? 'checked' : ''?>" rel="food"></a>&nbsp; - Ничего</li>
+                                <li class="clearfix"><a data-info-id="food-<?= Food::DRY_FOOD ?>" href="<?= Url::to(['apprentice-rule','id' =>'food','value' => Food::DRY_FOOD]) ?>" class="g-checkbox g-left g-ajax-link g-radio <?= $apprentice->apprenticeBehavior->rules->getRule(Food::class)->getValue() == Food::DRY_FOOD? 'checked' : ''?>" rel="food"></a>&nbsp; - Сухой корм</li>
+                                <li class="clearfix"><a data-info-id="food-<?= Food::FRESH_FOOD ?>" href="<?= Url::to(['apprentice-rule','id' =>'food','value' => Food::FRESH_FOOD]) ?>" class="g-checkbox g-left g-ajax-link g-radio <?= $apprentice->apprenticeBehavior->rules->getRule(Food::class)->getValue() == Food::FRESH_FOOD? 'checked' : ''?>" rel="food"></a>&nbsp; - Свежая еда</li>
+                                <li class="clearfix"><a data-info-id="food-<?= Food::BEAST_SPERM ?>" href="<?= Url::to(['apprentice-rule','id' =>'food','value' => Food::BEAST_SPERM]) ?>" class="g-checkbox g-ajax-link disabled g-left g-radio <?= $apprentice->apprenticeBehavior->rules->getRule(Food::class)->getValue() == Food::BEAST_SPERM? 'checked' : ''?>" rel="food"></a>&nbsp; - Сперма исчадия</li>
+                                <li class="clearfix"><a data-info-id="food-<?= Food::MASTERS_FOOD ?>" href="<?= Url::to(['apprentice-rule','id' =>'food','value' => Food::MASTERS_FOOD]) ?>" class="g-checkbox g-left g-ajax-link <?= $apprentice->apprenticeBehavior->rules->getRule(Food::class)->masters_food ? 'checked' : ''?>"></a>&nbsp; - Объедки со стола</li>
                             </ul>
                             <br />
                             <ul class="list-unstyled">
-                                <li class="clearfix"><a data-info-id="food_value-<?= FoodValue::LOOSE_WEIGHT?>" href="<?= Url::to(['apprentice-rule','id' =>'food_value','value' => FoodValue::LOOSE_WEIGHT]) ?>" class="g-checkbox g-left g-ajax-link g-radio <?= $apprentice->rules->getRule(FoodValue::class)->getValue() == FoodValue::LOOSE_WEIGHT? 'checked' : ''?>" rel="food_mode"></a>&nbsp; - Похудение</li>
-                                <li class="clearfix"><a data-info-id="food_value-<?= FoodValue::KEEP_WEIGHT ?>" href="<?= Url::to(['apprentice-rule','id' =>'food_value','value' => FoodValue::KEEP_WEIGHT]) ?>" class="g-checkbox g-left g-ajax-link g-radio <?= $apprentice->rules->getRule(FoodValue::class)->getValue() == FoodValue::KEEP_WEIGHT? 'checked' : ''?>" rel="food_mode"></a>&nbsp; - Поддержка веса</li>
-                                <li class="clearfix"><a data-info-id="food_value-<?= FoodValue::GAIN_WEIGHT ?>" href="<?= Url::to(['apprentice-rule','id' =>'food_value','value' => FoodValue::GAIN_WEIGHT]) ?>" class="g-checkbox g-left g-ajax-link g-radio <?= $apprentice->rules->getRule(FoodValue::class)->getValue() == FoodValue::GAIN_WEIGHT? 'checked' : ''?>" rel="food_mode"></a>&nbsp; - Набор веса</li>
-                                <li class="clearfix"><a data-info-id="food_value-<?= FoodValue::DIET_DOCTOR ?>" href="<?= Url::to(['apprentice-rule','id' =>'food_value','value' => FoodValue::DIET_DOCTOR]) ?>" class="g-checkbox g-left g-ajax-link g-radio <?= $apprentice->rules->getRule(FoodValue::class)->getValue() == FoodValue::DIET_DOCTOR ? 'checked' : ''?>"></a>&nbsp; - Диетолог</li>
-                                <li class="clearfix"><a data-info-id="food_value-<?= FoodValue::BIO_ADDONS ?>" href="<?= Url::to(['apprentice-rule','id' =>'food_value','value' => FoodValue::BIO_ADDONS]) ?>" class="g-checkbox g-left g-ajax-link <?= $apprentice->rules->getRule(FoodValue::class)->bio_addons ? 'checked' : ''?>"></a>&nbsp; - Биодобавки</li>
+                                <li class="clearfix"><a data-info-id="food_value-<?= FoodValue::LOOSE_WEIGHT?>" href="<?= Url::to(['apprentice-rule','id' =>'food_value','value' => FoodValue::LOOSE_WEIGHT]) ?>" class="g-checkbox g-left g-ajax-link g-radio <?= $apprentice->apprenticeBehavior->rules->getRule(FoodValue::class)->getValue() == FoodValue::LOOSE_WEIGHT? 'checked' : ''?>" rel="food_mode"></a>&nbsp; - Похудение</li>
+                                <li class="clearfix"><a data-info-id="food_value-<?= FoodValue::KEEP_WEIGHT ?>" href="<?= Url::to(['apprentice-rule','id' =>'food_value','value' => FoodValue::KEEP_WEIGHT]) ?>" class="g-checkbox g-left g-ajax-link g-radio <?= $apprentice->apprenticeBehavior->rules->getRule(FoodValue::class)->getValue() == FoodValue::KEEP_WEIGHT? 'checked' : ''?>" rel="food_mode"></a>&nbsp; - Поддержка веса</li>
+                                <li class="clearfix"><a data-info-id="food_value-<?= FoodValue::GAIN_WEIGHT ?>" href="<?= Url::to(['apprentice-rule','id' =>'food_value','value' => FoodValue::GAIN_WEIGHT]) ?>" class="g-checkbox g-left g-ajax-link g-radio <?= $apprentice->apprenticeBehavior->rules->getRule(FoodValue::class)->getValue() == FoodValue::GAIN_WEIGHT? 'checked' : ''?>" rel="food_mode"></a>&nbsp; - Набор веса</li>
+                                <li class="clearfix"><a data-info-id="food_value-<?= FoodValue::DIET_DOCTOR ?>" href="<?= Url::to(['apprentice-rule','id' =>'food_value','value' => FoodValue::DIET_DOCTOR]) ?>" class="g-checkbox g-left g-ajax-link g-radio <?= $apprentice->apprenticeBehavior->rules->getRule(FoodValue::class)->getValue() == FoodValue::DIET_DOCTOR ? 'checked' : ''?>"></a>&nbsp; - Диетолог</li>
+                                <li class="clearfix"><a data-info-id="food_value-<?= FoodValue::BIO_ADDONS ?>" href="<?= Url::to(['apprentice-rule','id' =>'food_value','value' => FoodValue::BIO_ADDONS]) ?>" class="g-checkbox g-left g-ajax-link <?= $apprentice->apprenticeBehavior->rules->getRule(FoodValue::class)->bio_addons ? 'checked' : ''?>"></a>&nbsp; - Биодобавки</li>
                             </ul>
                             <h4>СЧЕТЧИК КАЛОРИЙ:</h4>
                             <p>1 калорий</p>
@@ -87,21 +87,21 @@ $this->title = 'Экран ученика';
                         <div class="col-md-3 g-transparent g-rules-panel" style="text-align: right;">
                             <h4>ПРАВИЛА:</h4>
                             <ul class="list-unstyled">
-                                <li class="clearfix">Ты кухарка - &nbsp;<a data-info-id="cook" href="<?= Url::to(['apprentice-rule','id' =>'cook']) ?>" class="g-checkbox g-ajax-link g-right <?= $apprentice->rules->getRule(Cook::class)->getValue()? 'checked' : ''?>"></a></li>
-                                <li class="clearfix">Ты доярка - &nbsp;<a data-info-id="beast_milker" href="<?= Url::to(['apprentice-rule','id' =>'beast_milker']) ?>" class="g-checkbox g-ajax-link g-right <?= $apprentice->rules->getRule(BeastMilker::class)->getValue()? 'checked' : ''?>"></a></li>
-                                <li class="clearfix">Ты горничная - &nbsp;<a data-info-id="maid" href="<?= Url::to(['apprentice-rule','id' =>'maid']) ?>" class="g-checkbox g-ajax-link g-right <?= $apprentice->rules->getRule(Maid::class)->getValue()? 'checked' : ''?>"></a></li>
-                                <li class="clearfix">Ты меня моешь - &nbsp;<a data-info-id="washer" href="<?= Url::to(['apprentice-rule','id' =>'washer']) ?>" class="g-checkbox g-ajax-link g-right <?= $apprentice->rules->getRule(MasterWasher::class)->getValue()? 'checked' : ''?>"></a></li>
-                                <li class="clearfix">Не дрочить - &nbsp;<a data-info-id="no_masturbation" href="<?= Url::to(['apprentice-rule','id' =>'no_masturbation']) ?>" class="g-checkbox g-ajax-link g-right <?= $apprentice->rules->getRule(NoMasturbation::class)->getValue()? 'checked' : ''?>"></a></li>
-                                <li class="clearfix">Не кончать - &nbsp;<a data-info-id="no_cumming" href="<?= Url::to(['apprentice-rule','id' =>'no_cumming']) ?>" class="g-checkbox g-ajax-link g-right <?= $apprentice->rules->getRule(NoCumming::class)->getValue()? 'checked' : ''?>"></a></li>
-                                <li class="clearfix">Я Хозяин - &nbsp;<a data-info-id="master_name" href="<?= Url::to(['apprentice-rule','id' =>'master_name']) ?>" class="g-checkbox g-ajax-link g-right <?= $apprentice->rules->getRule(MasterName::class)->getValue()? 'checked' : ''?>"></a></li>
-                                <li class="clearfix">Ты молчишь - &nbsp;<a data-info-id="silence" href="<?= Url::to(['apprentice-rule','id' =>'silence']) ?>" class="g-checkbox g-ajax-link g-right <?= $apprentice->rules->getRule(Silence::class)->getValue()? 'checked' : ''?>"></a></li>
-                                <li class="clearfix">Не гадить - &nbsp;<a data-info-id="no_defecation" href="<?= Url::to(['apprentice-rule','id' =>'no_defecation']) ?>" class="g-checkbox g-ajax-link g-right <?= $apprentice->rules->getRule(NoDefecation::class)->getValue()? 'checked' : ''?>"></a></li>
-                                <li class="clearfix">Ты животное - &nbsp;<a data-info-id="animal" href="<?= Url::to(['apprentice-rule','id' =>'animal']) ?>" class="g-checkbox g-ajax-link g-right <?= $apprentice->rules->getRule(Animal::class)->getValue()? 'checked' : ''?>"></a></li>
-                                <li class="clearfix">Ты будильник - &nbsp;<a data-info-id="alarm" href="<?= Url::to(['apprentice-rule','id' =>'alarm']) ?>" class="g-checkbox g-ajax-link g-right <?= $apprentice->rules->getRule(Alarm::class)->getValue()? 'checked' : ''?>"></a></li>
-                                <li class="clearfix">Ты писсуар - &nbsp;<a data-info-id="urinar" href="<?= Url::to(['apprentice-rule','id' =>'urinar']) ?>" class="g-checkbox g-ajax-link g-right <?= $apprentice->rules->getRule(Urinar::class)->getValue()? 'checked' : ''?>"></a></li>
-                                <li class="clearfix">Ты унитаз - &nbsp;<a data-info-id="toilet" href="<?= Url::to(['apprentice-rule','id' =>'toilet']) ?>" class="g-checkbox g-ajax-link g-right <?= $apprentice->rules->getRule(Toilet::class)->getValue()? 'checked' : ''?>"></a></li>
-                                <li class="clearfix">V-шарики - &nbsp;<a data-info-id="v_balls" href="<?= Url::to(['apprentice-rule','id' =>'v_balls']) ?>" class="g-checkbox g-ajax-link g-right <?= $apprentice->rules->getRule(VBalls::class)->getValue()? 'checked' : ''?>"></a></li>
-                                <li class="clearfix">Форсировано - &nbsp;<a data-info-id="forced" href="<?= Url::to(['apprentice-rule','id' =>'forced']) ?>" class="g-checkbox g-ajax-link g-right <?= $apprentice->rules->getRule(Forced::class)->getValue()? 'checked' : ''?>"></a></li>
+                                <li class="clearfix">Ты кухарка - &nbsp;<a data-info-id="cook" href="<?= Url::to(['apprentice-rule','id' =>'cook']) ?>" class="g-checkbox g-ajax-link g-right <?= $apprentice->apprenticeBehavior->rules->getRule(Cook::class)->getValue()? 'checked' : ''?>"></a></li>
+                                <li class="clearfix">Ты доярка - &nbsp;<a data-info-id="beast_milker" href="<?= Url::to(['apprentice-rule','id' =>'beast_milker']) ?>" class="g-checkbox g-ajax-link g-right <?= $apprentice->apprenticeBehavior->rules->getRule(BeastMilker::class)->getValue()? 'checked' : ''?>"></a></li>
+                                <li class="clearfix">Ты горничная - &nbsp;<a data-info-id="maid" href="<?= Url::to(['apprentice-rule','id' =>'maid']) ?>" class="g-checkbox g-ajax-link g-right <?= $apprentice->apprenticeBehavior->rules->getRule(Maid::class)->getValue()? 'checked' : ''?>"></a></li>
+                                <li class="clearfix">Ты меня моешь - &nbsp;<a data-info-id="washer" href="<?= Url::to(['apprentice-rule','id' =>'washer']) ?>" class="g-checkbox g-ajax-link g-right <?= $apprentice->apprenticeBehavior->rules->getRule(MasterWasher::class)->getValue()? 'checked' : ''?>"></a></li>
+                                <li class="clearfix">Не дрочить - &nbsp;<a data-info-id="no_masturbation" href="<?= Url::to(['apprentice-rule','id' =>'no_masturbation']) ?>" class="g-checkbox g-ajax-link g-right <?= $apprentice->apprenticeBehavior->rules->getRule(NoMasturbation::class)->getValue()? 'checked' : ''?>"></a></li>
+                                <li class="clearfix">Не кончать - &nbsp;<a data-info-id="no_cumming" href="<?= Url::to(['apprentice-rule','id' =>'no_cumming']) ?>" class="g-checkbox g-ajax-link g-right <?= $apprentice->apprenticeBehavior->rules->getRule(NoCumming::class)->getValue()? 'checked' : ''?>"></a></li>
+                                <li class="clearfix">Я Хозяин - &nbsp;<a data-info-id="master_name" href="<?= Url::to(['apprentice-rule','id' =>'master_name']) ?>" class="g-checkbox g-ajax-link g-right <?= $apprentice->apprenticeBehavior->rules->getRule(MasterName::class)->getValue()? 'checked' : ''?>"></a></li>
+                                <li class="clearfix">Ты молчишь - &nbsp;<a data-info-id="silence" href="<?= Url::to(['apprentice-rule','id' =>'silence']) ?>" class="g-checkbox g-ajax-link g-right <?= $apprentice->apprenticeBehavior->rules->getRule(Silence::class)->getValue()? 'checked' : ''?>"></a></li>
+                                <li class="clearfix">Не гадить - &nbsp;<a data-info-id="no_defecation" href="<?= Url::to(['apprentice-rule','id' =>'no_defecation']) ?>" class="g-checkbox g-ajax-link g-right <?= $apprentice->apprenticeBehavior->rules->getRule(NoDefecation::class)->getValue()? 'checked' : ''?>"></a></li>
+                                <li class="clearfix">Ты животное - &nbsp;<a data-info-id="animal" href="<?= Url::to(['apprentice-rule','id' =>'animal']) ?>" class="g-checkbox g-ajax-link g-right <?= $apprentice->apprenticeBehavior->rules->getRule(Animal::class)->getValue()? 'checked' : ''?>"></a></li>
+                                <li class="clearfix">Ты будильник - &nbsp;<a data-info-id="alarm" href="<?= Url::to(['apprentice-rule','id' =>'alarm']) ?>" class="g-checkbox g-ajax-link g-right <?= $apprentice->apprenticeBehavior->rules->getRule(Alarm::class)->getValue()? 'checked' : ''?>"></a></li>
+                                <li class="clearfix">Ты писсуар - &nbsp;<a data-info-id="urinar" href="<?= Url::to(['apprentice-rule','id' =>'urinar']) ?>" class="g-checkbox g-ajax-link g-right <?= $apprentice->apprenticeBehavior->rules->getRule(Urinar::class)->getValue()? 'checked' : ''?>"></a></li>
+                                <li class="clearfix">Ты унитаз - &nbsp;<a data-info-id="toilet" href="<?= Url::to(['apprentice-rule','id' =>'toilet']) ?>" class="g-checkbox g-ajax-link g-right <?= $apprentice->apprenticeBehavior->rules->getRule(Toilet::class)->getValue()? 'checked' : ''?>"></a></li>
+                                <li class="clearfix">V-шарики - &nbsp;<a data-info-id="v_balls" href="<?= Url::to(['apprentice-rule','id' =>'v_balls']) ?>" class="g-checkbox g-ajax-link g-right <?= $apprentice->apprenticeBehavior->rules->getRule(VBalls::class)->getValue()? 'checked' : ''?>"></a></li>
+                                <li class="clearfix">Форсировано - &nbsp;<a data-info-id="forced" href="<?= Url::to(['apprentice-rule','id' =>'forced']) ?>" class="g-checkbox g-ajax-link g-right <?= $apprentice->apprenticeBehavior->rules->getRule(Forced::class)->getValue()? 'checked' : ''?>"></a></li>
                                 <li class="clearfix"><span class="g-color-grade-5">Исполняет правила</span></li>
                             </ul>
                         </div>
@@ -224,49 +224,49 @@ $this->title = 'Экран ученика';
 
 <!--INFO TEXTS-->
 <div style="display: none">
-    <div id="sleep-<?= Sleep::CAGE ?>-1"><?= $apprentice->rules->getRule(Sleep::class)->getValueText(Sleep::CAGE) ?></div>
-    <div id="sleep-<?= Sleep::COLD_FLOOR ?>-1"><?= $apprentice->rules->getRule(Sleep::class)->getValueText(Sleep::COLD_FLOOR) ?></div>
-    <div id="sleep-<?= Sleep::MAT ?>-1"><?= $apprentice->rules->getRule(Sleep::class)->getValueText(Sleep::MAT) ?></div>
-    <div id="sleep-<?= Sleep::WITH_MASTER ?>-1"><?= $apprentice->rules->getRule(Sleep::class)->getValueText(Sleep::WITH_MASTER) ?></div>
-    <div id="sleep-<?= Sleep::BOUDOIR ?>-1"><?= $apprentice->rules->getRule(Sleep::class)->getValueText(Sleep::BOUDOIR) ?></div>
-    <div id="food-<?= Food::NO ?>-1"><?= $apprentice->rules->getRule(Food::class)->getValueText(Food::NO) ?></div>
-    <div id="food-<?= Food::DRY_FOOD ?>-1"><?= $apprentice->rules->getRule(Food::class)->getValueText(Food::DRY_FOOD) ?></div>
-    <div id="food-<?= Food::FRESH_FOOD ?>-1"><?= $apprentice->rules->getRule(Food::class)->getValueText(Food::FRESH_FOOD) ?></div>
-    <div id="food-<?= Food::BEAST_SPERM ?>-1"><?= $apprentice->rules->getRule(Food::class)->getValueText(Food::BEAST_SPERM) ?></div>
-    <div id="food-<?= Food::MASTERS_FOOD ?>-1"><?= $apprentice->rules->getRule(Food::class)->getValueText(Food::MASTERS_FOOD,['masters_food' => 1]) ?></div>
-    <div id="food-<?= Food::MASTERS_FOOD ?>-0"><?= $apprentice->rules->getRule(Food::class)->getValueText(Food::MASTERS_FOOD,['masters_food' => 0]) ?></div>
-    <div id="food_value-<?= FoodValue::LOOSE_WEIGHT?>-1"><?= $apprentice->rules->getRule(FoodValue::class)->getValueText(FoodValue::LOOSE_WEIGHT) ?></div>
-    <div id="food_value-<?= FoodValue::KEEP_WEIGHT?>-1"><?= $apprentice->rules->getRule(FoodValue::class)->getValueText(FoodValue::KEEP_WEIGHT) ?></div>
-    <div id="food_value-<?= FoodValue::GAIN_WEIGHT?>-1"><?= $apprentice->rules->getRule(FoodValue::class)->getValueText(FoodValue::GAIN_WEIGHT) ?></div>
-    <div id="food_value-<?= FoodValue::BIO_ADDONS?>-1"><?= $apprentice->rules->getRule(FoodValue::class)->getValueText(FoodValue::BIO_ADDONS, ['bio_addons' => 1]) ?></div>
-    <div id="food_value-<?= FoodValue::BIO_ADDONS?>-0"><?= $apprentice->rules->getRule(FoodValue::class)->getValueText(FoodValue::BIO_ADDONS, ['bio_addons' => 0]) ?></div>
-    <div id="cook-0"><?= $apprentice->rules->getRule(Cook::class)->getValueText(0) ?></div>
-    <div id="cook-1"><?= $apprentice->rules->getRule(Cook::class)->getValueText(1) ?></div>
-    <div id="beast_milker-0"><?= $apprentice->rules->getRule(BeastMilker::class)->getValueText(0) ?></div>
-    <div id="beast_milker-1"><?= $apprentice->rules->getRule(BeastMilker::class)->getValueText(1) ?></div>
-    <div id="maid-0"><?= $apprentice->rules->getRule(Maid::class)->getValueText(0) ?></div>
-    <div id="maid-1"><?= $apprentice->rules->getRule(Maid::class)->getValueText(1) ?></div>
-    <div id="washer-0"><?= $apprentice->rules->getRule(MasterWasher::class)->getValueText(0) ?></div>
-    <div id="washer-1"><?= $apprentice->rules->getRule(MasterWasher::class)->getValueText(1) ?></div>
-    <div id="no_masturbation-0"><?= $apprentice->rules->getRule(NoMasturbation::class)->getValueText(0) ?></div>
-    <div id="no_masturbation-1"><?= $apprentice->rules->getRule(NoMasturbation::class)->getValueText(1) ?></div>
-    <div id="no_cumming-0"><?= $apprentice->rules->getRule(NoCumming::class)->getValueText(0) ?></div>
-    <div id="no_cumming-1"><?= $apprentice->rules->getRule(NoCumming::class)->getValueText(1) ?></div>
-    <div id="master_name-0"><?= $apprentice->rules->getRule(MasterName::class)->getValueText(0) ?></div>
-    <div id="master_name-1"><?= $apprentice->rules->getRule(MasterName::class)->getValueText(1) ?></div>
-    <div id="silence-0"><?= $apprentice->rules->getRule(Silence::class)->getValueText(0) ?></div>
-    <div id="silence-1"><?= $apprentice->rules->getRule(Silence::class)->getValueText(1) ?></div>
-    <div id="no_defecation-0"><?= $apprentice->rules->getRule(NoDefecation::class)->getValueText(0) ?></div>
-    <div id="no_defecation-1"><?= $apprentice->rules->getRule(NoDefecation::class)->getValueText(1) ?></div>
-    <div id="animal-0"><?= $apprentice->rules->getRule(Animal::class)->getValueText(0) ?></div>
-    <div id="animal-1"><?= $apprentice->rules->getRule(Animal::class)->getValueText(1) ?></div>
-    <div id="alarm-0"><?= $apprentice->rules->getRule(Alarm::class)->getValueText(0) ?></div>
-    <div id="alarm-1"><?= $apprentice->rules->getRule(Alarm::class)->getValueText(1) ?></div>
-    <div id="urinar-0"><?= $apprentice->rules->getRule(Urinar::class)->getValueText(0) ?></div>
-    <div id="urinar-1"><?= $apprentice->rules->getRule(Urinar::class)->getValueText(1) ?></div>
-    <div id="toilet-0"><?= $apprentice->rules->getRule(Toilet::class)->getValueText(0) ?></div>
-    <div id="toilet-1"><?= $apprentice->rules->getRule(Toilet::class)->getValueText(1) ?></div>
-    <div id="forced-0"><?= $apprentice->rules->getRule(Forced::class)->getValueText(0) ?></div>
-    <div id="forced-1"><?= $apprentice->rules->getRule(Forced::class)->getValueText(1) ?></div>
+    <div id="sleep-<?= Sleep::CAGE ?>-1"><?= $apprentice->apprenticeBehavior->rules->getRule(Sleep::class)->getValueText(Sleep::CAGE) ?></div>
+    <div id="sleep-<?= Sleep::COLD_FLOOR ?>-1"><?= $apprentice->apprenticeBehavior->rules->getRule(Sleep::class)->getValueText(Sleep::COLD_FLOOR) ?></div>
+    <div id="sleep-<?= Sleep::MAT ?>-1"><?= $apprentice->apprenticeBehavior->rules->getRule(Sleep::class)->getValueText(Sleep::MAT) ?></div>
+    <div id="sleep-<?= Sleep::WITH_MASTER ?>-1"><?= $apprentice->apprenticeBehavior->rules->getRule(Sleep::class)->getValueText(Sleep::WITH_MASTER) ?></div>
+    <div id="sleep-<?= Sleep::BOUDOIR ?>-1"><?= $apprentice->apprenticeBehavior->rules->getRule(Sleep::class)->getValueText(Sleep::BOUDOIR) ?></div>
+    <div id="food-<?= Food::NO ?>-1"><?= $apprentice->apprenticeBehavior->rules->getRule(Food::class)->getValueText(Food::NO) ?></div>
+    <div id="food-<?= Food::DRY_FOOD ?>-1"><?= $apprentice->apprenticeBehavior->rules->getRule(Food::class)->getValueText(Food::DRY_FOOD) ?></div>
+    <div id="food-<?= Food::FRESH_FOOD ?>-1"><?= $apprentice->apprenticeBehavior->rules->getRule(Food::class)->getValueText(Food::FRESH_FOOD) ?></div>
+    <div id="food-<?= Food::BEAST_SPERM ?>-1"><?= $apprentice->apprenticeBehavior->rules->getRule(Food::class)->getValueText(Food::BEAST_SPERM) ?></div>
+    <div id="food-<?= Food::MASTERS_FOOD ?>-1"><?= $apprentice->apprenticeBehavior->rules->getRule(Food::class)->getValueText(Food::MASTERS_FOOD,['masters_food' => 1]) ?></div>
+    <div id="food-<?= Food::MASTERS_FOOD ?>-0"><?= $apprentice->apprenticeBehavior->rules->getRule(Food::class)->getValueText(Food::MASTERS_FOOD,['masters_food' => 0]) ?></div>
+    <div id="food_value-<?= FoodValue::LOOSE_WEIGHT?>-1"><?= $apprentice->apprenticeBehavior->rules->getRule(FoodValue::class)->getValueText(FoodValue::LOOSE_WEIGHT) ?></div>
+    <div id="food_value-<?= FoodValue::KEEP_WEIGHT?>-1"><?= $apprentice->apprenticeBehavior->rules->getRule(FoodValue::class)->getValueText(FoodValue::KEEP_WEIGHT) ?></div>
+    <div id="food_value-<?= FoodValue::GAIN_WEIGHT?>-1"><?= $apprentice->apprenticeBehavior->rules->getRule(FoodValue::class)->getValueText(FoodValue::GAIN_WEIGHT) ?></div>
+    <div id="food_value-<?= FoodValue::BIO_ADDONS?>-1"><?= $apprentice->apprenticeBehavior->rules->getRule(FoodValue::class)->getValueText(FoodValue::BIO_ADDONS, ['bio_addons' => 1]) ?></div>
+    <div id="food_value-<?= FoodValue::BIO_ADDONS?>-0"><?= $apprentice->apprenticeBehavior->rules->getRule(FoodValue::class)->getValueText(FoodValue::BIO_ADDONS, ['bio_addons' => 0]) ?></div>
+    <div id="cook-0"><?= $apprentice->apprenticeBehavior->rules->getRule(Cook::class)->getValueText(0) ?></div>
+    <div id="cook-1"><?= $apprentice->apprenticeBehavior->rules->getRule(Cook::class)->getValueText(1) ?></div>
+    <div id="beast_milker-0"><?= $apprentice->apprenticeBehavior->rules->getRule(BeastMilker::class)->getValueText(0) ?></div>
+    <div id="beast_milker-1"><?= $apprentice->apprenticeBehavior->rules->getRule(BeastMilker::class)->getValueText(1) ?></div>
+    <div id="maid-0"><?= $apprentice->apprenticeBehavior->rules->getRule(Maid::class)->getValueText(0) ?></div>
+    <div id="maid-1"><?= $apprentice->apprenticeBehavior->rules->getRule(Maid::class)->getValueText(1) ?></div>
+    <div id="washer-0"><?= $apprentice->apprenticeBehavior->rules->getRule(MasterWasher::class)->getValueText(0) ?></div>
+    <div id="washer-1"><?= $apprentice->apprenticeBehavior->rules->getRule(MasterWasher::class)->getValueText(1) ?></div>
+    <div id="no_masturbation-0"><?= $apprentice->apprenticeBehavior->rules->getRule(NoMasturbation::class)->getValueText(0) ?></div>
+    <div id="no_masturbation-1"><?= $apprentice->apprenticeBehavior->rules->getRule(NoMasturbation::class)->getValueText(1) ?></div>
+    <div id="no_cumming-0"><?= $apprentice->apprenticeBehavior->rules->getRule(NoCumming::class)->getValueText(0) ?></div>
+    <div id="no_cumming-1"><?= $apprentice->apprenticeBehavior->rules->getRule(NoCumming::class)->getValueText(1) ?></div>
+    <div id="master_name-0"><?= $apprentice->apprenticeBehavior->rules->getRule(MasterName::class)->getValueText(0) ?></div>
+    <div id="master_name-1"><?= $apprentice->apprenticeBehavior->rules->getRule(MasterName::class)->getValueText(1) ?></div>
+    <div id="silence-0"><?= $apprentice->apprenticeBehavior->rules->getRule(Silence::class)->getValueText(0) ?></div>
+    <div id="silence-1"><?= $apprentice->apprenticeBehavior->rules->getRule(Silence::class)->getValueText(1) ?></div>
+    <div id="no_defecation-0"><?= $apprentice->apprenticeBehavior->rules->getRule(NoDefecation::class)->getValueText(0) ?></div>
+    <div id="no_defecation-1"><?= $apprentice->apprenticeBehavior->rules->getRule(NoDefecation::class)->getValueText(1) ?></div>
+    <div id="animal-0"><?= $apprentice->apprenticeBehavior->rules->getRule(Animal::class)->getValueText(0) ?></div>
+    <div id="animal-1"><?= $apprentice->apprenticeBehavior->rules->getRule(Animal::class)->getValueText(1) ?></div>
+    <div id="alarm-0"><?= $apprentice->apprenticeBehavior->rules->getRule(Alarm::class)->getValueText(0) ?></div>
+    <div id="alarm-1"><?= $apprentice->apprenticeBehavior->rules->getRule(Alarm::class)->getValueText(1) ?></div>
+    <div id="urinar-0"><?= $apprentice->apprenticeBehavior->rules->getRule(Urinar::class)->getValueText(0) ?></div>
+    <div id="urinar-1"><?= $apprentice->apprenticeBehavior->rules->getRule(Urinar::class)->getValueText(1) ?></div>
+    <div id="toilet-0"><?= $apprentice->apprenticeBehavior->rules->getRule(Toilet::class)->getValueText(0) ?></div>
+    <div id="toilet-1"><?= $apprentice->apprenticeBehavior->rules->getRule(Toilet::class)->getValueText(1) ?></div>
+    <div id="forced-0"><?= $apprentice->apprenticeBehavior->rules->getRule(Forced::class)->getValueText(0) ?></div>
+    <div id="forced-1"><?= $apprentice->apprenticeBehavior->rules->getRule(Forced::class)->getValueText(1) ?></div>
 </div>
 <!--/INFO TEXTS-->

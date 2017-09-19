@@ -7,7 +7,7 @@
 namespace app\tests\unit\modules\game\models\game_data\body;
 
 
-use app\modules\game\models\game_data\Apprentice;
+use app\modules\game\models\game_data\Person;
 use app\modules\game\models\game_data\attributes\AgeFemale;
 use app\modules\game\models\game_data\body\Anus;
 use app\modules\game\models\game_data\body\ApprenticeBody;
@@ -26,7 +26,7 @@ class ApprenticeBodyTest extends Unit
 
     public function testGetDependencyDeep()
     {
-        $ap = new Apprentice();
+        $ap = new Person();
         $ap->unserialize([]);
 
         $dep = $ap->body->vagina->getDependency(AgeFemale::class);

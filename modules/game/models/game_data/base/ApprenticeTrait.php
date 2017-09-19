@@ -7,18 +7,18 @@
 namespace app\modules\game\models\game_data\base;
 
 
-use app\modules\game\models\game_data\Apprentice;
+use app\modules\game\models\game_data\Person;
 use yii\base\Exception;
 
 abstract class ApprenticeTrait implements ITrait
 {
     /**
-     * @var Apprentice
+     * @var Person
      */
     protected $_context;
 
     /**
-     * @return Apprentice
+     * @return Person
      * @throws Exception
      */
     public function getContext()

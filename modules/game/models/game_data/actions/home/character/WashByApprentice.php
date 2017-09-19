@@ -9,7 +9,7 @@ namespace app\modules\game\models\game_data\actions\home\character;
 
 use app\modules\game\helpers\FormatterHelper;
 use app\modules\game\helpers\VarHelper;
-use app\modules\game\models\game_data\Apprentice;
+use app\modules\game\models\game_data\Person;
 use app\modules\game\models\game_data\base\BaseGameAction;
 use app\modules\game\models\game_data\Character;
 use app\modules\game\models\game_data\GameActionSlide;
@@ -17,7 +17,7 @@ use app\modules\game\models\game_data\Home;
 
 class WashByApprentice extends BaseGameAction
 {
-    public function __construct(Character $character, Apprentice $apprentice, Home $home)
+    public function __construct(Character $character, Person $apprentice, Home $home)
     {
         $this->caption = 'Ванная';
         $this->description = 'Муравейник'; //TODO

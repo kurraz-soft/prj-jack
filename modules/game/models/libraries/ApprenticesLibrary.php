@@ -9,7 +9,7 @@ namespace app\modules\game\models\libraries;
 
 use app\modules\game\helpers\RandomHelper;
 use app\modules\game\helpers\VarHelper;
-use app\modules\game\models\game_data\Apprentice;
+use app\modules\game\models\game_data\Person;
 use app\modules\game\models\game_data\attributes\AgeFemale;
 use app\modules\game\models\game_data\body\Mind;
 use app\modules\game\models\game_data\traits\AbuseAttitude;
@@ -815,7 +815,7 @@ class ApprenticesLibrary
         return $data;
     }
 
-    private static function importTraitsFromData(Apprentice $apprentice, $data)
+    private static function importTraitsFromData(Person $apprentice, $data)
     {
         $key_to_class = [
             'seed_sport_affinity' => SportAffinity::class,
@@ -870,7 +870,7 @@ class ApprenticesLibrary
 
     /**
      * @param $filename
-     * @return Apprentice
+     * @return Person
      */
     public static function export($filename)
     {
@@ -880,7 +880,7 @@ class ApprenticesLibrary
             2 => AgeFemale::MATURE,
         ];
 
-        $apprentice = new Apprentice();
+        $apprentice = new Person();
 
         $data = static::load($filename);
         $data = static::fillUpLoadedData($data);

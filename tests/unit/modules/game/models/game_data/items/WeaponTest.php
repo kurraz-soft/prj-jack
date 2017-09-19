@@ -7,7 +7,7 @@
 namespace app\tests\unit\modules\game\models\game_data\items;
 
 
-use app\modules\game\models\game_data\Apprentice;
+use app\modules\game\models\game_data\Person;
 use app\modules\game\models\game_data\items\Weapon;
 use Codeception\Test\Unit;
 
@@ -24,7 +24,7 @@ class WeaponTest extends Unit
 
     public function testWeaponApprentiseUnserialize()
     {
-        $ap = new Apprentice();
+        $ap = new Person();
         $ap->unserialize([]);
 
         expect($ap->equipment->weapon)->isInstanceOf(Weapon::class);
@@ -33,7 +33,7 @@ class WeaponTest extends Unit
 
     public function testWeaponLoad()
     {
-        $ap = new Apprentice();
+        $ap = new Person();
         $ap->unserialize([]);
 
         expect($ap->equipment->weapon->name)->equals('Без оружия');

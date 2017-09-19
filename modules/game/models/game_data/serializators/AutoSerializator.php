@@ -75,7 +75,8 @@ class AutoSerializator implements ISerializator
 
     public function unserialize($serialized_data)
     {
-        foreach ($this->obj->serializableParams() as $name => $type)
+        $serializable_params = $this->obj->serializableParams();
+        foreach ($serializable_params as $name => $type)
         {
             if(class_exists($type) && (new \ReflectionClass($type))->isSubclassOf(ISerializable::class))
             {

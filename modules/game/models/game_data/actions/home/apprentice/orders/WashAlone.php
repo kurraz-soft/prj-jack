@@ -8,7 +8,7 @@ namespace app\modules\game\models\game_data\actions\home\apprentice\orders;
 
 
 use app\modules\game\helpers\FormatterHelper;
-use app\modules\game\models\game_data\Apprentice;
+use app\modules\game\models\game_data\Person;
 use app\modules\game\models\game_data\base\BaseGameAction;
 use app\modules\game\models\game_data\body\Mind;
 use app\modules\game\models\game_data\GameActionSlide;
@@ -21,7 +21,7 @@ class WashAlone extends BaseGameAction
         return ['index'];
     }
 
-    public function __construct(Apprentice $apprentice, Home $home)
+    public function __construct(Person $apprentice, Home $home)
     {
         $this->caption = 'Ванная';
         $this->description = 'Муравейник'; //TODO home district

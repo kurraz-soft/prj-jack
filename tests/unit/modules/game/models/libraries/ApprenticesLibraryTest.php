@@ -7,7 +7,7 @@
 namespace app\tests\unit\modules\game\models\libraries;
 
 
-use app\modules\game\models\game_data\Apprentice;
+use app\modules\game\models\game_data\Person;
 use app\modules\game\models\game_data\attributes\AgeFemale;
 use app\modules\game\models\libraries\ApprenticesLibrary;
 use Codeception\Test\Unit;
@@ -43,7 +43,7 @@ class ApprenticesLibraryTest extends Unit
     {
         $ap = ApprenticesLibrary::export('1');
 
-        expect($ap)->isInstanceOf(Apprentice::class);
+        expect($ap)->isInstanceOf(Person::class);
         expect($ap->age->value)->equals(AgeFemale::LOLI);
         expect($ap->visuals->fullimage)->notEmpty();
         expect($ap->visuals->cleaning)->notEmpty();

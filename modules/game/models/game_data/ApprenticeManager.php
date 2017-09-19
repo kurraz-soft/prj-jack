@@ -18,11 +18,11 @@ class ApprenticeManager extends BaseGameData implements IAutoSerializable
     use TAutoSerializablePublicProperties;
 
     /**
-     * @var Apprentice
+     * @var Person
      */
     public $active_apprentice = null;
     /**
-     * @var Apprentice[]
+     * @var Person[]
      */
     public $apprentices = [];
 

@@ -9,7 +9,7 @@ namespace app\modules\game\models\game_data\actions\home\apprentice\orders;
 
 use app\modules\game\helpers\FormatterHelper;
 use app\modules\game\helpers\VarHelper;
-use app\modules\game\models\game_data\Apprentice;
+use app\modules\game\models\game_data\Person;
 use app\modules\game\models\game_data\base\BaseGameAction;
 use app\modules\game\models\game_data\GameActionSlide;
 use app\modules\game\models\game_data\Home;
@@ -21,7 +21,7 @@ class WashAloneInTerms extends BaseGameAction
         return ['index'];
     }
 
-    public function __construct(Apprentice $apprentice, Home $home)
+    public function __construct(Person $apprentice, Home $home)
     {
         $this->caption = 'Термы';
 

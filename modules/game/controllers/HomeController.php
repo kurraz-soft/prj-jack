@@ -68,10 +68,10 @@ class HomeController extends GameController
 
         if($value === null)
         {
-            $this->gameRegister->apprentice_manager->active_apprentice->rules->toggleRuleValue($id);
+            $this->gameRegister->apprentice_manager->active_apprentice->apprenticeBehavior->rules->toggleRuleValue($id);
         }else
         {
-            $this->gameRegister->apprentice_manager->active_apprentice->rules->setRuleValue($id, $value);
+            $this->gameRegister->apprentice_manager->active_apprentice->apprenticeBehavior->rules->setRuleValue($id, $value);
         }
 
         echo "OK";

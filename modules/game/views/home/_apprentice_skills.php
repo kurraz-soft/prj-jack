@@ -1,6 +1,6 @@
 <?php
 /**
- * @var \app\modules\game\models\game_data\Apprentice $apprentice
+ * @var \app\modules\game\models\game_data\Person $apprentice
  */
 ?>
 <h4>НАВЫКИ</h4>

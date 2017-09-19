@@ -1,6 +1,6 @@
 <?php
 /**
- * @var \app\modules\game\models\game_data\Apprentice $apprentice
+ * @var \app\modules\game\models\game_data\Person $apprentice
  * @var bool $buttons_enabled
  */
 use yii\helpers\Url;

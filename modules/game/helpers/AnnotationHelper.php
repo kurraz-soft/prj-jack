@@ -26,7 +26,8 @@ class AnnotationHelper
             $prop_class_name = '';
             if(preg_match('#@var (\w+)#', $doc, $matches))
             {
-                $prop_class_name = str_replace('[]','',$matches[1]);
+                //$prop_class_name = str_replace('[]','',$matches[1]);
+                $prop_class_name = $matches[1];
                 if(!class_exists($prop_class_name))
                 {
                     $pattern = '#use (.+'.$prop_class_name.')#';

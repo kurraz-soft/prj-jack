@@ -14,13 +14,19 @@ use app\modules\game\models\game_data\attributes\MoodFemale;
 use app\modules\game\models\game_data\attributes\VisualsFemale;
 use app\modules\game\models\game_data\aura\Aura;
 use app\modules\game\models\game_data\base\BaseGameData;
+use app\modules\game\models\game_data\base\BaseGameDataList;
 use app\modules\game\models\game_data\base\IAutoSerializable;
+use app\modules\game\models\game_data\base\TAutoSerializablePublicProperties;
 use app\modules\game\models\game_data\body\ApprenticeBody;
+use app\modules\game\models\game_data\person_behaviors\ApprenticeBehavior;
+use app\modules\game\models\game_data\person_behaviors\AssistantBehavior;
 use app\modules\game\models\game_data\serializators\AutoSerializator;
 use app\modules\game\models\game_data\traits\TraitManager;
 
-class Apprentice extends BaseGameData implements IAutoSerializable
+class Person extends BaseGameDataList
 {
+    use TAutoSerializablePublicProperties;
+
     /**
      * @var string
      */
@@ -71,10 +77,6 @@ class Apprentice extends BaseGameData implements IAutoSerializable
      */
     public $skillsSex;
     /**
-     * @var RulesApprentice
-     */
-    public $rules;
-    /**
      * @var MoodFemale
      */
     public $mood;
@@ -107,55 +109,13 @@ class Apprentice extends BaseGameData implements IAutoSerializable
      */
     public $equipment;
 
-    private $_serializator;
+    /**
+     * @var ApprenticeBehavior
+     */
+    public $apprenticeBehavior;
 
-    public function __construct()
-    {
-        $this->_serializator = new AutoSerializator($this);
-
-        foreach ($this->serializableParams() as $name => $class)
-        {
-            if(class_exists($class))
-            {
-                $this->$name = new $class();
-            }
-        }
-    }
-
-    public function serializableParams()
-    {
-        return [
-            'name' => '',
-            'days_owned' => '',
-            'world_id' => '',
-            'family_origin_id' => '',
-            'occupation_id' => '',
-            'template_id' => '',
-            'age' => AgeFemale::class,
-            'rules' => RulesApprentice::class,
-            'energy' => Energy::class,
-            'rank' => RankApprentice::class,
-            'mood' => MoodFemale::class,
-            'attributes' => AttributesListApprentice::class,
-            'skills' => SkillListApprentice::class,
-            'skillsSex' => SkillSexListApprentice::class,
-            'aura' => Aura::class,
-            'body' => ApprenticeBody::class,
-            'descriptions' => DescriptionsFemale::class,
-            'visuals' => VisualsFemale::class,
-            'traits' => TraitManager::class,
-            'equipment' => ApprenticeEquipment::class,
-            'behavior' => BehaviorFemale::class,
-        ];
-    }
-
-    public function serialize()
-    {
-        return $this->_serializator->serialize();
-    }
-
-    public function unserialize($serialized_data)
-    {
-        $this->_serializator->unserialize($serialized_data);
-    }
+    /**
+     * @var AssistantBehavior
+     */
+    public $assistantBehavior;
 }

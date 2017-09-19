@@ -7,7 +7,7 @@
 namespace app\modules\game\models\game_data\locations\white_city;
 
 
-use app\modules\game\models\game_data\Apprentice;
+use app\modules\game\models\game_data\Person;
 use app\modules\game\models\game_data\base\BaseLocation;
 
 class SlaveMarketLocation extends BaseLocation
@@ -17,7 +17,7 @@ class SlaveMarketLocation extends BaseLocation
         return ['/game/white-city/slave-market'];
     }
 
-    public function getSlaveEpithet(Apprentice $apprentice)
+    public function getSlaveEpithet(Person $apprentice)
     {
         $ret = 'доступная по цене';
 

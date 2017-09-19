@@ -7,7 +7,7 @@
 namespace app\modules\game\models\game_data\actions\home\apprentice\orders;
 
 
-use app\modules\game\models\game_data\Apprentice;
+use app\modules\game\models\game_data\Person;
 use app\modules\game\models\game_data\base\BaseGameAction;
 use app\modules\game\models\game_data\Home;
 
@@ -18,7 +18,7 @@ class Wash extends BaseGameAction
      */
     public $action;
 
-    public function __construct(Apprentice $apprentice, $assistant, Home $home)
+    public function __construct(Person $apprentice, $assistant, Home $home)
     {
         if($home->bath_available)
         {

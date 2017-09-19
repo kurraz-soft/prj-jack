@@ -8,7 +8,7 @@ namespace app\modules\game\models\game_data\base;
 
 
 use app\modules\game\helpers\VarHelper;
-use app\modules\game\models\game_data\Apprentice;
+use app\modules\game\models\game_data\Person;
 
 abstract class BaseRule extends BaseGameData implements IValuable
 {
@@ -57,7 +57,7 @@ abstract class BaseRule extends BaseGameData implements IValuable
     public function getValueText($value, $params = [])
     {
         return VarHelper::fillStringVars($this->valueTextTemplates()[$value], [
-            'apprentice_name' => $this->getDependency(Apprentice::class)->name,
+            'apprentice_name' => $this->getDependency(Person::class)->name,
         ]);
     }
 }
