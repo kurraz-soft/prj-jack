@@ -16,13 +16,13 @@ use app\modules\game\models\game_data\Home;
 
 class WashWithAssistant extends BaseGameAction
 {
-    public function __construct(Person $apprentice, $assistant, Home $home)
+    public function __construct(Person $apprentice, Person $assistant, Home $home)
     {
         $this->caption = 'Ванная';
-        $this->description = 'Муравейник'; //TODO home district
+        $this->description = $home->name;
 
         $text = VarHelper::fillStringVars('%{assistant_name}% уводит воспитуемую в ванную комнту и тщательно моет её тело с мылом и мочалкой.',[
-            'assistant_name' => 'Изабелла',//TODO assistant
+            'assistant_name' => $assistant->name,
         ]);
         $bg = FormatterHelper::imgPath($apprentice->visuals->lesbo_bath, 'gif');
         $this->slides[] = new GameActionSlide($text,$bg);

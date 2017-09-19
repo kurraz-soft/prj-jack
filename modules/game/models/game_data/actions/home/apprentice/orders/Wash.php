@@ -18,13 +18,12 @@ class Wash extends BaseGameAction
      */
     public $action;
 
-    public function __construct(Person $apprentice, $assistant, Home $home)
+    public function __construct(Person $apprentice, Person $assistant, Home $home)
     {
         if($home->bath_available)
         {
-            if($assistant)
+            if($assistant && $assistant->assistantBehavior->rules->apprentice_washer->getValue())
             {
-                //TODO check assistant "wash slave" rule
                 $this->action = new WashWithAssistant($apprentice,$assistant, $home);
             }else
             {
